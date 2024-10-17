@@ -1,0 +1,95 @@
+
+/* #region 4.yöntemin css */
+/* Liste öğelerinin hover durumunda arka plan rengini ve rengini ayarlar */
+// li:hover {
+//   background-color: #e9ecef;
+//   color: #0056b3;
+//   cursor: pointer; /* El imleci görünümü için */
+// }
+
+/* Başlıkların stilini ayarlar */
+h3 {
+  color: #4479b1;
+  margin-top: 20px;
+  padding-bottom: 5px;
+  font-weight: bold;
+  font-size: 1.5em;
+
+}
+
+.group {
+  margin-bottom: 20px;
+  margin-left: 70px;
+}
+
+ul {
+  list-style: none; /* Varsayılan madde işaretlerini kaldır */
+  padding: 0;
+}
+
+li {
+  position: relative;
+  padding-left: 20px; /* Madde işareti için boşluk bırak */
+  margin-bottom: 5px;
+  font-size: 13pt;
+  color: #000; /* Siyah renk */
+ /* Başlıklar için Lora fontu kullanımı */
+   font-family: 'Lora', serif;
+}
+
+li:before {
+  content: '▸'; /* Madde işaretini ayarlar */
+  position: absolute;
+  left: 0;
+  color: #4479b1; /* Madde işaretinin rengini ayarlar */
+}
+
+/* Container stilini ayarlar */
+.container {
+  max-width: 1200px;
+}
+
+/* Her bölüm arasına biraz boşluk ekler */
+.list-group-item {
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+/* Genel container stilini günceller */
+.container.mt-5 {
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+
+}
+
+/* Tıbbi Birimler başlığının stilini ayarlar */
+.title {
+  margin-top: 20px;
+  text-align: center;
+  color: #4479b1;
+  font-weight: bold;
+  font-size: 2.3em;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.title:after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background-color: #4479b1;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* Renk ve görünüm için ek stiller */
+.list-group-item {
+  color: #4479b1;
+  text-decoration: none;
+}
+
+
+/* #endregion */

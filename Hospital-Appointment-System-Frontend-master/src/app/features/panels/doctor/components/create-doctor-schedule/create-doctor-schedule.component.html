@@ -1,0 +1,53 @@
+<div class="d-flex">
+  <app-doctor-sidebar></app-doctor-sidebar>
+  <div class="flex-grow-1 p-3">
+    <div class="col-md-12">
+      <app-token></app-token>
+      <div class="card mt-5">
+        <div class="card-header">
+          <h2 class="text-center" style="color: #1565c0">ÇALIŞMA TAKVİMİ EKLE</h2>
+        </div>
+        <div class="card-body">
+          <div class="form-group mt-4">
+            <label for="selectedDate">Tarih Seçin (İki Hafta İçinde)</label>
+            <input
+              type="date"
+              id="selectedDate"
+              class="form-control"
+              [(ngModel)]="selectedDate"
+              [min]="minDate"
+              [max]="maxDate"
+            />
+          </div>
+          <div class="form-group mt-4" *ngIf="selectedDate">
+            <label for="startTime">Başlangıç Saati</label>
+            <div class="input-with-icon">
+              <select
+                id="startTime"
+                class="form-control"
+                [(ngModel)]="startTime"
+              >
+                <option *ngFor="let time of times" [value]="time">
+                  {{ time }}
+                </option>
+              </select>
+              <i class="bi bi-clock"></i>
+            </div>
+          </div>
+          <div class="form-group mt-4" *ngIf="startTime">
+            <label for="endTime">Bitiş Saati</label>
+            <div class="input-with-icon">
+              <select id="endTime" class="form-control" [(ngModel)]="endTime">
+                <option *ngFor="let time of getFilteredTimes()" [value]="time">
+                  {{ time }}
+                </option>
+              </select>
+              <i class="bi bi-clock"></i>
+            </div>
+          </div>
+          <button class="btn btn-primary mt-4" (click)="add()">Kaydet</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

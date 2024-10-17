@@ -1,0 +1,51 @@
+<div class="d-flex">
+  <app-doctor-sidebar></app-doctor-sidebar>
+  <div class="flex-grow-1 p-3">
+    <div class="col-md-12">
+      <app-token></app-token>
+      <div class="card mt-5">
+        <div class="card-header">
+          <h2 class="h2">GERİ BİLDİRİM EKLE</h2>
+        </div>
+        <div class="card-body">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-md-11 mx-auto">
+                <form
+                  class="row g-3"
+                  *ngIf="feedbackForm"
+                  [formGroup]="feedbackForm"
+                >
+                  <div class="col-md-12">
+                    <label for="inputFeedback" class="form-label"
+                      >Öneri & Şikayet</label
+                    >
+                    <div class="input-group">
+                      <div class="input-group-text">📜</div>
+                      <textarea
+                        class="form-control"
+                        id="inputFeedback"
+                        formControlName="text"
+                        rows="5"
+                      ></textarea>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <button
+                      type="submit"
+                      class="btn btn-primary w-100"
+                      (click)="addFeedback()"
+                    >
+                      Geri Bildirim Ekle
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<app-basic-layout>
+  <div class="row">
+    <h2 class="title">Doktorlarımız</h2>
+    <div class="col-md-12 d-flex justify-content-between align-items-center mb-3">
+      <div class="d-flex align-items-center">
+        <button class="btn btn-primary mr-2">Branş:</button>
+        <div class="form-group mb-0 d-flex align-items-center"> 
+          <select class="form-control mb-0" id="branchFilter" [(ngModel)]="selectedBranch" (change)="onBranchFilterChange($event)">
+            <option value="" selected>Tüm Branşlar</option>
+            <option *ngFor="let branch of branches" [value]="branch.name">{{ branch.name }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div *ngFor="let doctor of doctors | filterDoctorBranch:selectedBranch" class="col-md-4">
+      <div class="card border-primary mb-4">
+        <img src="https://via.placeholder.com/180" class="card-img-top" alt="Doctor Image" style="max-height: 250px; max-width: 100%;" />
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center">{{ doctor.firstName}} {{ doctor.lastName}}</li>
+            <li class="list-group-item text-center">{{ doctor.title }} Doktor</li>
+            <li class="list-group-item text-center text-uppercase">{{ doctor.branchName }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-basic-layout>

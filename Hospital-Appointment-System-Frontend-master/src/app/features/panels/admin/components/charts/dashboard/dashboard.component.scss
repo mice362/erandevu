@@ -1,0 +1,32 @@
+.d-flex {
+  display: flex;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Satırlar arasındaki boşluk */
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.column {
+  flex: 1;
+  max-width: 45%; /* Her sütunun maksimum genişliği */
+}
+
+/* Grafik bileşenlerinin boyutlandırılması */
+ngx-charts-pie-chart,
+app-appointment-chart,
+app-pie-chart-branch,
+app-pai-chart-title,
+app-total-number-cards {
+  width: 100%; /* Bütün bileşenlerin genişliği */
+  max-width: 250px; /* Maksimum genişlik sınırlaması */
+  height: 200px; /* Bileşenlerin yüksekliği */
+}

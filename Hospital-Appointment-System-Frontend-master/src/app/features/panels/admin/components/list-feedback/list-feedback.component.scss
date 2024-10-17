@@ -1,0 +1,26 @@
+.table th,
+.table td {
+  vertical-align: middle; /* Hücre içeriğinin dikey ortalanmasını sağlar */
+}
+
+.btn-group .btn {
+  display: inline-block;
+}
+
+.table .text-center {
+  text-align: center;
+}
+
+tr {
+  text-align: center;
+}
+
+/* Özel sınıf: iki buton arasında boşluk oluşturur */
+.btn-space {
+  margin-right: 8px; /* İhtiyacınıza göre değeri değiştirebilirsiniz */
+}
+
+.read {
+  background-color: #e0ffe0; /* Okundu olarak işaretlenen geri bildirimler için arka plan rengi */
+}
+

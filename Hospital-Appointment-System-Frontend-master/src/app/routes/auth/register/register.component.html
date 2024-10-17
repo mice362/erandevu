@@ -1,0 +1,81 @@
+<app-basic-layout>
+
+
+  <div class="container">
+    <div class="row justify-content-center">
+
+    <div class="col-md-6">
+      <div class="card border-0">
+        <div class="card-header">
+          <h3 class="mb-0">Üye Ol</h3>
+        </div>
+        <div class="card-body">
+          <!-- Logo -->
+          <!-- <div class="text-center mb-4">
+            <img src="assets/images/logo/logo.png" alt="Hospital Logo" class="img-fluid" style="max-width: 300px;">
+          </div> -->
+          <!-- End Logo -->
+          <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="form-group">
+              <label for="firstname">Ad</label>
+              <input type="text" class="form-control" id="firstname" formControlName="firstName">
+              <div *ngIf="isFieldInvalid('firstName')" class="error-messages">
+                <small *ngIf="registerForm.get('firstName')?.errors?.['required']">Adınızı girmelisiniz.</small>
+                <small *ngIf="registerForm.get('firstName')?.errors?.['minlength']">En az 2 karakter girmelisiniz.</small>
+                <small *ngIf="registerForm.get('firstName')?.errors?.['maxlength']">En fazla 30 karakter girmelisiniz.</small>
+                <small *ngIf="registerForm.get('firstName')?.errors?.['pattern']">Sadece harfler girmelisiniz.</small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="lastname">Soyad</label>
+              <input type="text" class="form-control" id="lastname" formControlName="lastName">
+              <div *ngIf="isFieldInvalid('lastName')" class="error-messages">
+                <small *ngIf="registerForm.get('lastName')?.errors?.['required']">Soyadınızı girmelisiniz.</small>
+                <small *ngIf="registerForm.get('lastName')?.errors?.['minlength']">En az 2 karakter girmelisiniz.</small>
+                <small *ngIf="registerForm.get('lastName')?.errors?.['maxlength']">En fazla 30 karakter girmelisiniz.</small>
+                <small *ngIf="registerForm.get('lastName')?.errors?.['pattern']">Sadece harfler girmelisiniz.</small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Telefon</label>
+              <input type="tel" class="form-control" id="phone" formControlName="phone">
+              <div *ngIf="isFieldInvalid('phone')" class="error-messages">
+                <small *ngIf="registerForm.get('phone')?.errors?.['required']">Telefon numaranızı girmelisiniz.</small>
+                <small *ngIf="registerForm.get('phone')?.errors?.['pattern']">Sadece rakamlar girmelisiniz.</small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">E-posta</label>
+              <input type="email" class="form-control" id="email" formControlName="email">
+              <div *ngIf="isFieldInvalid('email')" class="error-messages">
+                <small *ngIf="registerForm.get('email')?.errors?.['required']">Eposta adresinizi girmelisiniz.</small>
+                <small *ngIf="registerForm.get('email')?.errors?.['email']">Geçerli bir eposta girmelisiniz</small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="form-label">Şifre</label>
+              <input type="password" id="password" class="form-control" formControlName="password" aria-describedby="passwordHelpBlock">
+              <!-- <div id="passwordHelpBlock" class="form-text">
+                Şifreniz en az 8, en çok 15 karakter olmalıdır. 1 büyük harf, 1 küçük harf ve rakam içermelidir.
+              </div> -->
+              <div *ngIf="isFieldInvalid('password')" class="error-messages">
+                <small *ngIf="registerForm.get('password')?.errors?.['required']">Şifrenizi girmelisiniz.</small>
+                <small cla style="width: 300px;" *ngIf="registerForm.get('password')?.errors?.['pattern'] ">Şifreniz en az 8 karakter uzunluğunda ve büyük harf, küçük harf, rakam ve özel karakter içermelidir.</small>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Üye ol</button>
+          </form>
+          <div class="text mt-3">
+            <a href="/login" class="text-primary">Giriş Yap</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Bootstrap JS (Optional) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</app-basic-layout>

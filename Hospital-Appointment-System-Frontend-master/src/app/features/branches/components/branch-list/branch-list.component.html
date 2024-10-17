@@ -1,0 +1,18 @@
+<app-basic-layout>
+  <div class="container">
+   <h2 class="title">Tıbbi Birimler</h2>
+   <div class="row">
+     <div class="col-4" *ngFor="let key of groupedKeys()">
+       <div class="group">
+         <h3>{{ key }}.</h3>
+         <ul>
+           <li *ngFor="let branch of groupedBranches[key]">
+             {{ branch.name }}
+           </li>
+         </ul>
+       </div>
+     </div>
+   </div>
+ </div>
+
+ </app-basic-layout>

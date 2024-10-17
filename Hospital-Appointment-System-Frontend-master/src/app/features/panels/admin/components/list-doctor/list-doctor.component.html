@@ -1,0 +1,89 @@
+<div class="d-flex">
+  <app-admin-sidebar></app-admin-sidebar>
+
+  <div class="flex-grow-1 p-3">
+    <div class="col-md-12">
+      <app-token></app-token>
+      <div class="card mt-5">
+          <div class="card-header">
+            <h2 class="text-center text-primary mb-4">DOKTORLAR</h2>
+          </div>
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div class="d-flex align-items-center">
+                <div class="input-group mr-3">
+                  <span class="input-group-text">
+                    <i class="bi bi-search"></i>
+                  </span>
+                  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"
+                    placeholder="Doktor adı" />
+                </div>
+                <div class="d-flex align-items-center">
+                  <button class="btn btn-primary mr-2">Branş:</button>
+                  <div class="form-group mb-0">
+                    <select class="form-control mb-0 custom-select-width" id="branchFilter" [(ngModel)]="selectedBranch"
+                      (change)="onBranchFilterChange($event)">
+                      <option value="" selected>Tüm Branşlar</option>
+                      <option *ngFor="let branch of branches" [value]="branch.name">{{ branch.name }}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <button class="btn btn-success" [routerLink]="['/admin-add-doctor']">
+                  Doktor Ekle
+                </button>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead class="thead-primary">
+                  <tr>
+                    <th scope="col" style="width: 15%">Doktor Adı Soyadı</th>
+                    <th scope="col" style="width: 15%">Branş</th>
+                    <th scope="col" style="width: 5%">Unvan</th>
+                    <th scope="col" style="width: 15%">Okul Adı</th>
+                    <th scope="col" style="width: 20%">Doğum Tarihi</th>
+                    <th scope="col" style="width: 5%">Kimlik Numarası</th>
+                    <th scope="col" style="width: 5%">Adres</th>
+                    <th scope="col" style="width: 5%">Telefon Numarası</th>
+                    <th scope="col" style="width: 5%">Mail adresi</th>
+                    <th scope="col" style="width: 10%">İşlemler</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let doctor of doctors | filterDoctorName: filterText | filterDoctorBranch:selectedBranch">
+                    <td>
+                      {{ doctor.firstName | CapitalizeFirst }}
+                      {{ doctor.lastName | CapitalizeFirst }}
+                    </td>
+                    <td>{{ doctor.branchName }}</td>
+                    <td>{{ doctor.title }}</td>
+                    <td>{{ doctor.schoolName }}</td>
+                    <td>{{ doctor.dateOfBirth }}</td>
+                    <td>{{ doctor.nationalIdentity }}</td>
+                    <td>{{ doctor.address }}</td>
+                    <td>{{ doctor.phone }}</td>
+                    <td>{{ doctor.email }}</td>
+                    <td class="text-center">
+                      <div class="btn-group" role="group">
+                        <button class="btn btn-sm btn-primary" [routerLink]="['/admin-update-doctor', doctor.id]">
+                          <i class="fa fa-pencil"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger" (click)="confirmDelete(doctor.id)">
+                          <i class="fa fa-trash"></i>
+                        </button>
+                        <button class="btn btn-sm btn-success" (click)="goToRoute(doctor.id)">
+                          Takvimi Görüntüle
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <app-pagination [totalPages]="totalPages" [pageIndex]="pageIndex" [pageSize]="pageSize"
+                (pageChange)="onPageChanged($any($event))"></app-pagination>
+            </div>
+          </div>
+        </div>
+      </div>

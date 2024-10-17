@@ -1,0 +1,27 @@
+<div class="d-flex">
+  <div class="flex-grow-1 p-3">
+    <div class="card">
+      <div class="card-header">
+        <h2 style="color: #1565c0; font-size: 28px; text-align: center; margin: 0;">ÇALIŞMA TAKVİMİM</h2>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead class="thead-primary">
+            <tr>
+              <th scope="col" style="width: 25%;">Tarih</th>
+              <th scope="col" style="width: 25%;">Başlangıç Saati</th>
+              <th scope="col" style="width: 20%;">Bitiş Saati</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let schedule of schedules">
+              <td>{{ schedule.date | date:'dd.MM.yyyy' }}</td>
+              <td>{{ schedule.startTime }}</td>
+              <td>{{ schedule.endTime }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

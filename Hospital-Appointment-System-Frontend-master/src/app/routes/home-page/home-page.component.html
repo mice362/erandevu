@@ -1,0 +1,100 @@
+<app-basic-layout>
+  <div class="mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-12 mb-3 mb-lg-0">
+          <app-slider></app-slider>
+        </div>
+        <div class="col-lg-4 col-md-12 d-flex flex-column justify-content-center">
+          <div class="icon-boxes">
+            <a class="icon-box text-center" (click)="checkUserForAppointment()">
+              <div>
+                <fa-icon [icon]="icon" size="2x" style="color: #3b5ec2"></fa-icon>
+                <h4>Online Randevu</h4>
+              </div>
+            </a>
+            <a routerLink="/doctors" class="icon-box text-center">
+              <div>
+                <fa-icon [icon]="icon2" size="2x" style="color: #3b5ec2"></fa-icon>
+                <h4>Doktorlarımız</h4>
+              </div>
+            </a>
+            <a routerLink="/faq" class="icon-box text-center">
+              <div>
+                <fa-icon [icon]="icon3" size="2x" style="color: #3b5ec2"></fa-icon>
+                <h4>Sıkça Sorulan Sorular</h4>
+              </div>
+            </a>
+            <a routerLink="/branches" class="icon-box text-center">
+              <div>
+                <fa-icon [icon]="icon4" size="2x" style="color: #3b5ec2"></fa-icon>
+                <h4>Branşlarımız</h4>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-5"></div>
+
+    <div class="container mt-5">
+      <div class="row mt-5">
+        <div class="col-md-8">
+          <h2>Neden P5 Hastaneleri?</h2>
+          <p>
+            P5 Hastaneleri olarak, sağlık sektöründe mükemmellik anlayışımız ve
+            hasta odaklı yaklaşımımız ile fark yaratıyoruz. Her biri alanında
+            uzman doktor kadromuz, son teknolojiye sahip tıbbi ekipmanlarımız ve
+            konforlu hastane ortamımız ile sizlere en iyi sağlık hizmetini
+            sunmayı amaçlıyoruz. Hasta memnuniyetini ön planda tutarak, kişiye
+            özel tedavi planları ve kapsamlı sağlık çözümleri sunuyoruz. 24
+            yıllık tecrübemiz ve sürekli yenilenen vizyonumuz ile, hem yerel hem
+            de uluslararası standartlarda kaliteli ve güvenilir sağlık hizmeti
+            sağlıyoruz. P5 Hastaneleri, sağlığınızı korumak ve yaşam kalitenizi
+            artırmak için her zaman yanınızdayız.
+          </p>
+          <div class="d-flex justify-content-around">
+            <div class="text-center">
+              <img src="assets/images/homepage/vision-icon.png" alt="Gelecek Vizyonu" class="img-fluid" />
+              <p>Gelecek Vizyonu</p>
+            </div>
+            <div class="text-center">
+              <img src="assets/images/homepage/patient-experience-icon.png" alt="Hasta Deneyimi" class="img-fluid" />
+              <p>Hasta Deneyimi</p>
+            </div>
+            <div class="text-center">
+              <img src="assets/images/homepage/quality-icon.png" alt="Kalitede Mükemmelik" class="img-fluid" />
+              <p>Kalitede Mükemmelik</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="assets/images/homepage/24-years.jpeg" class="img-fluid" alt="Banner-aside" />
+        </div>
+      </div>
+    </div>
+
+    <div class="container step-section">
+      <div class="row d-flex justify-content-center">
+        <div class="banner-aside align-items-center d-md-flex col-lg-12 col-md-8 col-sm-8 col-10">
+          <figure class="col-12 col-lg-5 mr-lg-5 mr-md-3">
+            <img src="assets/images/homepage/sagliginiz-el-ustunde.jpg" class="img-aside" alt="Banner-aside" width="470" height="447" />
+          </figure>
+          <div class="banner-content">
+            <h3 class="banner-title">Sağlığınız El Üstünde</h3>
+            <p>
+              "Sağlığınız El Üstünde" sloganıyla yola çıkan P5 Hastaneleri olarak, siz değerli hastalarımıza en iyi sağlık hizmetini sunmayı
+              hedefliyoruz. 24 yıllık tecrübemizle, sağlık sektöründe kalitenin ve güvenin adresi olmayı sürdürüyoruz. Hastalarımızın
+              memnuniyetini ve sağlığını her şeyin üstünde tutarak, modern tıbbi ekipmanlar ve uzman kadromuzla dünya standartlarında hizmet
+              veriyoruz.
+              <br />
+              Amacımız, her ziyaretinizde kendinizi güvende ve özel hissetmenizi sağlamak ve sağlığınızı koruma yolunda yanınızda olmaktır.
+              P5 Hastaneleri, sağlığınızın emin ellerde olduğunun bir garantisidir.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-live-support-icon></app-live-support-icon>
+</app-basic-layout>
