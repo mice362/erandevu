@@ -1,4 +1,4 @@
-using Application.Features.DoctorSchedules.Constants;
+ï»¿using Application.Features.DoctorSchedules.Constants;
 using Application.Services.Repositories;
 using NArchitecture.Core.Application.Rules;
 using NArchitecture.Core.CrossCuttingConcerns.Exception.Types;
@@ -48,7 +48,7 @@ public class DoctorScheduleBusinessRules : BaseBusinessRules
         await DoctorScheduleShouldExistWhenSelected(doctorSchedule);
     }
 
-    //o randevu seçilmiþse hastalrdan silmesine izin vermemek için oluþturulan bir kural
+    //o randevu seÃ§ilmiÅŸse hastalrdan silmesine izin vermemek iÃ§in oluÅŸturulan bir kural
     public async Task DoctorScheduleShouldNotBeDeletedIfAppointmentsExist(int doctorScheduleId, CancellationToken cancellationToken)
     {
         DoctorSchedule? doctorSchedule = await _doctorScheduleRepository.GetAsync(
@@ -87,7 +87,7 @@ public class DoctorScheduleBusinessRules : BaseBusinessRules
         return await _doctorScheduleRepository.GetAsync(ds => ds.DoctorID == doctorId && ds.Date == date && ds.DeletedDate != null);
     }
 
-    //güncelleme iþlemi için soft delete
+    //gÃ¼ncelleme iÅŸlemi iÃ§in soft delete
     public async Task<DoctorSchedule> CheckIfDoctorScheduleExists(int doctorScheduleId, CancellationToken cancellationToken)
     {
         var existingSchedule = await _doctorScheduleRepository.GetAsync(
@@ -111,7 +111,7 @@ public class DoctorScheduleBusinessRules : BaseBusinessRules
         if (conflictingSchedule != null && conflictingSchedule.Id != existingId )
         {
             if(conflictingSchedule.DeletedDate==null)
-            throw new BusinessException("Bu doktorun belirtilen tarihteki programý zaten mevcut.");
+            throw new BusinessException("Bu doktorun belirtilen tarihteki programÄ± zaten mevcut.");
 
         }
     }
@@ -136,12 +136,12 @@ public class DoctorScheduleBusinessRules : BaseBusinessRules
         {
             if (conflictingSchedule.DeletedDate == null)
             {
-                // Silinmemiþ bir kayýtta çakýþma var, hata fýrlatalým
+                // SilinmemiÅŸ bir kayÄ±tta Ã§akÄ±ÅŸma var, hata fÄ±rlatalÄ±m
                 throw new BusinessException(DoctorSchedulesBusinessMessages.DoctorScheduleAlreadyExistsForThisDate);
             }
             else
             {
-                // Silinmiþ bir kayýtta çakýþma var, bu kaydý güncelleyelim
+                // SilinmiÅŸ bir kayÄ±tta Ã§akÄ±ÅŸma var, bu kaydÄ± gÃ¼ncelleyelim
                 conflictingSchedule.Date = request.Date;
                 conflictingSchedule.StartTime = request.StartTime;
                 conflictingSchedule.EndTime = request.EndTime;
@@ -149,7 +149,7 @@ public class DoctorScheduleBusinessRules : BaseBusinessRules
                 conflictingSchedule.DeletedDate = null;
                 await _doctorScheduleRepository.UpdateAsync(conflictingSchedule);
 
-                // Ýstek yapýlan kaydý silindi olarak iþaretleyelim
+                // Ä±stek yapÄ±lan kaydÄ± silindi olarak iÅŸaretleyelim
                 existingSchedule.DeletedDate = DateTime.UtcNow;
                 await _doctorScheduleRepository.UpdateAsync(existingSchedule);
             }

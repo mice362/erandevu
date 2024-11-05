@@ -1,10 +1,10 @@
-namespace Application.Features.Patients.Constants;
+ï»¿namespace Application.Features.Patients.Constants;
 
 public static class PatientsBusinessMessages
 {
     public const string SectionName = "Patient";
 
-    public const string PatientNotExists = "Böyle bir hasta bulunamadı";
-    public const string UserIdentityAlreadyExists = "Böyle bir kimlik numarası zaten var";
-    public const string InvalidIdentity = "Geçersiz TC kimlik numarası veya kimlik bilgileri";
+    public const string PatientNotExists = "BÃ¶yle bir hasta bulunamadÄ±";
+    public const string UserIdentityAlreadyExists = "BÃ¶yle bir kimlik numarasÄ± zaten var";
+    public const string InvalidIdentity = "GeÃ§ersiz TC kimlik numarasÄ± veya kimlik bilgileri";
 }

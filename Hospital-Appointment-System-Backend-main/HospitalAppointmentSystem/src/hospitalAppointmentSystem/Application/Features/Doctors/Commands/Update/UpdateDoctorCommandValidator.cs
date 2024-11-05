@@ -1,4 +1,4 @@
-using FluentValidation;
+ï»¿using FluentValidation;
 using System.Text.RegularExpressions;
 
 namespace Application.Features.Doctors.Commands.Update;
@@ -7,34 +7,34 @@ public class UpdateDoctorCommandValidator : AbstractValidator<UpdateDoctorComman
 {
     public UpdateDoctorCommandValidator()
     {
-        RuleFor(c => c.Id).NotEmpty().WithMessage("Id alaný boþ olamaz");
+        RuleFor(c => c.Id).NotEmpty().WithMessage("Id alanÄ± boÅŸ olamaz");
 
-        RuleFor(c => c.BranchID).NotEmpty().WithMessage("Branþ alaný boþ olamaz");
+        RuleFor(c => c.BranchID).NotEmpty().WithMessage("BranÅŸ alanÄ± boÅŸ olamaz");
 
         RuleFor(c => c.Title)
-            .NotEmpty().WithMessage("Uzmanlýk alaný boþ olamaz")
-            .Length(2, 10).WithMessage("Uzmanlýk alaný en az 2, en fazla 10 karakter olmalýdýr.");
+            .NotEmpty().WithMessage("UzmanlÄ±k alanÄ± boÅŸ olamaz")
+            .Length(2, 10).WithMessage("UzmanlÄ±k alanÄ± en az 2, en fazla 10 karakter olmalÄ±dÄ±r.");
 
         RuleFor(c => c.SchoolName)
-             .NotEmpty().WithMessage("Okul adý boþ olamaz")
-             .Length(3, 50).WithMessage("Okul adý en az 3, en fazla 50 karakter olabilir");
+             .NotEmpty().WithMessage("Okul adÄ± boÅŸ olamaz")
+             .Length(3, 50).WithMessage("Okul adÄ± en az 3, en fazla 50 karakter olabilir");
 
-        RuleFor(c => c.FirstName).NotEmpty().WithMessage("Kullanýcý adý alaný boþ olamaz")
-           .MinimumLength(2).WithMessage("Kullanýcý adý en az 2 karakter olmalýdýr");
+        RuleFor(c => c.FirstName).NotEmpty().WithMessage("KullanÄ±cÄ± adÄ± alanÄ± boÅŸ olamaz")
+           .MinimumLength(2).WithMessage("KullanÄ±cÄ± adÄ± en az 2 karakter olmalÄ±dÄ±r");
 
-        RuleFor(c => c.LastName).NotEmpty().WithMessage("Kullanýcý soyadý alaný boþ olamaz")
-            .MinimumLength(2).WithMessage("Kullanýcý soyadý en az 2 karakter olmalýdýr");
+        RuleFor(c => c.LastName).NotEmpty().WithMessage("KullanÄ±cÄ± soyadÄ± alanÄ± boÅŸ olamaz")
+            .MinimumLength(2).WithMessage("KullanÄ±cÄ± soyadÄ± en az 2 karakter olmalÄ±dÄ±r");
 
-        RuleFor(c => c.DateOfBirth).NotEmpty().WithMessage("Doðum tarihi alaný boþ olamaz");
+        RuleFor(c => c.DateOfBirth).NotEmpty().WithMessage("DoÃ°um tarihi alanÄ± boÅŸ olamaz");
 
-        RuleFor(c => c.NationalIdentity).NotEmpty().WithMessage("T.C. Kimlik numarasý alaný boþ olamaz").
-            MinimumLength(11).WithMessage("T.C. Kimlik numarasý minimum 11 karakter olmalýdýr").MaximumLength(11).WithMessage("T.C. Kimlik numarasý alaný maksimum 11 karakter olmalýdýr");
+        RuleFor(c => c.NationalIdentity).NotEmpty().WithMessage("T.C. Kimlik numarasÄ± alanÄ± boÅŸ olamaz").
+            MinimumLength(11).WithMessage("T.C. Kimlik numarasÄ± minimum 11 karakter olmalÄ±dÄ±r").MaximumLength(11).WithMessage("T.C. Kimlik numarasÄ± alanÄ± maksimum 11 karakter olmalÄ±dÄ±r");
 
-        RuleFor(c => c.Email).NotEmpty().WithMessage("E-posta alaný boþ olamaz").EmailAddress().WithMessage("Girdiðiniz e-posta adresi istenen formatta deðil!");
+        RuleFor(c => c.Email).NotEmpty().WithMessage("E-posta alanÄ± boÅŸ olamaz").EmailAddress().WithMessage("GirdiÃ°iniz e-posta adresi istenen formatta deÃ°il!");
 
-        RuleFor(c => c.Phone).NotEmpty().WithMessage("Telefon numarasý alaný boþ olamaz").MinimumLength(11).WithMessage("Telefon numarasý minimum 11 karakter olmalýdýr");
+        RuleFor(c => c.Phone).NotEmpty().WithMessage("Telefon numarasÄ± alanÄ± boÅŸ olamaz").MinimumLength(11).WithMessage("Telefon numarasÄ± minimum 11 karakter olmalÄ±dÄ±r");
 
-        RuleFor(c => c.Address).NotEmpty().WithMessage("Adres alaný boþ olamaz").MinimumLength(3).WithMessage("Adres en az 3 karakter olmalýdýr");
+        RuleFor(c => c.Address).NotEmpty().WithMessage("Adres alanÄ± boÅŸ olamaz").MinimumLength(3).WithMessage("Adres en az 3 karakter olmalÄ±dÄ±r");
 
 
     }

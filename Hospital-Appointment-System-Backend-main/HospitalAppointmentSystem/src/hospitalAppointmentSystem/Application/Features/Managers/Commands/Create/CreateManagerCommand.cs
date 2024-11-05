@@ -1,4 +1,4 @@
-using Application.Features.Managers.Constants;
+ï»¿using Application.Features.Managers.Constants;
 using Application.Features.Managers.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
@@ -46,7 +46,7 @@ public class CreateManagerCommand : IRequest<CreatedManagerResponse>, ISecuredRe
         {
             Manager manager = _mapper.Map<Manager>(request);
 
-            //sinem kullanýcý bilgilerini þifreleme. encrypt þifreleme yapýyor.
+            //sinem kullanÄ±cÄ± bilgilerini ÅŸifreleme. encrypt ÅŸifreleme yapÄ±yor.
 
             manager.FirstName = CryptoHelper.Encrypt(manager.FirstName);
             manager.LastName = CryptoHelper.Encrypt(manager.LastName);
@@ -55,7 +55,7 @@ public class CreateManagerCommand : IRequest<CreatedManagerResponse>, ISecuredRe
             manager.Address = CryptoHelper.Encrypt(manager.Address);
             manager.Email = CryptoHelper.Encrypt(manager.Email);
 
-            //yazdýðým burda bitti
+            //yazdÄ±Ã°Ä±m burda bitti
 
             await _managerRepository.AddAsync(manager);
 

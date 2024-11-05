@@ -1,4 +1,4 @@
-using FluentValidation;
+ï»¿using FluentValidation;
 
 namespace Application.Features.Feedbacks.Commands.Delete;
 
@@ -6,6 +6,6 @@ public class DeleteFeedbackCommandValidator : AbstractValidator<DeleteFeedbackCo
 {
     public DeleteFeedbackCommandValidator()
     {
-        RuleFor(c => c.Id).NotEmpty().WithMessage("Id alaný boþ olamaz");
+        RuleFor(c => c.Id).NotEmpty().WithMessage("Id alanÄ± boÅŸ olamaz");
     }
 }

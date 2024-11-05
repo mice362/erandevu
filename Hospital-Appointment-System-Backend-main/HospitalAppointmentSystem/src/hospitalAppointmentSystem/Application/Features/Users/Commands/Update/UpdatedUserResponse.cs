@@ -1,4 +1,4 @@
-using NArchitecture.Core.Application.Responses;
+ï»¿using NArchitecture.Core.Application.Responses;
 
 namespace Application.Features.Users.Commands.Update;
 
@@ -19,7 +19,7 @@ public class UpdatedUserResponse : IResponse
     {
         FirstName = string.Empty;
         LastName = string.Empty;
-        DateOfBirth = new DateOnly(1, 1, 1); // Varsayýlan olarak 1 Ocak 0001
+        DateOfBirth = new DateOnly(1, 1, 1); // VarsayÄ±lan olarak 1 Ocak 0001
         NationalIdentity = string.Empty;
         Phone = string.Empty;
         Address = string.Empty;
@@ -28,9 +28,9 @@ public class UpdatedUserResponse : IResponse
         Status = true;
     }
 
-    public UpdatedUserResponse(Guid ýd, string firstName, string lastName, DateOnly dateOfBirth, string nationalIdentity, string phone, string address, string email, string password, bool status)
+    public UpdatedUserResponse(Guid Ä±d, string firstName, string lastName, DateOnly dateOfBirth, string nationalIdentity, string phone, string address, string email, string password, bool status)
     {
-        Id = ýd;
+        Id = Ä±d;
         FirstName = firstName;
         LastName = lastName;
         DateOfBirth = dateOfBirth;

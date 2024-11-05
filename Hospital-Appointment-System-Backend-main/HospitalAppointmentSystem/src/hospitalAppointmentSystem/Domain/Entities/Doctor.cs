@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Domain.Entities;
-public class Doctor :User
+public class Doctor : User
 {
     public Doctor()
     {
@@ -20,8 +20,6 @@ public class Doctor :User
         Title = title;
         SchoolName = schoolName;
     }
-
-
 
     public string Title { get; set; }
     public string SchoolName { get; set; }

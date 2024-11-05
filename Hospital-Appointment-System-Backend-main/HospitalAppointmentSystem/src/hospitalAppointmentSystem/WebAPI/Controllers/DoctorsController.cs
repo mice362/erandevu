@@ -3,10 +3,10 @@ using Application.Features.Doctors.Commands.Delete;
 using Application.Features.Doctors.Commands.Update;
 using Application.Features.Doctors.Queries.GetById;
 using Application.Features.Doctors.Queries.GetList;
-using NArchitecture.Core.Application.Requests;
-using NArchitecture.Core.Application.Responses;
 using Application.Features.Doctors.Queries.GetListByBranchId;
 using Microsoft.AspNetCore.Mvc;
+using NArchitecture.Core.Application.Requests;
+using NArchitecture.Core.Application.Responses;
 
 
 namespace WebAPI.Controllers;

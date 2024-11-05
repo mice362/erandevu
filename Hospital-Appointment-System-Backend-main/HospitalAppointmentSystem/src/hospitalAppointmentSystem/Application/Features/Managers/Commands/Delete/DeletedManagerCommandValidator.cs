@@ -1,4 +1,4 @@
-using FluentValidation;
+ï»¿using FluentValidation;
 
 namespace Application.Features.Managers.Commands.Delete;
 
@@ -6,6 +6,6 @@ public class DeleteManagerCommandValidator : AbstractValidator<DeleteManagerComm
 {
     public DeleteManagerCommandValidator()
     {
-        RuleFor(c => c.Id).NotEmpty().WithMessage("Id alaný boþ olamaz");
+        RuleFor(c => c.Id).NotEmpty().WithMessage("Id alanÄ± boÅŸ olamaz");
     }
 }

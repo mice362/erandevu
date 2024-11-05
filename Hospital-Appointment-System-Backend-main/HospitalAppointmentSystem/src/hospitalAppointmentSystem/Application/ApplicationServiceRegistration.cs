@@ -29,6 +29,7 @@ using Application.Services.Managers;
 using Application.Services.Notifications;
 using Application.Services.Patients;
 using Application.Services.Reports;
+using Application.Services.Clinics;
 
 
 namespace Application;
@@ -71,15 +72,16 @@ public static class ApplicationServiceRegistration
 
         services.AddSecurityServices<Guid, int, Guid>(tokenOptions);
 
-        //services.AddScoped<IAppointmentService, AppointmentManager>();
-        //services.AddScoped<IBranchService, BranchManager>();
-        //services.AddScoped<IDoctorService, DoctorManager>();
-        //services.AddScoped<IDoctorScheduleService, DoctorScheduleManager>();
-        //services.AddScoped<IFeedbackService, FeedbackManager>();
-        //services.AddScoped<IManagerService, ManagerManager>();
-        //services.AddScoped<INotificationService, NotificationManager>();
-        //services.AddScoped<IPatientService, PatientManager>();
-        //services.AddScoped<IReportService, ReportManager>();
+        services.AddScoped<IAppointmentService, AppointmentManager>();
+        services.AddScoped<IBranchService, BranchManager>();
+        services.AddScoped<IDoctorService, DoctorManager>();
+        services.AddScoped<IDoctorScheduleService, DoctorScheduleManager>();
+        services.AddScoped<IFeedbackService, FeedbackManager>();
+        services.AddScoped<IManagerService, ManagerManager>();
+        services.AddScoped<INotificationService, NotificationManager>();
+        services.AddScoped<IPatientService, PatientManager>();
+        services.AddScoped<IReportService, ReportManager>();
+        services.AddScoped<IClinicService, ClinicManager>();
 
         services.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).Where(t => t.ServiceType.Name.EndsWith("Manager"));
         return services;

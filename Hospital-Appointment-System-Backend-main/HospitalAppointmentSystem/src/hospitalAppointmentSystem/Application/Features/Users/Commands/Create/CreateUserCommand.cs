@@ -1,4 +1,4 @@
-using Application.Features.Users.Constants;
+﻿using Application.Features.Users.Constants;
 using Application.Features.Users.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
@@ -26,7 +26,7 @@ public class CreateUserCommand : IRequest<CreatedUserResponse>, ISecuredRequest
     {
         FirstName = string.Empty;
         LastName = string.Empty;
-        DateOfBirth = new DateOnly(1, 1, 1); // Varsay�lan olarak 1 Ocak 0001
+        DateOfBirth = new DateOnly(1, 1, 1); // Varsayılan olarak 1 Ocak 0001
         NationalIdentity = string.Empty;
         Phone = string.Empty;
         Address = string.Empty;

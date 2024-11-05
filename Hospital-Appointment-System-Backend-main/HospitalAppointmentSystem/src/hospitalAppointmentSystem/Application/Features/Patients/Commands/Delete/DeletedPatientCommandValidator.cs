@@ -1,4 +1,4 @@
-using FluentValidation;
+ï»¿using FluentValidation;
 
 namespace Application.Features.Patients.Commands.Delete;
 
@@ -6,6 +6,6 @@ public class DeletePatientCommandValidator : AbstractValidator<DeletePatientComm
 {
     public DeletePatientCommandValidator()
     {
-        RuleFor(c => c.Id).NotEmpty().WithMessage("Id alaný boþ olamaz");
+        RuleFor(c => c.Id).NotEmpty().WithMessage("Id alanÄ± boÅŸ olamaz");
     }
 }

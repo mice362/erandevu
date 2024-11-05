@@ -1,4 +1,4 @@
-using FluentValidation;
+﻿using FluentValidation;
 
 namespace Application.Features.Branches.Commands.Delete;
 
@@ -6,6 +6,6 @@ public class DeleteBranchCommandValidator : AbstractValidator<DeleteBranchComman
 {
     public DeleteBranchCommandValidator()
     {
-        RuleFor(c => c.Id).NotEmpty().WithMessage("Id bo� olamaz");
+        RuleFor(c => c.Id).NotEmpty().WithMessage("Id boş olamaz");
     }
 }

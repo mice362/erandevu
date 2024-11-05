@@ -1,4 +1,4 @@
-using Application.Features.Appointments.Constants;
+ï»¿using Application.Features.Appointments.Constants;
 using Application.Services.Repositories;
 using NArchitecture.Core.Application.Rules;
 using NArchitecture.Core.CrossCuttingConcerns.Exception.Types;
@@ -56,10 +56,10 @@ public class AppointmentBusinessRules : BaseBusinessRules
 
         if (existingDeletedAppointment != null)
         {
-            // Silinmiþ randevuyu güncelle
+            // SilinmiÅŸ randevuyu gÃ¼ncelle
             existingDeletedAppointment.Time = request.Time;
             existingDeletedAppointment.Status = request.Status;
-            existingDeletedAppointment.DeletedDate = null; // Silinmiþ durumu kaldýr
+            existingDeletedAppointment.DeletedDate = null; // SilinmiÅŸ durumu kaldÄ±r
             await _appointmentRepository.UpdateAsync(existingDeletedAppointment);
 
             return existingDeletedAppointment;
@@ -83,19 +83,19 @@ public class AppointmentBusinessRules : BaseBusinessRules
 
     public async Task SendAppointmentConfirmationMail(Appointment appointment)
     {
-        // Mail içeriðini hazýrla
+        // Mail iÃ§eriÃ°ini hazÄ±rla
         var mailMessage = new MimeMessage();
-        mailMessage.From.Add(new MailboxAddress("Pair 5 Hastanesi", "fatmabireltr@gmail.com")); // Gönderen bilgisi
+        mailMessage.From.Add(new MailboxAddress("Pair 5 Hastanesi", "fatmabireltr@gmail.com")); // GÃ¶nderen bilgisi
         appointment.Patient.Email = CryptoHelper.Decrypt(appointment.Patient.Email);
         appointment.Patient.FirstName = CryptoHelper.Decrypt(appointment.Patient.FirstName);
         appointment.Patient.LastName = CryptoHelper.Decrypt(appointment.Patient.LastName);
         appointment.Doctor.FirstName = CryptoHelper.Decrypt(appointment.Doctor.FirstName);
         appointment.Doctor.LastName = CryptoHelper.Decrypt(appointment.Doctor.LastName);
 
-        mailMessage.To.Add(new MailboxAddress("Pair 5 Hastanesi", appointment.Patient.Email)); // Alýcý bilgisi 
+        mailMessage.To.Add(new MailboxAddress("Pair 5 Hastanesi", appointment.Patient.Email)); // AlÄ±cÄ± bilgisi 
         mailMessage.Subject = "Randevu Bilgilendirme"; // Mail konusu
 
-        // HTML ve CSS içeriði oluþtur
+        // HTML ve CSS iÃ§eriÃ°i oluÅŸtur
         var bodyBuilder = new BodyBuilder();
         bodyBuilder.HtmlBody = $@"
        <html>
@@ -107,18 +107,18 @@ public class AppointmentBusinessRules : BaseBusinessRules
         </head>
         <body>
             <div class='container'>
-                <p>Sayýn {appointment.Patient.FirstName} {appointment.Patient.LastName},</p>
-                <p>{appointment.Date} tarihinde, saat {appointment.Time} için bir randevu aldýnýz.</p>
+                <p>SayÄ±n {appointment.Patient.FirstName} {appointment.Patient.LastName},</p>
+                <p>{appointment.Date} tarihinde, saat {appointment.Time} iÃ§in bir randevu aldÄ±nÄ±z.</p>
                 <p>Doktor: {appointment.Doctor.Title} {appointment.Doctor.FirstName} {appointment.Doctor.LastName}</p>
-                <p>Branþ: {appointment.Doctor.Branch.Name}</p>
+                <p>BranÅŸ: {appointment.Doctor.Branch.Name}</p>
             </div>
         </body>
         </html>";
 
-        // MimeKit'e gövdeyi ayarla
+        // MimeKit'e gÃ¶vdeyi ayarla
         mailMessage.Body = bodyBuilder.ToMessageBody();
 
-        // SMTP ile baðlantý kur ve maili gönder
+        // SMTP ile baÃ°lantÄ± kur ve maili gÃ¶nder
         using (var smtp = new SmtpClient())
         {
             smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
@@ -132,19 +132,19 @@ public class AppointmentBusinessRules : BaseBusinessRules
     public async Task SendAppointmentConfirmationMailDelete(Appointment appointment)
     {
 
-        // Mail içeriðini hazýrla
+        // Mail iÃ§eriÃ°ini hazÄ±rla
         var mailMessage = new MimeMessage();
-        mailMessage.From.Add(new MailboxAddress("Pair 5 Hastanesi", "fatmabireltr@gmail.com")); // Gönderen bilgisi
+        mailMessage.From.Add(new MailboxAddress("Pair 5 Hastanesi", "fatmabireltr@gmail.com")); // GÃ¶nderen bilgisi
         appointment.Patient.Email = CryptoHelper.Decrypt(appointment.Patient.Email);
         appointment.Patient.FirstName = CryptoHelper.Decrypt(appointment.Patient.FirstName);
         appointment.Patient.LastName = CryptoHelper.Decrypt(appointment.Patient.LastName);
         appointment.Doctor.FirstName = CryptoHelper.Decrypt(appointment.Doctor.FirstName);
         appointment.Doctor.LastName = CryptoHelper.Decrypt(appointment.Doctor.LastName);
 
-        mailMessage.To.Add(new MailboxAddress("Pair 5 Hastanesi", appointment.Patient.Email)); // Alýcý bilgisi 
+        mailMessage.To.Add(new MailboxAddress("Pair 5 Hastanesi", appointment.Patient.Email)); // AlÄ±cÄ± bilgisi 
         mailMessage.Subject = "Randevu Bilgilendirme"; // Mail konusu
 
-        // HTML ve CSS içeriði oluþtur
+        // HTML ve CSS iÃ§eriÃ°i oluÅŸtur
         var bodyBuilder = new BodyBuilder();
         bodyBuilder.HtmlBody = $@"
        <html>
@@ -156,18 +156,18 @@ public class AppointmentBusinessRules : BaseBusinessRules
         </head>
         <body>
             <div class='container'>
-                <p>Sayýn {appointment.Patient.FirstName} {appointment.Patient.LastName},</p>
+                <p>SayÄ±n {appointment.Patient.FirstName} {appointment.Patient.LastName},</p>
                 <p>{appointment.Date} tarihinde, saat {appointment.Time} olan randevunuz iptal edildi.</p>
                 <p>Doktor:{appointment.Doctor.Title} {appointment.Doctor.FirstName} {appointment.Doctor.LastName}</p>
-                <p>Branþ: {appointment.Doctor.Branch.Name}</p>
+                <p>BranÅŸ: {appointment.Doctor.Branch.Name}</p>
             </div>
         </body>
         </html>";
 
-        // MimeKit'e gövdeyi ayarla
+        // MimeKit'e gÃ¶vdeyi ayarla
         mailMessage.Body = bodyBuilder.ToMessageBody();
 
-        // SMTP ile baðlantý kur ve maili gönder
+        // SMTP ile baÃ°lantÄ± kur ve maili gÃ¶nder
         using (var smtp = new SmtpClient())
         {
             smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);

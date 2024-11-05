@@ -1,4 +1,4 @@
-using FluentValidation;
+ï»¿using FluentValidation;
 
 namespace Application.Features.DoctorSchedules.Commands.Create;
 
@@ -6,16 +6,16 @@ public class CreateDoctorScheduleCommandValidator : AbstractValidator<CreateDoct
 {
     public CreateDoctorScheduleCommandValidator()
     {
-        RuleFor(c => c.DoctorID).NotEmpty().WithMessage("Id alaný boþ olamaz");
+        RuleFor(c => c.DoctorID).NotEmpty().WithMessage("Id alanÄ± boÅŸ olamaz");
 
         RuleFor(c => c.Date)
-            .NotEmpty().WithMessage("Tarih alaný boþ olamaz.");
+            .NotEmpty().WithMessage("Tarih alanÄ± boÅŸ olamaz.");
 
         RuleFor(c => c.StartTime)
-            .NotEmpty().WithMessage("Baþlangýç saati alaný boþ olamaz.");
+            .NotEmpty().WithMessage("BaÅŸlangÄ±Ã§ saati alanÄ± boÅŸ olamaz.");
 
         RuleFor(c => c.EndTime)
-            .NotEmpty().WithMessage("Bitiþ saati alaný boþ olamaz.");
+            .NotEmpty().WithMessage("BitiÅŸ saati alanÄ± boÅŸ olamaz.");
 
     }
 }

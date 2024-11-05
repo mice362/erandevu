@@ -12,8 +12,8 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    [Migration("20240613130315_add_unique_email_and_drschedules")]
-    partial class add_unique_email_and_drschedules
+    [Migration("20241105133957_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -103,6 +103,49 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Branches", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Entities.Clinic", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("About")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clinics", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.DoctorSchedule", b =>
@@ -204,6 +247,9 @@ namespace Persistence.Migrations
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2")
                         .HasColumnName("DeletedDate");
+
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Text")
                         .IsRequired()
@@ -948,8 +994,7 @@ namespace Persistence.Migrations
                         .HasColumnName("LastName");
 
                     b.Property<string>("NationalIdentity")
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)")
+                        .HasColumnType("nvarchar(450)")
                         .HasColumnName("NationalIdentity");
 
                     b.Property<byte[]>("PasswordHash")
@@ -976,6 +1021,10 @@ namespace Persistence.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
+                    b.HasIndex("NationalIdentity")
+                        .IsUnique()
+                        .HasFilter("[NationalIdentity] IS NOT NULL");
+
                     b.ToTable("Users", (string)null);
 
                     b.UseTptMappingStrategy();
@@ -983,7 +1032,7 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("3e58e7cf-d619-4e15-8fdd-c41848447259"),
+                            Id = new Guid("a7977895-8beb-4be6-8c5c-323081d7adc2"),
                             Address = "Tekirdağ",
                             AuthenticatorType = 0,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -992,8 +1041,8 @@ namespace Persistence.Migrations
                             FirstName = "Fatma",
                             LastName = "Birel",
                             NationalIdentity = "12345678901",
-                            PasswordHash = new byte[] { 60, 217, 238, 152, 192, 203, 104, 19, 74, 20, 146, 201, 74, 129, 76, 8, 23, 78, 234, 193, 169, 13, 6, 102, 105, 122, 84, 224, 112, 38, 209, 117, 50, 6, 29, 28, 126, 163, 181, 189, 21, 252, 41, 12, 59, 255, 197, 117, 3, 247, 221, 113, 102, 110, 78, 94, 73, 228, 175, 203, 122, 97, 162, 11 },
-                            PasswordSalt = new byte[] { 193, 41, 53, 136, 134, 68, 177, 122, 92, 20, 181, 193, 142, 161, 144, 41, 207, 126, 146, 212, 127, 16, 253, 135, 219, 237, 10, 180, 159, 26, 63, 10, 249, 176, 84, 187, 77, 79, 42, 72, 96, 54, 8, 164, 38, 119, 16, 208, 76, 186, 196, 103, 159, 130, 254, 214, 0, 22, 105, 219, 235, 182, 150, 17, 238, 188, 25, 164, 179, 207, 33, 154, 196, 11, 113, 47, 159, 186, 95, 37, 47, 208, 231, 185, 34, 156, 62, 203, 150, 117, 198, 203, 156, 66, 244, 208, 64, 26, 8, 184, 22, 185, 117, 226, 85, 243, 25, 38, 105, 153, 253, 11, 206, 49, 158, 207, 55, 23, 130, 246, 94, 179, 17, 207, 6, 100, 20, 132 },
+                            PasswordHash = new byte[] { 25, 230, 38, 177, 13, 95, 87, 233, 181, 91, 252, 71, 20, 35, 181, 162, 202, 251, 170, 133, 209, 134, 64, 18, 200, 206, 30, 97, 7, 225, 98, 179, 0, 29, 139, 57, 255, 237, 89, 246, 119, 48, 20, 94, 108, 15, 223, 120, 22, 10, 25, 253, 233, 65, 128, 218, 52, 49, 197, 97, 69, 228, 74, 180 },
+                            PasswordSalt = new byte[] { 135, 183, 252, 198, 62, 8, 6, 98, 55, 164, 124, 224, 56, 107, 44, 116, 24, 167, 216, 51, 63, 231, 72, 30, 129, 98, 152, 215, 153, 130, 203, 0, 103, 164, 240, 127, 114, 222, 114, 58, 227, 231, 91, 13, 112, 74, 194, 63, 130, 9, 142, 73, 132, 150, 127, 190, 72, 175, 34, 83, 23, 172, 220, 11, 210, 154, 199, 36, 86, 32, 204, 72, 46, 249, 66, 126, 209, 147, 249, 147, 123, 107, 55, 217, 142, 204, 146, 248, 110, 246, 175, 171, 3, 4, 233, 245, 56, 150, 247, 105, 94, 40, 190, 142, 115, 224, 151, 202, 57, 41, 105, 159, 58, 123, 62, 136, 224, 234, 133, 74, 134, 69, 207, 181, 113, 182, 211, 1 },
                             Phone = "05279563492"
                         });
                 });
@@ -1036,10 +1085,10 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("62f51895-a78b-4cba-bd25-6179df624d68"),
+                            Id = new Guid("b952603f-411c-4368-b5ff-877d64a63af0"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OperationClaimId = 1,
-                            UserId = new Guid("3e58e7cf-d619-4e15-8fdd-c41848447259")
+                            UserId = new Guid("a7977895-8beb-4be6-8c5c-323081d7adc2")
                         });
                 });
 

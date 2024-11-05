@@ -1,12 +1,12 @@
-namespace Application.Features.Branches.Constants;
+ï»¿namespace Application.Features.Branches.Constants;
 
 public static class BranchesBusinessMessages
 {
     public const string SectionName = "Branch";
 
-    public const string BranchNotExists = "Böyle bir branþ bulunmamaktadýr";
+    public const string BranchNotExists = "BÃ¶yle bir branÅŸ bulunmamaktadÄ±r";
 
-    public static string BranchAlreadyExists = "Bu isimde branþ zaten mevcut";
+    public static string BranchAlreadyExists = "Bu isimde branÅŸ zaten mevcut";
 
-    public static string CannotDeleteBranchWithDoctors = "Bu branþa ait doktor bulunmaktadýr. Branþ silinemez.";
+    public static string CannotDeleteBranchWithDoctors = "Bu branÅŸa ait doktor bulunmaktadÄ±r. BranÅŸ silinemez.";
 }

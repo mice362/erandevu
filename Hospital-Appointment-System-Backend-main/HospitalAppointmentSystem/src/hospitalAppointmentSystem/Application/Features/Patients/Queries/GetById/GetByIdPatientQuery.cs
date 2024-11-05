@@ -1,4 +1,4 @@
-using Application.Features.Patients.Constants;
+ï»¿using Application.Features.Patients.Constants;
 using Application.Features.Patients.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
@@ -35,7 +35,7 @@ public class GetByIdPatientQuery : IRequest<GetByIdPatientResponse>
             Patient? patient = await _patientRepository.GetAsync(predicate: p => p.Id == request.Id, cancellationToken: cancellationToken);
             await _patientBusinessRules.PatientShouldExistWhenSelected(patient);
 
-            //sinem encryptions þifrelenmiþ veriyi okuma.decrypt þifreyi çözer
+            //sinem encryptions ÅŸifrelenmiÅŸ veriyi okuma.decrypt ÅŸifreyi Ã§Ã¶zer
 
             patient.FirstName = CryptoHelper.Decrypt(patient.FirstName);
             patient.LastName = CryptoHelper.Decrypt(patient.LastName);
@@ -44,7 +44,7 @@ public class GetByIdPatientQuery : IRequest<GetByIdPatientResponse>
             patient.Address = CryptoHelper.Decrypt(patient.Address);
             patient.Email = CryptoHelper.Decrypt(patient.Email);
 
-            // yazdýðým yer bitti
+            // yazdÄ±Ã°Ä±m yer bitti
 
 
             GetByIdPatientResponse response = _mapper.Map<GetByIdPatientResponse>(patient);

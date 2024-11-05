@@ -1,4 +1,4 @@
-using Application.Features.Doctors.Constants;
+ï»¿using Application.Features.Doctors.Constants;
 using Application.Features.Doctors.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
@@ -38,7 +38,7 @@ public class GetByIdDoctorQuery : IRequest<GetByIdDoctorResponse>, ISecuredReque
 
 
 
-            //sinem encryptions þifrelenmiþ veriyi okuma. decrypt þifreyi çözer
+            //sinem encryptions ÅŸifrelenmiÅŸ veriyi okuma. decrypt ÅŸifreyi Ã§Ã¶zer
             doctor.FirstName = CryptoHelper.Decrypt(doctor.FirstName);
             doctor.LastName = CryptoHelper.Decrypt(doctor.LastName);
             doctor.NationalIdentity = CryptoHelper.Decrypt(doctor.NationalIdentity);
@@ -46,7 +46,7 @@ public class GetByIdDoctorQuery : IRequest<GetByIdDoctorResponse>, ISecuredReque
             doctor.Address = CryptoHelper.Decrypt(doctor.Address);
             doctor.Email = CryptoHelper.Decrypt(doctor.Email);
 
-            // yazdýðým yer bitti
+            // yazdÃ½Ã°Ã½m yer bitti
 
             GetByIdDoctorResponse response = _mapper.Map<GetByIdDoctorResponse>(doctor);
 

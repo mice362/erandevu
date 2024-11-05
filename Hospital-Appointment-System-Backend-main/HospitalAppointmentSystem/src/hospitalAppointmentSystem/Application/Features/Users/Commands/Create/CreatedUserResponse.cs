@@ -1,4 +1,4 @@
-using NArchitecture.Core.Application.Responses;
+ï»¿using NArchitecture.Core.Application.Responses;
 
 namespace Application.Features.Users.Commands.Create;
 
@@ -21,7 +21,7 @@ public class CreatedUserResponse : IResponse
     {
         FirstName = string.Empty;
         LastName = string.Empty;
-        DateOfBirth = new DateOnly(1, 1, 1); // Varsayýlan olarak 1 Ocak 0001
+        DateOfBirth = new DateOnly(1, 1, 1); // VarsayÄ±lan olarak 1 Ocak 0001
         NationalIdentity = string.Empty;
         Phone = string.Empty;
         Address = string.Empty;
@@ -30,9 +30,9 @@ public class CreatedUserResponse : IResponse
         Status = true;
     }
 
-    public CreatedUserResponse(Guid ýd, string firstName, string lastName, DateOnly dateOfBirth, string nationalIdentity, string phone, string address, string email, string password, bool status)
+    public CreatedUserResponse(Guid Ä±d, string firstName, string lastName, DateOnly dateOfBirth, string nationalIdentity, string phone, string address, string email, string password, bool status)
     {
-        Id = ýd;
+        Id = Ä±d;
         FirstName = firstName;
         LastName = lastName;
         DateOfBirth = dateOfBirth;

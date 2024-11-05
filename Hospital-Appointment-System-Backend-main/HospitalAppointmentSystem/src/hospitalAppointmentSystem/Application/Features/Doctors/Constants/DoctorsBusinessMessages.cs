@@ -1,14 +1,14 @@
-namespace Application.Features.Doctors.Constants;
+ï»¿namespace Application.Features.Doctors.Constants;
 
 public static class DoctorsBusinessMessages
 {
     public const string SectionName = "Doctor";
 
-    public const string DoctorNotExists = "Böyle bir doktor bulunamadý";
+    public const string DoctorNotExists = "BÃ¶yle bir doktor bulunamadÄ±";
 
-    public const string UserIdentityAlreadyExists = "Böyle bir kimlik numarasý zaten var";
+    public const string UserIdentityAlreadyExists = "BÃ¶yle bir kimlik numarasÄ± zaten var";
 
-    public const string HasFutureAppointments = "Doktorun ileri tarihlerde randevularý bulunduðundan silinemez";
+    public const string HasFutureAppointments = "Doktorun ileri tarihlerde randevularÄ± bulunduÃ°undan silinemez";
 
-    public const string InvalidIdentity = "Geçersiz TC kimlik numarasý veya kimlik bilgileri";
+    public const string InvalidIdentity = "GeÃ§ersiz TC kimlik numarasÄ± veya kimlik bilgileri";
 }

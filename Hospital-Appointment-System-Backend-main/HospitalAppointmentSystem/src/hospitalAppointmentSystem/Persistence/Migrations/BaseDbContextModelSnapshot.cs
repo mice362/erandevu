@@ -102,6 +102,49 @@ namespace Persistence.Migrations
                     b.ToTable("Branches", (string)null);
                 });
 
+            modelBuilder.Entity("Domain.Entities.Clinic", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("About")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clinics", (string)null);
+                });
+
             modelBuilder.Entity("Domain.Entities.DoctorSchedule", b =>
                 {
                     b.Property<int>("Id")
@@ -948,8 +991,7 @@ namespace Persistence.Migrations
                         .HasColumnName("LastName");
 
                     b.Property<string>("NationalIdentity")
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)")
+                        .HasColumnType("nvarchar(450)")
                         .HasColumnName("NationalIdentity");
 
                     b.Property<byte[]>("PasswordHash")
@@ -987,7 +1029,7 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("5f46f4a4-fa53-4437-8e90-b1282ffd1174"),
+                            Id = new Guid("a7977895-8beb-4be6-8c5c-323081d7adc2"),
                             Address = "Tekirdağ",
                             AuthenticatorType = 0,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -996,8 +1038,8 @@ namespace Persistence.Migrations
                             FirstName = "Fatma",
                             LastName = "Birel",
                             NationalIdentity = "12345678901",
-                            PasswordHash = new byte[] { 71, 213, 175, 60, 231, 185, 236, 213, 124, 4, 112, 228, 74, 13, 165, 80, 206, 23, 255, 58, 242, 194, 19, 167, 79, 11, 208, 149, 114, 71, 146, 39, 215, 131, 27, 22, 44, 140, 96, 128, 24, 0, 61, 190, 120, 118, 198, 172, 78, 165, 169, 112, 69, 210, 94, 45, 147, 127, 62, 171, 2, 64, 226, 44 },
-                            PasswordSalt = new byte[] { 78, 28, 191, 102, 55, 21, 231, 180, 45, 203, 116, 83, 93, 35, 159, 129, 49, 153, 35, 80, 110, 199, 70, 157, 235, 205, 50, 179, 224, 68, 38, 212, 171, 99, 125, 44, 52, 44, 122, 31, 161, 83, 247, 226, 16, 133, 220, 168, 18, 78, 117, 213, 255, 2, 168, 162, 109, 92, 67, 163, 178, 72, 77, 184, 22, 188, 56, 212, 250, 119, 116, 96, 215, 203, 142, 117, 158, 95, 51, 42, 145, 168, 77, 79, 119, 193, 98, 249, 250, 57, 140, 226, 48, 224, 76, 56, 82, 106, 211, 152, 160, 181, 119, 209, 0, 24, 92, 251, 198, 31, 244, 1, 71, 134, 213, 137, 120, 39, 131, 4, 124, 198, 148, 37, 110, 241, 178, 181 },
+                            PasswordHash = new byte[] { 25, 230, 38, 177, 13, 95, 87, 233, 181, 91, 252, 71, 20, 35, 181, 162, 202, 251, 170, 133, 209, 134, 64, 18, 200, 206, 30, 97, 7, 225, 98, 179, 0, 29, 139, 57, 255, 237, 89, 246, 119, 48, 20, 94, 108, 15, 223, 120, 22, 10, 25, 253, 233, 65, 128, 218, 52, 49, 197, 97, 69, 228, 74, 180 },
+                            PasswordSalt = new byte[] { 135, 183, 252, 198, 62, 8, 6, 98, 55, 164, 124, 224, 56, 107, 44, 116, 24, 167, 216, 51, 63, 231, 72, 30, 129, 98, 152, 215, 153, 130, 203, 0, 103, 164, 240, 127, 114, 222, 114, 58, 227, 231, 91, 13, 112, 74, 194, 63, 130, 9, 142, 73, 132, 150, 127, 190, 72, 175, 34, 83, 23, 172, 220, 11, 210, 154, 199, 36, 86, 32, 204, 72, 46, 249, 66, 126, 209, 147, 249, 147, 123, 107, 55, 217, 142, 204, 146, 248, 110, 246, 175, 171, 3, 4, 233, 245, 56, 150, 247, 105, 94, 40, 190, 142, 115, 224, 151, 202, 57, 41, 105, 159, 58, 123, 62, 136, 224, 234, 133, 74, 134, 69, 207, 181, 113, 182, 211, 1 },
                             Phone = "05279563492"
                         });
                 });
@@ -1040,10 +1082,10 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("33b36a39-c78f-41c2-977c-404867a8a1ef"),
+                            Id = new Guid("b952603f-411c-4368-b5ff-877d64a63af0"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OperationClaimId = 1,
-                            UserId = new Guid("5f46f4a4-fa53-4437-8e90-b1282ffd1174")
+                            UserId = new Guid("a7977895-8beb-4be6-8c5c-323081d7adc2")
                         });
                 });
 

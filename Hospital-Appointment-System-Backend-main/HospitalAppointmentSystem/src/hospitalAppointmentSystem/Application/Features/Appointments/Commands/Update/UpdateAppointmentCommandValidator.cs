@@ -1,4 +1,4 @@
-using FluentValidation;
+ï»¿using FluentValidation;
 
 namespace Application.Features.Appointments.Commands.Update;
 
@@ -6,12 +6,12 @@ public class UpdateAppointmentCommandValidator : AbstractValidator<UpdateAppoint
 {
     public UpdateAppointmentCommandValidator()
     {
-        RuleFor(c => c.Id).NotEmpty().WithMessage("Id alanı boş bırakılamaz.");
-        RuleFor(c => c.Date).NotEmpty().WithMessage("Tarih alanı boş bırakılamaz.");
-        RuleFor(c => c.Time).NotEmpty().WithMessage("Saat alanı boş bırakılamaz.");
-        RuleFor(c => c.Status).NotEmpty().WithMessage("Durum alanı boş bırakılamaz.");
-        RuleFor(c => c.DoctorID).NotEmpty().WithMessage("Doktor Id alanı boş bırakılamaz.");
-        RuleFor(c => c.PatientID).NotEmpty().WithMessage("Hasta Id alanı boş bırakılamaz.");
+        RuleFor(c => c.Id).NotEmpty().WithMessage("Id alanÄ± boÅŸ bÄ±rakÄ±lamaz.");
+        RuleFor(c => c.Date).NotEmpty().WithMessage("Tarih alanÄ± boÅŸ bÄ±rakÄ±lamaz.");
+        RuleFor(c => c.Time).NotEmpty().WithMessage("Saat alanÄ± boÅŸ bÄ±rakÄ±lamaz.");
+        RuleFor(c => c.Status).NotEmpty().WithMessage("Durum alanÄ± boÅŸ bÄ±rakÄ±lamaz.");
+        RuleFor(c => c.DoctorID).NotEmpty().WithMessage("Doktor Id alanÄ± boÅŸ bÄ±rakÄ±lamaz.");
+        RuleFor(c => c.PatientID).NotEmpty().WithMessage("Hasta Id alanÄ± boÅŸ bÄ±rakÄ±lamaz.");
 
     }
 }

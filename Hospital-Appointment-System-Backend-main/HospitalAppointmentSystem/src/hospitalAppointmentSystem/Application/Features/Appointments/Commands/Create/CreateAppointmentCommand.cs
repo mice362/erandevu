@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
@@ -63,7 +63,7 @@ namespace Application.Features.Appointments.Commands.Create
             public async Task<CreatedAppointmentResponse> Handle(CreateAppointmentCommand request, CancellationToken cancellationToken)
             {
 
-                // Yeni randevu oluþtur
+                // Yeni randevu oluÅŸtur
                 Appointment appointment = _mapper.Map<Appointment>(request);
 
                 // Doctor bilgisini al
@@ -77,17 +77,17 @@ namespace Application.Features.Appointments.Commands.Create
 
 
 
-                // Branþ bilgisini al
+                // BranÅŸ bilgisini al
                 Branch branch = await _branchService.GetAsync(p => p.Id == doctor.BranchID);
                 doctor.Branch = branch;
 
 
-                // Hasta ayný doktordan ayný güne ait randevusu olup olmadýðýný kontrol et
+                // Hasta aynÄ± doktordan aynÄ± gÃ¼ne ait randevusu olup olmadÄ±Ã°Ä±nÄ± kontrol et
                 await _appointmentBusinessRules.PatientCannotHaveMultipleAppointmentsOnSameDayWithSameDoctor(request.PatientID, request.DoctorID, request.Date);
 
 
 
-                  // Ayný doktor ve tarihte silinmiþ randevu var mý kontrol et
+                  // AynÄ± doktor ve tarihte silinmiÅŸ randevu var mÄ± kontrol et
                     Appointment result = await _appointmentBusinessRules.CheckForExistingDeletedAppointment(request,appointment);
 
 

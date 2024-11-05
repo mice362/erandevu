@@ -1,4 +1,4 @@
-using Application.Features.Patients.Constants;
+ï»¿using Application.Features.Patients.Constants;
 using Application.Features.Users.Constants;
 using Application.Features.Users.Rules;
 using Application.Services.Repositories;
@@ -27,7 +27,7 @@ public class UpdateUserCommand : IRequest<UpdatedUserResponse> , ISecuredRequest
     {
         FirstName = string.Empty;
         LastName = string.Empty;
-        DateOfBirth = new DateOnly(1, 1, 1); // Varsayýlan olarak 1 Ocak 0001
+        DateOfBirth = new DateOnly(1, 1, 1); // VarsayÄ±lan olarak 1 Ocak 0001
         NationalIdentity = string.Empty;
         Phone = string.Empty;
         Address = string.Empty;
@@ -35,9 +35,9 @@ public class UpdateUserCommand : IRequest<UpdatedUserResponse> , ISecuredRequest
         Password = string.Empty;
     }
 
-    public UpdateUserCommand(Guid ýd, string firstName, string lastName, DateOnly dateOfBirth, string nationalIdentity, string phone, string address, string email, string password)
+    public UpdateUserCommand(Guid Ä±d, string firstName, string lastName, DateOnly dateOfBirth, string nationalIdentity, string phone, string address, string email, string password)
     {
-        Id = ýd;
+        Id = Ä±d;
         FirstName = firstName;
         LastName = lastName;
         DateOfBirth = dateOfBirth;

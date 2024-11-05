@@ -25,6 +25,7 @@ public class BaseDbContext : DbContext
     public DbSet<Feedback> Feedbacks { get; set; }
     public DbSet<Notification> Notifications { get; set; }
     public DbSet<DoctorSchedule> DoctorSchedules { get; set; }
+    public DbSet<Clinic> Clinics { get; set; }
 
     public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration)
         : base(dbContextOptions)

@@ -1,8 +1,8 @@
-namespace Application.Features.Feedbacks.Constants;
+ï»¿namespace Application.Features.Feedbacks.Constants;
 
 public static class FeedbacksBusinessMessages
 {
     public const string SectionName = "Feedback";
 
-    public const string FeedbackNotExists = "Böyle bir öneri/þikayet bulunamadý";
+    public const string FeedbackNotExists = "BÃ¶yle bir Ã¶neri/ÅŸikayet bulunamadÄ±";
 }

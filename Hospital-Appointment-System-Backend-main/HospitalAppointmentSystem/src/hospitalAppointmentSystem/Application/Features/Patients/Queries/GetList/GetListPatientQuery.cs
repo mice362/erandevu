@@ -1,4 +1,4 @@
-using Application.Features.Patients.Constants;
+﻿using Application.Features.Patients.Constants;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
@@ -45,7 +45,7 @@ public class GetListPatientQuery : IRequest<GetListResponse<GetListPatientListIt
 
 
 
-            // S�NEM .
+            // SıNEM .
 
             for (int i = 0; i < patients.Items.Count; i++)
             {

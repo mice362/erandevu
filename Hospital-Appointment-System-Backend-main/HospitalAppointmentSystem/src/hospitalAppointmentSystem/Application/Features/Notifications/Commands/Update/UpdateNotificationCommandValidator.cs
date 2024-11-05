@@ -1,4 +1,4 @@
-using FluentValidation;
+ï»¿using FluentValidation;
 
 namespace Application.Features.Notifications.Commands.Update;
 
@@ -6,18 +6,18 @@ public class UpdateNotificationCommandValidator : AbstractValidator<UpdateNotifi
 {
     public UpdateNotificationCommandValidator()
     {
-        RuleFor(c => c.Id).NotEmpty().WithMessage("Id alaný boþ olamaz");
+        RuleFor(c => c.Id).NotEmpty().WithMessage("Id alanÄ± boÅŸ olamaz");
 
         RuleFor(c => c.AppointmentID)
-            .NotEmpty().WithMessage("Randevu ID alaný boþ olamaz.");
+            .NotEmpty().WithMessage("Randevu ID alanÄ± boÅŸ olamaz.");
 
         RuleFor(c => c.Message)
-            .NotEmpty().WithMessage("Mesaj alaný boþ olamaz.");
+            .NotEmpty().WithMessage("Mesaj alanÄ± boÅŸ olamaz.");
 
         RuleFor(c => c.EmailStatus)
-            .NotEmpty().WithMessage("E-posta durumu alaný boþ olamaz.");
+            .NotEmpty().WithMessage("E-posta durumu alanÄ± boÅŸ olamaz.");
 
         RuleFor(c => c.SmsStatus)
-            .NotEmpty().WithMessage("SMS durumu alaný boþ olamaz.");
+            .NotEmpty().WithMessage("SMS durumu alanÄ± boÅŸ olamaz.");
     }
 }

@@ -1,20 +1,20 @@
-namespace Application.Features.Auth.Constants;
+ï»¿namespace Application.Features.Auth.Constants;
 
 public static class AuthMessages
 {
     public const string SectionName = "Auth";
 
-    public const string EmailAuthenticatorDontExists = "Böyle bir e-posta doğrulayıcı yok";
-    public const string OtpAuthenticatorDontExists = "Böyle bir OTP doğrulayıcı yok";
-    public const string AlreadyVerifiedOtpAuthenticatorIsExists = "Bu OTP doğrulayıcı zaten doğrulandı";
-    public const string EmailActivationKeyDontExists = "Böyle bir e-posta aktivasyon anahtarı yok";
-    public const string UserDontExists = "Böyle bir kullanıcı bulunmamaktadır";
-    public const string UserHaveAlreadyAAuthenticator = "Kullanıcının zaten bir doğrulayıcısı var";
-    public const string RefreshDontExists = "Böyle bir yenileme yok";
-    public const string InvalidRefreshToken = "Geçersiz yenileme belirteci";
-    public const string UserMailAlreadyExists = "Böyle bir mail adresi zaten var";
-    public const string InvalidIdentity = "Geçersiz TC kimlik numarası veya kimlik bilgileri";
-    public const string PasswordDontMatch = "Şifreler eşleşmiyor";
-    public static string EmailActivationKeyExpired = "Aktivasyon kodunun süresi 15 dakikadır. Lütfen tekrar üye olun!";
-    public static string EmailActivationDontExist = "E-posta doğrulaması yapılmamış. Lütfen e-posta hesabınızı doğrulayın";
+    public const string EmailAuthenticatorDontExists = "BÃ¶yle bir e-posta doÃ°rulayÄ±cÄ± yok";
+    public const string OtpAuthenticatorDontExists = "BÃ¶yle bir OTP doÃ°rulayÄ±cÄ± yok";
+    public const string AlreadyVerifiedOtpAuthenticatorIsExists = "Bu OTP doÃ°rulayÄ±cÄ± zaten doÃ°rulandÄ±";
+    public const string EmailActivationKeyDontExists = "BÃ¶yle bir e-posta aktivasyon anahtarÄ± yok";
+    public const string UserDontExists = "BÃ¶yle bir kullanÄ±cÄ± bulunmamaktadÄ±r";
+    public const string UserHaveAlreadyAAuthenticator = "KullanÄ±cÄ±nÄ±n zaten bir doÃ°rulayÄ±cÄ±sÄ± var";
+    public const string RefreshDontExists = "BÃ¶yle bir yenileme yok";
+    public const string InvalidRefreshToken = "GeÃ§ersiz yenileme belirteci";
+    public const string UserMailAlreadyExists = "BÃ¶yle bir mail adresi zaten var";
+    public const string InvalidIdentity = "GeÃ§ersiz TC kimlik numarasÄ± veya kimlik bilgileri";
+    public const string PasswordDontMatch = "ÅŸifreler eÅŸleÅŸmiyor";
+    public static string EmailActivationKeyExpired = "Aktivasyon kodunun sÃ¼resi 15 dakikadÄ±r. LÃ¼tfen tekrar Ã¼ye olun!";
+    public static string EmailActivationDontExist = "E-posta doÃ°rulamasÄ± yapÄ±lmamÄ±ÅŸ. LÃ¼tfen e-posta hesabÄ±nÄ±zÄ± doÃ°rulayÄ±n";
 }

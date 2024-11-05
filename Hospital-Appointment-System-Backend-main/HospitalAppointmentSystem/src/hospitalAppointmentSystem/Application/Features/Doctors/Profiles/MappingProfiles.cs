@@ -33,8 +33,6 @@ public class MappingProfiles : Profile
         CreateMap<Doctor, GetListByBranchIdDto>().ForMember(x => x.BranchName, opt => opt.MapFrom(dto => dto.Branch.Name));
         CreateMap<IPaginate<Doctor>, GetListResponse<GetListByBranchIdDto>>();
 
-
-
         CreateMap<DoctorSchedule, GetListByDoctorIdDto>().ForMember(x => x.DoctorID, opt => opt.MapFrom(dto => dto.Doctor.Id))
            .ForMember(x => x.DoctorFirstName, opt => opt.MapFrom(dto => dto.Doctor.FirstName))
            .ForMember(x => x.DoctorLastName, opt => opt.MapFrom(dto => dto.Doctor.LastName))

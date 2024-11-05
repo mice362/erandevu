@@ -1,4 +1,4 @@
-using FluentValidation;
+ï»¿using FluentValidation;
 
 namespace Application.Features.Appointments.Commands.Delete;
 
@@ -6,6 +6,6 @@ public class DeleteAppointmentCommandValidator : AbstractValidator<DeleteAppoint
 {
     public DeleteAppointmentCommandValidator()
     {
-        RuleFor(c => c.Id).NotEmpty().WithMessage("Id alanı boş bırakılamaz");
+        RuleFor(c => c.Id).NotEmpty().WithMessage("Id alanÄ± boÅŸ bÄ±rakÄ±lamaz");
     }
 }

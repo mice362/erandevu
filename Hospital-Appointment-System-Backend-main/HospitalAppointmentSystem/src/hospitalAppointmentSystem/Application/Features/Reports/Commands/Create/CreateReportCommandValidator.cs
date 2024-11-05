@@ -1,4 +1,4 @@
-using FluentValidation;
+ï»¿using FluentValidation;
 
 namespace Application.Features.Reports.Commands.Create;
 
@@ -6,9 +6,9 @@ public class CreateReportCommandValidator : AbstractValidator<CreateReportComman
 {
     public CreateReportCommandValidator()
     {
-        RuleFor(c => c.AppointmentID).NotEmpty().WithMessage("Randevu Id alaný boþ olamaz");
+        RuleFor(c => c.AppointmentID).NotEmpty().WithMessage("Randevu Id alanÄ± boÅŸ olamaz");
         RuleFor(c => c.Text)
-            .NotEmpty().WithMessage("Metin boþ olamaz")
-            .MaximumLength(500).WithMessage("Metin en fazla 500 karakter olmalýdýr");
+            .NotEmpty().WithMessage("Metin boÅŸ olamaz")
+            .MaximumLength(500).WithMessage("Metin en fazla 500 karakter olmalÄ±dÄ±r");
     }
 }

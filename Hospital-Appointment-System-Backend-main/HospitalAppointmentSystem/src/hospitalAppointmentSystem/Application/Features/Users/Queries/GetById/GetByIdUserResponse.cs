@@ -1,4 +1,4 @@
-using NArchitecture.Core.Application.Responses;
+﻿using NArchitecture.Core.Application.Responses;
 
 namespace Application.Features.Users.Queries.GetById;
 
@@ -20,16 +20,16 @@ public class GetByIdUserResponse : IResponse
         FirstName = string.Empty;
         LastName = string.Empty;
         Email = string.Empty;
-        DateOfBirth = new DateOnly(); // Varsay�lan tarih 0001-01-01 olacakt�r
+        DateOfBirth = new DateOnly(); // Varsayılan tarih 0001-01-01 olacaktır
         NationalIdentity = string.Empty;
         Phone = string.Empty;
         Address = string.Empty;
         Password = string.Empty;
     }
 
-    public GetByIdUserResponse(Guid �d, string firstName, string lastName, DateOnly dateOfBirth, string nationalIdentity, string phone, string address, string email, string password, bool status)
+    public GetByIdUserResponse(Guid ıd, string firstName, string lastName, DateOnly dateOfBirth, string nationalIdentity, string phone, string address, string email, string password, bool status)
     {
-        Id = �d;
+        Id = ıd;
         FirstName = firstName;
         LastName = lastName;
         DateOfBirth = dateOfBirth;

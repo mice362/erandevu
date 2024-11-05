@@ -20,7 +20,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(u => u.FirstName).HasColumnName("FirstName").IsRequired();
         builder.Property(u => u.LastName).HasColumnName("LastName").IsRequired();
         builder.Property(x => x.DateOfBirth).HasColumnName("DateOfBirth");
-        builder.Property(x => x.NationalIdentity).HasColumnName("NationalIdentity").HasMaxLength(11);
+        builder.Property(x => x.NationalIdentity).HasColumnName("NationalIdentity")/*.HasMaxLength(11)*/;
         builder.Property(u => u.Phone).HasColumnName("Phone").IsRequired();
         builder.Property(u => u.Address).HasColumnName("Address");
         builder.Property(u => u.Email).HasColumnName("Email").IsRequired();
@@ -42,8 +42,6 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.HasData(_seeds);
 
         builder.HasBaseType((string)null!);
-
-
    
     }
 

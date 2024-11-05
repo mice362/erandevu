@@ -1,4 +1,4 @@
-using Application.Features.Patients.Constants;
+ï»¿using Application.Features.Patients.Constants;
 using Application.Features.Patients.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
@@ -63,7 +63,7 @@ public class CreatePatientCommand : IRequest<CreatedPatientResponse>,  ILoggable
             patient.PasswordHash = passwordHash;
             patient.PasswordSalt = passwordSalt;
 
-            //sinem kullanýcý bilgilerini þifreleme. encrypt þifreleme yapýyor.
+            //sinem kullanÄ±cÄ± bilgilerini ÅŸifreleme. encrypt ÅŸifreleme yapÄ±yor.
 
             patient.FirstName = CryptoHelper.Encrypt(patient.FirstName);
             patient.LastName = CryptoHelper.Encrypt(patient.LastName);

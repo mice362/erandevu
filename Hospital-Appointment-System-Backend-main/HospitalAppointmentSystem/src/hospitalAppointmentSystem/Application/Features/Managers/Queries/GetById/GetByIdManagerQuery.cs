@@ -1,4 +1,4 @@
-using Application.Features.Managers.Constants;
+ï»¿using Application.Features.Managers.Constants;
 using Application.Features.Managers.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
@@ -35,7 +35,7 @@ public class GetByIdManagerQuery : IRequest<GetByIdManagerResponse>
             Manager? manager = await _managerRepository.GetAsync(predicate: m => m.Id == request.Id, cancellationToken: cancellationToken);
             await _managerBusinessRules.ManagerShouldExistWhenSelected(manager);
 
-            //sinem encryptions þifrelenmiþ veriyi okuma. decrypt þifreyi çözer
+            //sinem encryptions ÅŸifrelenmiÅŸ veriyi okuma. decrypt ÅŸifreyi Ã§Ã¶zer
             manager.FirstName = CryptoHelper.Decrypt(manager.FirstName);
             manager.LastName = CryptoHelper.Decrypt(manager.LastName);
             manager.NationalIdentity = CryptoHelper.Decrypt(manager.NationalIdentity);
@@ -43,7 +43,7 @@ public class GetByIdManagerQuery : IRequest<GetByIdManagerResponse>
             manager.Address = CryptoHelper.Decrypt(manager.Address);
             manager.Email = CryptoHelper.Decrypt(manager.Email);
 
-            // yazdýðým yer bitti
+            // yazdÄ±Ã°Ä±m yer bitti
 
             GetByIdManagerResponse response = _mapper.Map<GetByIdManagerResponse>(manager);
             return response;

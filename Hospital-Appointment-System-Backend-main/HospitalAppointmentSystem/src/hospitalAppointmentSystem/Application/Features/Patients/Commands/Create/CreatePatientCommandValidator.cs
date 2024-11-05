@@ -1,4 +1,4 @@
-using FluentValidation;
+Ôªøusing FluentValidation;
 using System.Text.RegularExpressions;
 
 namespace Application.Features.Patients.Commands.Create;
@@ -8,37 +8,37 @@ public class CreatePatientCommandValidator : AbstractValidator<CreatePatientComm
     public CreatePatientCommandValidator()
     {
         RuleFor(c => c.Age)
-            .NotEmpty().WithMessage("Ya˛ alan˝ bo˛ olamaz.");
+            .NotEmpty().WithMessage("Ya≈ü alanƒ± bo≈ü olamaz.");
 
         RuleFor(c => c.Height)
-            .NotEmpty().WithMessage("Boy alan˝ bo˛ olamaz.");
+            .NotEmpty().WithMessage("Boy alanƒ± bo≈ü olamaz.");
 
         RuleFor(c => c.Weight)
-            .NotEmpty().WithMessage("Kilo alan˝ bo˛ olamaz.");
+            .NotEmpty().WithMessage("Kilo alanƒ± bo≈ü olamaz.");
 
         RuleFor(c => c.BloodGroup)
-            .NotEmpty().WithMessage("Kan grubu alan˝ bo˛ olamaz.");
+            .NotEmpty().WithMessage("Kan grubu alanƒ± bo≈ü olamaz.");
 
-        RuleFor(c => c.FirstName).NotEmpty().WithMessage("Kullan˝c˝ ad˝ alan˝ bo˛ olamaz")
-           .MinimumLength(2).WithMessage("Kullan˝c˝ ad˝ en az 2 karakter olmal˝d˝r");
+        RuleFor(c => c.FirstName).NotEmpty().WithMessage("Kullanƒ±cƒ± adƒ± alanƒ± bo≈ü olamaz")
+           .MinimumLength(2).WithMessage("Kullanƒ±cƒ± adƒ± en az 2 karakter olmalƒ±dƒ±r");
 
-        RuleFor(c => c.LastName).NotEmpty().WithMessage("Kullan˝c˝ soyad˝ alan˝ bo˛ olamaz")
-            .MinimumLength(2).WithMessage("Kullan˝c˝ soyad˝ en az 2 karakter olmal˝d˝r");
+        RuleFor(c => c.LastName).NotEmpty().WithMessage("Kullanƒ±cƒ± soyadƒ± alanƒ± bo≈ü olamaz")
+            .MinimumLength(2).WithMessage("Kullanƒ±cƒ± soyadƒ± en az 2 karakter olmalƒ±dƒ±r");
 
-        RuleFor(c => c.DateOfBirth).NotEmpty().WithMessage("Doum tarihi alan˝ bo˛ olamaz");
+        RuleFor(c => c.DateOfBirth).NotEmpty().WithMessage("Do√∞um tarihi alanƒ± bo≈ü olamaz");
 
-        RuleFor(c => c.NationalIdentity).NotEmpty().WithMessage("T.C. Kimlik numaras˝ alan˝ bo˛ olamaz").
-            MinimumLength(11).WithMessage("T.C. Kimlik numaras˝ minimum 11 karakter olmal˝d˝r").MaximumLength(11).WithMessage("T.C. Kimlik numaras˝ alan˝ maksimum 11 karakter olmal˝d˝r");
+        RuleFor(c => c.NationalIdentity).NotEmpty().WithMessage("T.C. Kimlik numarasƒ± alanƒ± bo≈ü olamaz").
+            MinimumLength(11).WithMessage("T.C. Kimlik numarasƒ± minimum 11 karakter olmalƒ±dƒ±r").MaximumLength(11).WithMessage("T.C. Kimlik numarasƒ± alanƒ± maksimum 11 karakter olmalƒ±dƒ±r");
 
-        RuleFor(c => c.Email).NotEmpty().WithMessage("E-posta alan˝ bo˛ olamaz").EmailAddress().WithMessage("Girdiiniz e-posta adresi istenen formatta deil!");
+        RuleFor(c => c.Email).NotEmpty().WithMessage("E-posta alanƒ± bo≈ü olamaz").EmailAddress().WithMessage("Girdi√∞iniz e-posta adresi istenen formatta de√∞il!");
 
-        RuleFor(c => c.Phone).NotEmpty().WithMessage("Telefon numaras˝ alan˝ bo˛ olamaz").MinimumLength(11).WithMessage("Telefon numaras˝ minimum 11 karakter olmal˝d˝r");
+        RuleFor(c => c.Phone).NotEmpty().WithMessage("Telefon numarasƒ± alanƒ± bo≈ü olamaz").MinimumLength(11).WithMessage("Telefon numarasƒ± minimum 11 karakter olmalƒ±dƒ±r");
 
-        RuleFor(c => c.Address).NotEmpty().WithMessage("Adres alan˝ bo˛ olamaz").MinimumLength(3).WithMessage("Adres en az 3 karakter olmal˝d˝r");
+        RuleFor(c => c.Address).NotEmpty().WithMessage("Adres alanƒ± bo≈ü olamaz").MinimumLength(3).WithMessage("Adres en az 3 karakter olmalƒ±dƒ±r");
 
-        RuleFor(c => c.Password).NotEmpty().WithMessage("ﬁifre alan˝ bo˛ olamaz").MinimumLength(8).WithMessage("ﬁifre en az 8 karakter olmal˝")
-            .MaximumLength(15).WithMessage("ﬁifre en az 15 karakter olmal˝").Must(StrongPassword).WithMessage(
-                "ﬁifre en az bir b¸y¸k harf, bir k¸Á¸k harf, bir rakam ve bir ˆzel karakter iÁermelidir."
+        RuleFor(c => c.Password).NotEmpty().WithMessage("≈üifre alanƒ± bo≈ü olamaz").MinimumLength(8).WithMessage("≈üifre en az 8 karakter olmalƒ±")
+            .MaximumLength(15).WithMessage("≈üifre en az 15 karakter olmalƒ±").Must(StrongPassword).WithMessage(
+                "≈üifre en az bir b√ºy√ºk harf, bir k√º√ß√ºk harf, bir rakam ve bir √∂zel karakter i√ßermelidir."
             );
     }
     private bool StrongPassword(string value)

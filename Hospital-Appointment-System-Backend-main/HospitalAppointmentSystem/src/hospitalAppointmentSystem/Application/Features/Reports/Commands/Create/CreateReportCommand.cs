@@ -1,4 +1,4 @@
-using Application.Features.Reports.Constants;
+ï»¿using Application.Features.Reports.Constants;
 using Application.Features.Reports.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
@@ -40,21 +40,21 @@ public class CreateReportCommand : IRequest<CreatedReportResponse>, ISecuredRequ
 
         public async Task<CreatedReportResponse> Handle(CreateReportCommand request, CancellationToken cancellationToken)
         {
-            // Soft delete uygulanmýþ raporlarý kontrol et
+            // Soft delete uygulanmÄ±ÅŸ raporlarÄ± kontrol et
             var deletedReport = await _reportRepository.GetAsync(r => r.AppointmentID == request.AppointmentID && r.DeletedDate != null);
 
             if (deletedReport != null)
             {
-                // Silinmiþ rapor varsa geri yükle
+                // SilinmiÅŸ rapor varsa geri yÃ¼kle
                 deletedReport.DeletedDate = null;
-                deletedReport.Text = request.Text; // Gerekirse yeni rapor içeriðini güncelleyin
+                deletedReport.Text = request.Text; // Gerekirse yeni rapor iÃ§eriÃ°ini gÃ¼ncelleyin
                 await _reportRepository.UpdateAsync(deletedReport);
                 CreatedReportResponse response = _mapper.Map<CreatedReportResponse>(deletedReport);
                 return response;
             }
             else
             {
-                // Eðer silinmiþ bir rapor yoksa, yeni raporu ekle
+                // EÃ°er silinmiÅŸ bir rapor yoksa, yeni raporu ekle
                 Report report = _mapper.Map<Report>(request);
                 await _reportRepository.AddAsync(report);
                 CreatedReportResponse response = _mapper.Map<CreatedReportResponse>(report);

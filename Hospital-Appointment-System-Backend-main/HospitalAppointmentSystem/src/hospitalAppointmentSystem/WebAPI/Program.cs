@@ -1,4 +1,4 @@
-using Application;
+ï»¿using Application;
 using Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -96,7 +96,7 @@ builder.Services.AddQuartz(q =>
     q.AddTrigger(opts => opts
         .ForJob(jobKey)
         .WithIdentity("ReminderAppointmentJob-trigger")
-        .WithCronSchedule("0 0 0 ? * *")); // Her gün 00:00'da çalýþacak þekilde ayarlayýn
+        .WithCronSchedule("0 0 0 ? * *")); // Her gÃ¼n 00:00'da Ã§alÄ±ÅŸacak ÅŸekilde ayarlayÄ±n
 });
 
 builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);

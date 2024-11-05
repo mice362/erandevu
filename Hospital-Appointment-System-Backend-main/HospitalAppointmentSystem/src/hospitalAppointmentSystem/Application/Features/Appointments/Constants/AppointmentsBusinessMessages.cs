@@ -1,10 +1,10 @@
-namespace Application.Features.Appointments.Constants;
+ï»¿namespace Application.Features.Appointments.Constants;
 
 public static class AppointmentsBusinessMessages
 {
     public const string SectionName = "Appointment";
 
-    public const string AppointmentNotExists = "Böyle bir randevu bulunmamaktadýr";
+    public const string AppointmentNotExists = "BÃ¶yle bir randevu bulunmamaktadÄ±r";
 
-    public const string PatientCannotHaveMultipleAppointmentsOnSameDayWithSameDoctor = "Bu doktor için ayný güne ait randevunuz zaten bulunmaktadýr.";
+    public const string PatientCannotHaveMultipleAppointmentsOnSameDayWithSameDoctor = "Bu doktor iÃ§in aynÄ± gÃ¼ne ait randevunuz zaten bulunmaktadÄ±r.";
 }

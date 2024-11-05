@@ -1,4 +1,4 @@
-using Application.Features.DoctorSchedules.Constants;
+ï»¿using Application.Features.DoctorSchedules.Constants;
 using Application.Features.DoctorSchedules.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
@@ -48,26 +48,26 @@ namespace Application.Features.DoctorSchedules.Commands.Update
 
             public async Task<UpdatedDoctorScheduleResponse> Handle(UpdateDoctorScheduleCommand request, CancellationToken cancellationToken)
             {
-                // Ýlk olarak güncellemek istediðimiz mevcut kaydý alalým
+                // Ä±lk olarak gÃ¼ncellemek istediÃ°imiz mevcut kaydÄ± alalÄ±m
                 var existingSchedule = await _doctorScheduleBusinessRules.CheckIfDoctorScheduleExists(request.Id, cancellationToken);
 
 
 
                 var appointment = await _doctorScheduleBusinessRules.CheckIfAppointmentsExistOnDateDoctor(request.DoctorID, existingSchedule.Date );
 
-                // Güncellenmek istenen tarih ve doktor ID'si ile silinmiþ bir kayýt var mý diye kontrol edelim
+                // GÃ¼ncellenmek istenen tarih ve doktor ID'si ile silinmiÅŸ bir kayÄ±t var mÄ± diye kontrol edelim
                 var conflictingSchedule = await _doctorScheduleRepository.GetAsync(ds => ds.DoctorID == request.DoctorID && ds.Date == request.Date);
 
                 await _doctorScheduleBusinessRules.HandleConflictingSchedule(conflictingSchedule, existingSchedule, request);
 
-                // Çakýþan bir kayýt yoksa mevcut kaydý güncelleyelim
+                // Ã‡akÄ±ÅŸan bir kayÄ±t yoksa mevcut kaydÄ± gÃ¼ncelleyelim
                 if (conflictingSchedule == null || conflictingSchedule.Id == request.Id)
                 {
                     _mapper.Map(request, existingSchedule);
                     await _doctorScheduleRepository.UpdateAsync(existingSchedule);
                 }
 
-                // Güncellenen veriyi response olarak dönelim
+                // GÃ¼ncellenen veriyi response olarak dÃ¶nelim
                 UpdatedDoctorScheduleResponse updatedResponse = _mapper.Map<UpdatedDoctorScheduleResponse>(existingSchedule);
                 return updatedResponse;
 

@@ -1,4 +1,4 @@
-using Application.Features.DoctorSchedules.Constants;
+ï»¿using Application.Features.DoctorSchedules.Constants;
 using Application.Features.DoctorSchedules.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
@@ -48,7 +48,7 @@ public class CreateDoctorScheduleCommand : IRequest<CreatedDoctorScheduleRespons
 
             if (softDeletedSchedule != null)
             {
-                softDeletedSchedule.DeletedDate = null; // Soft delete tarihini kaldýrarak kaydý aktif hale getiriyoruz.
+                softDeletedSchedule.DeletedDate = null; // Soft delete tarihini kaldÄ±rarak kaydÄ± aktif hale getiriyoruz.
                 softDeletedSchedule.StartTime = request.StartTime;
                 softDeletedSchedule.EndTime = request.EndTime;
 

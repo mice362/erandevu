@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -27,6 +27,26 @@ namespace Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Branches", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Clinics",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    About = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Clinics", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -53,13 +73,13 @@ namespace Persistence.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateOfBirth = table.Column<DateOnly>(type: "date", nullable: true),
-                    NationalIdentity = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: true),
+                    NationalIdentity = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     PasswordSalt = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     PasswordHash = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     AuthenticatorType = table.Column<int>(type: "int", nullable: false)
@@ -126,6 +146,7 @@ namespace Persistence.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Text = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsApproved = table.Column<bool>(type: "bit", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -450,12 +471,12 @@ namespace Persistence.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Address", "AuthenticatorType", "CreatedDate", "DateOfBirth", "DeletedDate", "Email", "FirstName", "LastName", "NationalIdentity", "PasswordHash", "PasswordSalt", "Phone", "UpdatedDate" },
-                values: new object[] { new Guid("98d841a2-b19a-4731-ae26-b3fcda255db9"), "Tekirdağ", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateOnly(2000, 11, 20), null, "fatmabireltr@gmail.com", "Fatma", "Birel", "12345678901", new byte[] { 110, 53, 170, 95, 113, 28, 156, 199, 103, 198, 36, 186, 155, 123, 101, 195, 249, 37, 211, 212, 106, 212, 177, 125, 35, 248, 21, 139, 116, 84, 40, 12, 210, 252, 199, 48, 166, 174, 93, 251, 0, 103, 211, 101, 101, 200, 119, 173, 28, 184, 36, 130, 99, 159, 69, 110, 97, 245, 247, 217, 88, 74, 59, 17 }, new byte[] { 114, 116, 243, 223, 95, 14, 52, 246, 74, 101, 126, 138, 242, 220, 10, 134, 195, 168, 0, 120, 13, 3, 6, 154, 229, 30, 183, 22, 228, 37, 83, 88, 218, 234, 9, 18, 8, 84, 83, 239, 88, 36, 183, 146, 117, 53, 196, 173, 118, 175, 134, 50, 229, 48, 32, 93, 80, 156, 56, 115, 226, 11, 192, 8, 96, 184, 221, 110, 234, 125, 85, 21, 68, 153, 251, 136, 122, 99, 71, 33, 215, 218, 163, 22, 154, 88, 5, 253, 183, 178, 95, 154, 152, 66, 236, 207, 100, 42, 102, 42, 89, 133, 141, 191, 124, 103, 37, 76, 167, 144, 59, 94, 218, 15, 30, 101, 154, 216, 165, 159, 63, 189, 177, 142, 189, 12, 205, 65 }, "05279563492", null });
+                values: new object[] { new Guid("a7977895-8beb-4be6-8c5c-323081d7adc2"), "Tekirdağ", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateOnly(2000, 11, 20), null, "fatmabireltr@gmail.com", "Fatma", "Birel", "12345678901", new byte[] { 25, 230, 38, 177, 13, 95, 87, 233, 181, 91, 252, 71, 20, 35, 181, 162, 202, 251, 170, 133, 209, 134, 64, 18, 200, 206, 30, 97, 7, 225, 98, 179, 0, 29, 139, 57, 255, 237, 89, 246, 119, 48, 20, 94, 108, 15, 223, 120, 22, 10, 25, 253, 233, 65, 128, 218, 52, 49, 197, 97, 69, 228, 74, 180 }, new byte[] { 135, 183, 252, 198, 62, 8, 6, 98, 55, 164, 124, 224, 56, 107, 44, 116, 24, 167, 216, 51, 63, 231, 72, 30, 129, 98, 152, 215, 153, 130, 203, 0, 103, 164, 240, 127, 114, 222, 114, 58, 227, 231, 91, 13, 112, 74, 194, 63, 130, 9, 142, 73, 132, 150, 127, 190, 72, 175, 34, 83, 23, 172, 220, 11, 210, 154, 199, 36, 86, 32, 204, 72, 46, 249, 66, 126, 209, 147, 249, 147, 123, 107, 55, 217, 142, 204, 146, 248, 110, 246, 175, 171, 3, 4, 233, 245, 56, 150, 247, 105, 94, 40, 190, 142, 115, 224, 151, 202, 57, 41, 105, 159, 58, 123, 62, 136, 224, 234, 133, 74, 134, 69, 207, 181, 113, 182, 211, 1 }, "05279563492", null });
 
             migrationBuilder.InsertData(
                 table: "UserOperationClaims",
                 columns: new[] { "Id", "CreatedDate", "DeletedDate", "OperationClaimId", "UpdatedDate", "UserId" },
-                values: new object[] { new Guid("de075674-5259-4dd2-b414-9b86f4505e19"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, null, new Guid("98d841a2-b19a-4731-ae26-b3fcda255db9") });
+                values: new object[] { new Guid("b952603f-411c-4368-b5ff-877d64a63af0"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, null, new Guid("a7977895-8beb-4be6-8c5c-323081d7adc2") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Appointments_DoctorID",
@@ -473,9 +494,10 @@ namespace Persistence.Migrations
                 column: "BranchID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DoctorSchedules_DoctorID",
+                name: "IX_DoctorSchedules_DoctorID_Date",
                 table: "DoctorSchedules",
-                column: "DoctorID");
+                columns: new[] { "DoctorID", "Date" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_EmailAuthenticators_UserId",
@@ -517,11 +539,27 @@ namespace Persistence.Migrations
                 name: "IX_UserOperationClaims_UserId",
                 table: "UserOperationClaims",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Email",
+                table: "Users",
+                column: "Email",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_NationalIdentity",
+                table: "Users",
+                column: "NationalIdentity",
+                unique: true,
+                filter: "[NationalIdentity] IS NOT NULL");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Clinics");
+
             migrationBuilder.DropTable(
                 name: "DoctorSchedules");
 

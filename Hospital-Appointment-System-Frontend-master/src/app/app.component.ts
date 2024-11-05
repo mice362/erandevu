@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { DoctorListComponent } from './features/doctors/components/doctor-list/doctor-list.component';
+import { ClinicListComponent } from './features/clinics/components/clinic-list/clinic-list.component';
 import { ContactComponent } from './features/contact/contact.component';
 import { BranchListComponent } from "./features/branches/components/branch-list/branch-list.component"; //silincek
 import { SliderComponent } from "./shared/components/slider/slider.component"; //silincek
@@ -14,9 +15,6 @@ import { DoctorSidebarPatientComponent } from './features/panels/doctor/componen
 import { PastAppointmentsComponent } from './features/panels/admin/components/list-appointment/past-appointments/past-appointments.component';
 import { UpcomingAppointmentsComponent } from './features/panels/admin/components/list-appointment/upcoming-appointments/upcoming-appointments.component';
 
-
-
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -26,6 +24,7 @@ import { UpcomingAppointmentsComponent } from './features/panels/admin/component
     FooterComponent,
     NavbarComponent,
     DoctorListComponent,
+    ClinicListComponent,
     ContactComponent,
     BranchListComponent,
     SliderComponent,
@@ -36,6 +35,7 @@ import { UpcomingAppointmentsComponent } from './features/panels/admin/component
     DoctorSidebarPatientComponent,
     PastAppointmentsComponent,
     UpcomingAppointmentsComponent,
+    
 
   ]
 })

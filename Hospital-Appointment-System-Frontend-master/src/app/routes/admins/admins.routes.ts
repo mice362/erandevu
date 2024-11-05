@@ -22,12 +22,17 @@ import { AddBranchComponent } from '../../features/panels/admin/components/add-b
 import { ListBranchComponent } from '../../features/panels/admin/components/list-branch/list-branch.component';
 import { ListDoctorComponent } from '../../features/panels/admin/components/list-doctor/list-doctor.component';
 import { AdminSidebarComponent } from '../../features/panels/admin/components/sidebar/adminSidebar.component';
+import { ListClinicComponent } from '../../features/panels/admin/components/list-clinic/list-clinic.component';
 
 export const adminRoutes: Routes = [
 
   {
     path: 'admin-sidebar',
     component: AdminSidebarComponent,
+  },
+  {
+    path: 'admin-list-clinic',
+    component: ListClinicComponent,
   },
   {
     path: 'admin-list-doctor',

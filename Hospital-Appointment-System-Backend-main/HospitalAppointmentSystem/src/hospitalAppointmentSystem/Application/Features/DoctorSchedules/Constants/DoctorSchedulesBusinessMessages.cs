@@ -1,19 +1,19 @@
-namespace Application.Features.DoctorSchedules.Constants;
+ï»¿namespace Application.Features.DoctorSchedules.Constants;
 
 public static class DoctorSchedulesBusinessMessages
 {
     public const string SectionName = "DoctorSchedule";
 
 
-    public const string DoctorScheduleNotExists = "Böyle bir doktor takvimi bulunamadý";
+    public const string DoctorScheduleNotExists = "BÃ¶yle bir doktor takvimi bulunamadÄ±";
 
-    public const string DoctorScheduleCannotBeDeletedDueToExistingAppointments = "Bu takvim çizelgesi mevcut randevular nedeniyle silinemez.";
+    public const string DoctorScheduleCannotBeDeletedDueToExistingAppointments = "Bu takvim Ã§izelgesi mevcut randevular nedeniyle silinemez.";
 
-    public const string DoctorScheduleAlreadyExistsForThisDate = "Bu tarih için doktor takvim çizelgeniz zaten mevcut.";
+    public const string DoctorScheduleAlreadyExistsForThisDate = "Bu tarih iÃ§in doktor takvim Ã§izelgeniz zaten mevcut.";
 
-    public const string DoctorScheduleIsSoftDeletedAndCannotBeUpdated = "Böyle bir doktor takvim çizelgesi bulunmamaktadýr.";
+    public const string DoctorScheduleIsSoftDeletedAndCannotBeUpdated = "BÃ¶yle bir doktor takvim Ã§izelgesi bulunmamaktadÄ±r.";
 
-    public const string CheckIfAppointmentsExistOnDate = "Bu tarihe ait hastalar tarafýnda alýnmýþ randevular bulunmaktadýr.Tarihi güncelleyemezsiniz";
+    public const string CheckIfAppointmentsExistOnDate = "Bu tarihe ait hastalar tarafÄ±nda alÄ±nmÄ±ÅŸ randevular bulunmaktadÄ±r.Tarihi gÃ¼ncelleyemezsiniz";
 }
 
 
