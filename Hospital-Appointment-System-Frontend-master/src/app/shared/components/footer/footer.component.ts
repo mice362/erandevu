@@ -14,4 +14,6 @@ import { RouterLink, RouterModule } from '@angular/router';
   styleUrl: './footer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FooterComponent { }
+export class FooterComponent {
+  currentYear: number = new Date().getFullYear();
+ }

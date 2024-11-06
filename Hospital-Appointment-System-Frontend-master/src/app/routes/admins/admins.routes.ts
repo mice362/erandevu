@@ -23,6 +23,7 @@ import { ListBranchComponent } from '../../features/panels/admin/components/list
 import { ListDoctorComponent } from '../../features/panels/admin/components/list-doctor/list-doctor.component';
 import { AdminSidebarComponent } from '../../features/panels/admin/components/sidebar/adminSidebar.component';
 import { ListClinicComponent } from '../../features/panels/admin/components/list-clinic/list-clinic.component';
+import { AddClinicComponent } from '../../features/panels/admin/components/add-clinic/add-clinic.component';
 
 export const adminRoutes: Routes = [
 
@@ -45,6 +46,10 @@ export const adminRoutes: Routes = [
   {
     path: 'admin-add-branch',
     component: AddBranchComponent,
+  },
+  {
+    path: 'admin-add-clinic',
+    component: AddClinicComponent,
   },
   {
     path: 'admin-update-branch/:branchId',

@@ -1,10 +1,7 @@
 ﻿using Application.Features.Clinics.Commands.Create;
 using Application.Features.Clinics.Commands.Delete;
 using Application.Features.Clinics.Commands.Update;
-using Application.Features.Doctors.Commands.Create;
-using Application.Features.Doctors.Commands.Delete;
-using Application.Features.Doctors.Commands.Update;
-using Application.Features.Doctors.Queries.GetById;
+using Application.Features.Clinics.Queries.GetList;
 using Application.Features.Doctors.Queries.GetList;
 using Microsoft.AspNetCore.Mvc;
 using NArchitecture.Core.Application.Requests;
@@ -14,7 +11,7 @@ namespace WebAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class ClinicController : BaseController
+public class ClinicsController : BaseController
 {
     [HttpPost]
     public async Task<ActionResult<CreatedClinicResponse>> Add([FromBody] CreateClinicCommand command)
@@ -45,9 +42,9 @@ public class ClinicController : BaseController
     [HttpGet]
     public async Task<ActionResult<GetListDoctorQuery>> GetList([FromQuery] PageRequest pageRequest)
     {
-        GetListDoctorQuery query = new() { PageRequest = pageRequest };
+        GetListClinicQuery query = new() { PageRequest = pageRequest };
 
-        GetListResponse<GetListDoctorListItemDto> response = await Mediator.Send(query);
+        GetListResponse<GetListClinicListItemDto> response = await Mediator.Send(query);
 
         return Ok(response);
     }

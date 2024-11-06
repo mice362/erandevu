@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
-import { Clinic } from '../../../panels/clinic/models/clinic';
+import { Clinic } from '../../models/clinic';
 import { BasicLayoutComponent } from '../../../../shared/components/basic-layout/basic-layout.component';
 import { FormsModule } from '@angular/forms';
-import { ClinicService } from '../../../panels/clinic/services/clinic.service';
+import { ClinicService } from '../../services/clinic.service';
 
 
 @Component({

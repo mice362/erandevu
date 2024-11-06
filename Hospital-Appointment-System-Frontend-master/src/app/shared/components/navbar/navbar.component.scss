@@ -61,7 +61,6 @@
   margin-right: 40px; /* Sağ kenara ek boşluk bırakır */
 }
 
-
 .dropdown-menu {
   position: absolute;
   overflow: visible; /* Menünün sınırlarını aşmasına izin ver */
@@ -69,12 +68,10 @@
 
 }
 
-
 .dropdown:hover .dropdown-menu {
   display: block;
 
 }
-
 
 ul li a:hover{
    background-color:#7fb2e8;
@@ -82,4 +79,7 @@ ul li a:hover{
 
 #logo{
   cursor: pointer;
+  background-color: #f0f0f0; /* Açık gri renk */
+  padding: 5px; /* İsteğe bağlı olarak biraz boşluk ekleyebilirsiniz */
+  border-radius: 5px; /* Köşeleri yuvarlatmak için */
 }

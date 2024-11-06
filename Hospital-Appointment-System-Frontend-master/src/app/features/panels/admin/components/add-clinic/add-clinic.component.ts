@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Clinic } from '../../../../clinics/models/clinic';
 import {
   FormBuilder,
   FormGroup,
@@ -7,15 +8,11 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { AdminSidebarComponent } from '../sidebar/adminSidebar.component';
-
-import { Router } from '@angular/router';
+import { ClinicService } from '../../../../clinics/services/clinic.service';
 import { ToastrService } from 'ngx-toastr';
-import { BranchService } from '../../../../branches/services/branch.service';
-import { Branch } from '../../../../branches/models/branch';
-import { ThisReceiver } from '@angular/compiler';
+import { Router } from '@angular/router';
+import { AdminSidebarComponent } from '../sidebar/adminSidebar.component';
 import { TokenComponent } from '../../../../../shared/components/token/token.component';
-import { ClinicService } from '../../../clinic/services/clinic.service';
 
 @Component({
   selector: 'app-add-clinic',
@@ -25,14 +22,14 @@ import { ClinicService } from '../../../clinic/services/clinic.service';
     FormsModule,
     ReactiveFormsModule,
     AdminSidebarComponent,
-    TokenComponent
+    TokenComponent,
   ],
   templateUrl: './add-clinic.component.html',
   styleUrl: './add-clinic.component.scss',
 })
 export class AddClinicComponent {
-  branches: Branch[] = [];
-  branchId: number;
+  clinic: Clinic[] = [];
+  clinicId: number;
   pageIndex: number = 0;
   pageSize: number = 50;
   clinicForm: FormGroup;
@@ -40,48 +37,36 @@ export class AddClinicComponent {
   constructor(
     private formBuilder: FormBuilder,
     private clinicService: ClinicService,
-    private branchService: BranchService,
+
     private toastrService: ToastrService,
     private router: Router
   ) {
     this.clinicForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      branchId: ['', Validators.required],
-      title: ['', Validators.required],
-      schoolName: ['', Validators.required],
-      dateOfBirth: ['', Validators.required],
-      nationalIdentity: ['', Validators.required],
-      phone: ['', Validators.required],
-      address: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      Name: ['', Validators.required],
     });
   }
 
   ngOnInit(): void {
-    this.getBranches();
+    this.getClinics();
   }
 
-  getBranches() {
-    this.branchService
-      .getBranches(this.pageIndex, this.pageSize)
+  getClinics() {
+    this.clinicService
+      .getClinics(this.pageIndex, this.pageSize)
       .subscribe((response) => {
-        this.branches = response.items;
-        this.branches.forEach((branch) => {
-          this.branchId = branch.id;
+        this.clinic = response.items;
+        this.clinic.forEach((clinic) => {
+          this.clinicId = clinic.id;
         });
       });
   }
 
-  addClinic(): void {
+  addClinics(): void {
     if (this.clinicForm.valid) {
-      const clinicData = this.clinicForm.value;
-
       this.clinicService.addClinic(this.clinicForm.value).subscribe(
         (response) => {
           this.toastrService.success('Klinik başarıyla eklendi');
-          this.router.navigate(['/admin-list-clinic']);
+          this.router.navigate(['/admin-clinics']);
         }
       );
     } else {

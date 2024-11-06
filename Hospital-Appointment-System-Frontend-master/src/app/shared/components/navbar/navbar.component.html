@@ -1,21 +1,67 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <img src="assets/images/logo/logo.png" class="d-inline-block align-top" alt="Logo" id="logo" routerLink="">
+    <img src="assets/images/logo/logoHBT.png" class="d-inline-block align-top" alt="Logo" id="logo" routerLink="/">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Ana Sayfa</a>
+        
+        <!-- Ana Menü ve Alt Menüler -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Meme Estetiği
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/meme-buyutme">Meme Büyütme</a></li>
+            <li><a class="dropdown-item" routerLink="/meme-kucultme">Meme Küçültme & Dikleştirme</a></li>
+            <li><a class="dropdown-item" routerLink="/jinekomasti">Jinekomasti</a></li>
+          </ul>
         </li>
+        
         <li class="nav-item">
-          <a class="nav-link" routerLink="/branches" routerLinkActive="active">Tıbbi Birimler</a>
+          <a class="nav-link" routerLink="/burun-estetigi">Burun Estetiği</a>
         </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Vücut Estetiği
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/liposuction">Liposuction - Yağ Aldırma</a></li>
+            <li><a class="dropdown-item" routerLink="/karin-germe">Karın Germe - Abdominoplasty</a></li>
+            <li><a class="dropdown-item" routerLink="/genital-estetik">Genital Estetik</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Yüz Estetiği
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/goz-kapagi-estetigi">Göz Kapağı Estetiği</a></li>
+            <li><a class="dropdown-item" routerLink="/kas-kaldirma">Kaş Kaldırma</a></li>
+            <li><a class="dropdown-item" routerLink="/kulak-estetigi">Kulak Estetiği</a></li>
+            <li><a class="dropdown-item" routerLink="/yuz-germe">Yüz Germe</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Ameliyatsız Estetik
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/kirisiklik-tedavisi">Kırışıklık Tedavisi</a></li>
+            <li><a class="dropdown-item" routerLink="/dolgu-uygulamalari">Dolgu Uygulamaları</a></li>
+          </ul>
+        </li>
+
         <li class="nav-item">
-          <a class="nav-link" routerLink="/doctors" routerLinkActive="active">Doktorlarımız</a>
+          <a class="nav-link" routerLink="/sac-ekimi">Saç Ekimi</a>
         </li>
+        
+        <!-- Mevcut Menüler -->
         <li class="nav-item">
           <a class="nav-link" routerLink="/about" routerLinkActive="active">Hakkımızda</a>
         </li>
@@ -26,24 +72,24 @@
           <a class="nav-link" routerLink="/contact" routerLinkActive="active">Bize Ulaşın</a>
         </li>
       </ul>
-      <!-- <form class="d-flex " role="search">
-        <input class="form-control me-2" type="search" placeholder="Ara" aria-label="Search">
-      </form> -->
-      <form class="d-flex">
-        <div class="btn-group" *ngIf="!isLoggedIn">
-          <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            RANDEVU AL
-          </button>
-          <ul class="dropdown-menu" id="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="/login">Üye Girişi</a></li>
-            <li><a class="dropdown-item" routerLink="/register">Üye Ol</a></li>
-          </ul>
-        </div>
-        <div class="btn-group" *ngIf="isLoggedIn">
-          <button type="button" class="btn btn-success" (click)="checkUserForAppointment()">RANDEVU AL</button>
-          <button type="button" class="btn btn-success" (click)="directUsers()">HESABIM</button>
-        </div>
-      </form>
+        <!-- <form class="d-flex " role="search">
+    <input class="form-control me-2" type="search" placeholder="Ara" aria-label="Search">
+  </form> -->
+  <form class="d-flex">
+    <div class="btn-group" *ngIf="!isLoggedIn">
+      <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        RANDEVU AL
+      </button>
+      <ul class="dropdown-menu" id="dropdown-menu">
+        <li><a class="dropdown-item" routerLink="/login">Üye Girişi</a></li>
+        <li><a class="dropdown-item" routerLink="/register">Üye Ol</a></li>
+      </ul>
+    </div>
+    <div class="btn-group" *ngIf="isLoggedIn">
+      <button type="button" class="btn btn-success" (click)="checkUserForAppointment()">RANDEVU AL</button>
+      <button type="button" class="btn btn-success" (click)="directUsers()">HESABIM</button>
+    </div>
+  </form>
     </div>
   </div>
 </nav>
