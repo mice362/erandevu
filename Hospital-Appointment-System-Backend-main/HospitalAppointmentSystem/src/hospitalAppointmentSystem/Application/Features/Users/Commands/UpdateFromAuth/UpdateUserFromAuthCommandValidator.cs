@@ -1,5 +1,5 @@
-﻿using System.Text.RegularExpressions;
-using FluentValidation;
+﻿using FluentValidation;
+using System.Text.RegularExpressions;
 
 namespace Application.Features.Users.Commands.UpdateFromAuth;
 
@@ -14,7 +14,7 @@ public class UpdateUserFromAuthCommandValidator : AbstractValidator<UpdateUserFr
             .MinimumLength(2).WithMessage("Kullanıcı soyadı en az 2 karakter olmalıdır");
 
         RuleFor(c => c.Password).NotEmpty().MinimumLength(8).WithMessage("Şifre en az 8 karakter olmalı");
-           
+
         RuleFor(c => c.NewPassword)
             .NotEmpty()
             .MinimumLength(8)

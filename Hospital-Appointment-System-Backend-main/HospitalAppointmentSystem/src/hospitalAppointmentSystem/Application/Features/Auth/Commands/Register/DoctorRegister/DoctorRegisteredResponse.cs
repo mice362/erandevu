@@ -1,10 +1,5 @@
 ﻿using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Security.JWT;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Auth.Commands.Register.DoctorRegister;
 public class DoctorRegisteredResponse : IResponse

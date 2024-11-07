@@ -1,26 +1,25 @@
-﻿using Application.Features.DoctorSchedules.Constants;
+﻿using Application.Features.Doctors.Constants;
+using Application.Features.DoctorSchedules.Constants;
 using Application.Features.DoctorSchedules.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using MediatR;
 using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
-using MediatR;
 using static Application.Features.DoctorSchedules.Constants.DoctorSchedulesOperationClaims;
-using Application.Features.Doctors.Constants;
 
 namespace Application.Features.DoctorSchedules.Commands.Create;
 
-public class CreateDoctorScheduleCommand : IRequest<CreatedDoctorScheduleResponse>,ISecuredRequest,  ILoggableRequest, ITransactionalRequest
+public class CreateDoctorScheduleCommand : IRequest<CreatedDoctorScheduleResponse>, ISecuredRequest, ILoggableRequest, ITransactionalRequest
 {
     public required Guid DoctorID { get; set; }
     public required DateOnly Date { get; set; }
     public required TimeOnly StartTime { get; set; }
     public required TimeOnly EndTime { get; set; }
 
-    public string[] Roles => [Admin, Write, DoctorSchedulesOperationClaims.Create,DoctorsOperationClaims.Update];
+    public string[] Roles => [Admin, Write, DoctorSchedulesOperationClaims.Create, DoctorsOperationClaims.Update];
 
     public bool BypassCache { get; }
     public string? CacheKey { get; }

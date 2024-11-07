@@ -1,13 +1,8 @@
-using Application.Features.Doctors.Rules;
 using Application.Services.Repositories;
-using NArchitecture.Core.Persistence.Paging;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore.Query;
-using System;
-using System.Linq;
+using NArchitecture.Core.Persistence.Paging;
 using System.Linq.Expressions;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Application.Services.Doctors
 {

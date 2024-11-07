@@ -6,7 +6,6 @@ using Domain.Entities;
 using MediatR;
 using NArchitecture.Core.Application.Pipelines.Authorization;
 using NArchitecture.Core.Security.Hashing;
-using System.Numerics;
 using static Application.Features.Users.Constants.UsersOperationClaims;
 
 namespace Application.Features.Users.Commands.Create;

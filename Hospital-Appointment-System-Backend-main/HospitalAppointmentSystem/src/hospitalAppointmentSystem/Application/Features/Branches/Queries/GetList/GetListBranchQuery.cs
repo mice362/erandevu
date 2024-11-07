@@ -1,13 +1,10 @@
-using Application.Features.Branches.Constants;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
+using MediatR;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
-using MediatR;
 using static Application.Features.Branches.Constants.BranchesOperationClaims;
 
 namespace Application.Features.Branches.Queries.GetList;
@@ -42,7 +39,7 @@ public class GetListBranchQuery : IRequest<GetListResponse<GetListBranchListItem
                 size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken,
                 predicate: x => x.DeletedDate == null
-            ) ;
+            );
 
             GetListResponse<GetListBranchListItemDto> response = _mapper.Map<GetListResponse<GetListBranchListItemDto>>(branches);
             return response;

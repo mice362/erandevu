@@ -1,22 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using Domain.Entities;
-using MediatR;
+﻿using Application.Features.Auth.Commands.EnableEmailAuthenticator;
 using Application.Features.Auth.Rules;
 using Application.Services.AuthService;
-using NArchitecture.Core.Security.Hashing;
-using NArchitecture.Core.Security.JWT;
+using Application.Services.Encryptions;
+using Application.Services.OperationClaims;
 using Application.Services.Patients;
 using Application.Services.UserOperationClaims;
-using Application.Services.OperationClaims;
-using Application.Services.Encryptions;
-using NArchitecture.Core.Security.Entities;
-using Application.Features.Auth.Commands.EnableEmailAuthenticator;
 using Application.Services.UsersService;
+using Domain.Entities;
+using MediatR;
+using NArchitecture.Core.Security.Hashing;
+using NArchitecture.Core.Security.JWT;
 
 namespace Application.Features.Auth.Commands.Register.PatientRegister
 {

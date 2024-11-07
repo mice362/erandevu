@@ -1,23 +1,15 @@
-﻿using Application.Features.Doctors.Constants;
-using Application.Features.DoctorSchedules.Queries.GetListByDoctorId;
-using Application.Features.Patients.Constants;
+﻿using Application.Features.Patients.Constants;
+using Application.Services.Encryptions;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using NArchitecture.Core.Application.Pipelines.Authorization;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
-using static Application.Features.Doctors.Constants.DoctorsOperationClaims;
 using NArchitecture.Core.Persistence.Paging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Application.Services.Encryptions;
-using NArchitecture.Core.Security.Entities;
+using static Application.Features.Doctors.Constants.DoctorsOperationClaims;
 
 namespace Application.Features.Doctors.Queries.GetListByBranchId;
 public class GetListByBranchIdQuery : IRequest<GetListResponse<GetListByBranchIdDto>>, ISecuredRequest

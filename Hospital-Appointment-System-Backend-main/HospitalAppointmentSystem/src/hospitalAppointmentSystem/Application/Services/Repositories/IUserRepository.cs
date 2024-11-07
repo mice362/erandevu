@@ -1,6 +1,5 @@
 ﻿using Domain.Entities;
 using NArchitecture.Core.Persistence.Repositories;
-using System.Threading.Tasks;
 
 namespace Application.Services.Repositories
 {

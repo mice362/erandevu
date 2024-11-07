@@ -1,13 +1,10 @@
-﻿using Application.Features.Managers.Constants;
-using Application.Features.Managers.Rules;
+﻿using Application.Features.Managers.Rules;
+using Application.Services.Encryptions;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using NArchitecture.Core.Application.Pipelines.Authorization;
 using MediatR;
 using static Application.Features.Managers.Constants.ManagersOperationClaims;
-using Application.Services.Encryptions;
-using static Nest.JoinField;
 
 namespace Application.Features.Managers.Queries.GetById;
 

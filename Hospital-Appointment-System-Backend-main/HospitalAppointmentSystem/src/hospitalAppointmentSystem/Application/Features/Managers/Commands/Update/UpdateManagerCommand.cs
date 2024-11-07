@@ -1,19 +1,18 @@
 using Application.Features.Managers.Constants;
 using Application.Features.Managers.Rules;
+using Application.Services.Encryptions;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using MediatR;
 using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
-using MediatR;
 using static Application.Features.Managers.Constants.ManagersOperationClaims;
-using Application.Services.Encryptions;
 
 namespace Application.Features.Managers.Commands.Update;
 
-public class UpdateManagerCommand : IRequest<UpdatedManagerResponse>, ISecuredRequest,  ILoggableRequest, ITransactionalRequest
+public class UpdateManagerCommand : IRequest<UpdatedManagerResponse>, ISecuredRequest, ILoggableRequest, ITransactionalRequest
 {
     public Guid Id { get; set; }
     public string FirstName { get; set; }

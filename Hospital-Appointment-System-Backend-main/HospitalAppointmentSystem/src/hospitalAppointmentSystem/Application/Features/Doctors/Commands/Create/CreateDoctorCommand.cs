@@ -1,22 +1,19 @@
-using Application.Features.Doctors.Constants;
 using Application.Features.Doctors.Rules;
+using Application.Services.Encryptions;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using MediatR;
 using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
-using MediatR;
-using static Application.Features.Doctors.Constants.DoctorsOperationClaims;
 using NArchitecture.Core.Security.Hashing;
-using NArchitecture.Core.Security.Entities;
-using Application.Services.Encryptions;
+using static Application.Features.Doctors.Constants.DoctorsOperationClaims;
 
 namespace Application.Features.Doctors.Commands.Create;
 
 
-public class CreateDoctorCommand : IRequest<CreatedDoctorResponse>,  ILoggableRequest, ITransactionalRequest, ISecuredRequest
+public class CreateDoctorCommand : IRequest<CreatedDoctorResponse>, ILoggableRequest, ITransactionalRequest, ISecuredRequest
 {
     public required string Title { get; set; }
     public required string SchoolName { get; set; }

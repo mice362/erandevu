@@ -1,19 +1,11 @@
-﻿
-using NArchitecture.Core.Persistence.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Domain.Entities;
+﻿namespace Domain.Entities;
 public class Patient : User
 {
     public Patient()
     {
     }
 
-    public Patient(Guid id,int age, double height, double weight, string bloodGroup)
+    public Patient(Guid id, int age, double height, double weight, string bloodGroup)
     {
         Id = id;
         Age = age;
@@ -25,7 +17,7 @@ public class Patient : User
     public int? Age { get; set; }
     public double? Height { get; set; }
     public double? Weight { get; set; }
-    public string? BloodGroup {  get; set; } 
+    public string? BloodGroup { get; set; }
 
     public virtual ICollection<Appointment> Appointments { get; set; } = new HashSet<Appointment>();
 

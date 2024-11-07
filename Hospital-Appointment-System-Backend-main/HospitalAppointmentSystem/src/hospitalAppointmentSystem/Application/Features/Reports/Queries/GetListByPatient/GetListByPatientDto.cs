@@ -1,12 +1,5 @@
-﻿using NArchitecture.Core.Application.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.Features.Reports.Queries.GetListByPatient;
-public class GetListByPatientDto 
+﻿namespace Application.Features.Reports.Queries.GetListByPatient;
+public class GetListByPatientDto
 {
     public int Id { get; set; }
     public int AppointmentID { get; set; }

@@ -1,15 +1,14 @@
-using Application.Features.Reports.Constants;
+using Application.Features.Doctors.Constants;
+using Application.Features.Patients.Constants;
 using Application.Features.Reports.Rules;
+using Application.Services.Encryptions;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using NArchitecture.Core.Application.Pipelines.Authorization;
 using MediatR;
-using static Application.Features.Reports.Constants.ReportsOperationClaims;
-using Application.Features.Doctors.Constants;
 using Microsoft.EntityFrameworkCore;
-using Application.Features.Patients.Constants;
-using Application.Services.Encryptions;
+using NArchitecture.Core.Application.Pipelines.Authorization;
+using static Application.Features.Reports.Constants.ReportsOperationClaims;
 
 namespace Application.Features.Reports.Queries.GetById;
 
@@ -34,28 +33,28 @@ public class GetByIdReportQuery : IRequest<GetByIdReportResponse>, ISecuredReque
 
         public async Task<GetByIdReportResponse> Handle(GetByIdReportQuery request, CancellationToken cancellationToken)
         {
-            Report? report = await _reportRepository.GetAsync(predicate: r => r.Id == request.Id &&r.DeletedDate==null , include:x=>x.Include(x=>x.Appointment).Include(x=>x.Appointment.Patient).Include(x=>x.Appointment.Doctor),
+            Report? report = await _reportRepository.GetAsync(predicate: r => r.Id == request.Id && r.DeletedDate == null, include: x => x.Include(x => x.Appointment).Include(x => x.Appointment.Patient).Include(x => x.Appointment.Doctor),
                 cancellationToken: cancellationToken);
             await _reportBusinessRules.ReportShouldExistWhenSelected(report);
 
-            
-                report.Appointment.Doctor.FirstName = CryptoHelper.Decrypt(report.Appointment.Doctor.FirstName);
-                report.Appointment.Doctor.LastName = CryptoHelper.Decrypt(report.Appointment.Doctor.LastName);
-                report.Appointment.Patient.FirstName = CryptoHelper.Decrypt(report.Appointment.Patient.FirstName);
-                report.Appointment.Patient.LastName = CryptoHelper.Decrypt(report.Appointment.Patient.LastName);
-                report.Appointment.Patient.NationalIdentity = CryptoHelper.Decrypt(report.Appointment.Patient.NationalIdentity);
-                report.Appointment.Patient.Email = CryptoHelper.Decrypt(report.Appointment.Patient.Email);
-                report.Appointment.Patient.Phone = CryptoHelper.Decrypt(report.Appointment.Patient.Phone);
-                report.Appointment.Doctor.Address = CryptoHelper.Decrypt(report.Appointment.Doctor.Address);
-                report.Appointment.Doctor.Email = CryptoHelper.Decrypt(report.Appointment.Doctor.Email);
-                report.Appointment.Doctor.NationalIdentity = CryptoHelper.Decrypt(report.Appointment.Doctor.NationalIdentity);
+
+            report.Appointment.Doctor.FirstName = CryptoHelper.Decrypt(report.Appointment.Doctor.FirstName);
+            report.Appointment.Doctor.LastName = CryptoHelper.Decrypt(report.Appointment.Doctor.LastName);
+            report.Appointment.Patient.FirstName = CryptoHelper.Decrypt(report.Appointment.Patient.FirstName);
+            report.Appointment.Patient.LastName = CryptoHelper.Decrypt(report.Appointment.Patient.LastName);
+            report.Appointment.Patient.NationalIdentity = CryptoHelper.Decrypt(report.Appointment.Patient.NationalIdentity);
+            report.Appointment.Patient.Email = CryptoHelper.Decrypt(report.Appointment.Patient.Email);
+            report.Appointment.Patient.Phone = CryptoHelper.Decrypt(report.Appointment.Patient.Phone);
+            report.Appointment.Doctor.Address = CryptoHelper.Decrypt(report.Appointment.Doctor.Address);
+            report.Appointment.Doctor.Email = CryptoHelper.Decrypt(report.Appointment.Doctor.Email);
+            report.Appointment.Doctor.NationalIdentity = CryptoHelper.Decrypt(report.Appointment.Doctor.NationalIdentity);
             report.Appointment.Doctor.Phone = CryptoHelper.Decrypt(report.Appointment.Doctor.Phone);
 
 
-            
+
 
             GetByIdReportResponse response = _mapper.Map<GetByIdReportResponse>(report);
-            
+
             return response;
         }
     }

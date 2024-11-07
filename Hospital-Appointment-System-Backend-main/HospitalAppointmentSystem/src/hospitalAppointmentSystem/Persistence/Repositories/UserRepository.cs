@@ -1,11 +1,8 @@
 ﻿using Application.Services.Repositories;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using NArchitecture.Core.Persistence.Repositories;
 using Persistence.Contexts;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Persistence.Repositories
 {

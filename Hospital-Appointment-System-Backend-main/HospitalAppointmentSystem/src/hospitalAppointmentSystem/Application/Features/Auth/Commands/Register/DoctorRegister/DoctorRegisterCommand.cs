@@ -1,24 +1,13 @@
-﻿using Application.Features.Auth.Commands.Register.PatientRegister;
-using Application.Features.Auth.Rules;
-using Application.Features.Doctors.Rules;
+﻿using Application.Features.Auth.Rules;
 using Application.Services.AuthService;
 using Application.Services.Doctors;
 using Application.Services.Encryptions;
 using Application.Services.OperationClaims;
-using Application.Services.Patients;
 using Application.Services.UserOperationClaims;
 using Domain.Entities;
 using MediatR;
-using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Security.Hashing;
 using NArchitecture.Core.Security.JWT;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static Application.Features.Doctors.Constants.DoctorsOperationClaims;
 
 namespace Application.Features.Auth.Commands.Register.DoctorRegister;
@@ -79,19 +68,19 @@ public class DoctorRegisterCommand : IRequest<DoctorRegisteredResponse>
             Doctor newDoctor =
                 new()
                 {
-                    
+
                     FirstName = request.DoctorForRegisterDto.FirstName,
                     LastName = request.DoctorForRegisterDto.LastName,
                     Phone = request.DoctorForRegisterDto.Phone,
                     Email = request.DoctorForRegisterDto.Email,
                     PasswordHash = passwordHash,
                     PasswordSalt = passwordSalt,
-                    Title= request.DoctorForRegisterDto.Title,
-                    SchoolName=request.DoctorForRegisterDto.SchoolName,
-                    BranchID=request.DoctorForRegisterDto.BranchID,
-                    DateOfBirth=request.DoctorForRegisterDto.DateOfBirth,
-                    NationalIdentity=request.DoctorForRegisterDto.NationalIdentity,
-                    Address=request.DoctorForRegisterDto.Address,
+                    Title = request.DoctorForRegisterDto.Title,
+                    SchoolName = request.DoctorForRegisterDto.SchoolName,
+                    BranchID = request.DoctorForRegisterDto.BranchID,
+                    DateOfBirth = request.DoctorForRegisterDto.DateOfBirth,
+                    NationalIdentity = request.DoctorForRegisterDto.NationalIdentity,
+                    Address = request.DoctorForRegisterDto.Address,
 
                 };
 

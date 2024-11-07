@@ -1,10 +1,9 @@
-using Application.Features.Notifications.Constants;
 using Application.Features.Notifications.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using NArchitecture.Core.Application.Pipelines.Authorization;
 using MediatR;
+using NArchitecture.Core.Application.Pipelines.Authorization;
 using static Application.Features.Notifications.Constants.NotificationsOperationClaims;
 
 namespace Application.Features.Notifications.Queries.GetById;
@@ -30,7 +29,7 @@ public class GetByIdNotificationQuery : IRequest<GetByIdNotificationResponse>, I
 
         public async Task<GetByIdNotificationResponse> Handle(GetByIdNotificationQuery request, CancellationToken cancellationToken)
         {
-            Notification? notification = await _notificationRepository.GetAsync(predicate: n => n.Id == request.Id && n.DeletedDate==null, cancellationToken: cancellationToken);
+            Notification? notification = await _notificationRepository.GetAsync(predicate: n => n.Id == request.Id && n.DeletedDate == null, cancellationToken: cancellationToken);
             await _notificationBusinessRules.NotificationShouldExistWhenSelected(notification);
 
             GetByIdNotificationResponse response = _mapper.Map<GetByIdNotificationResponse>(notification);

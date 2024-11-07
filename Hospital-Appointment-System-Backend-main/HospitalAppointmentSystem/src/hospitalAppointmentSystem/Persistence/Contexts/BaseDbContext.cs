@@ -1,7 +1,7 @@
-using System.Reflection;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Reflection;
 
 namespace Persistence.Contexts;
 
@@ -26,6 +26,7 @@ public class BaseDbContext : DbContext
     public DbSet<Notification> Notifications { get; set; }
     public DbSet<DoctorSchedule> DoctorSchedules { get; set; }
     public DbSet<Clinic> Clinics { get; set; }
+    public DbSet<BusinessPartner> BusinessPartners { get; set; }
 
     public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration)
         : base(dbContextOptions)

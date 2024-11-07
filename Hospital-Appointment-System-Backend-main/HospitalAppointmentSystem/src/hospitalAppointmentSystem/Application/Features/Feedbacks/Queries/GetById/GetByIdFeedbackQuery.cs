@@ -2,10 +2,9 @@ using Application.Features.Feedbacks.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using NArchitecture.Core.Application.Pipelines.Authorization;
 using MediatR;
-using static Application.Features.Feedbacks.Constants.FeedbacksOperationClaims;
 using Microsoft.EntityFrameworkCore;
+using static Application.Features.Feedbacks.Constants.FeedbacksOperationClaims;
 
 namespace Application.Features.Feedbacks.Queries.GetById;
 
@@ -30,7 +29,7 @@ public class GetByIdFeedbackQuery : IRequest<GetByIdFeedbackResponse>
 
         public async Task<GetByIdFeedbackResponse> Handle(GetByIdFeedbackQuery request, CancellationToken cancellationToken)
         {
-            Feedback? feedback = await _feedbackRepository.GetAsync(predicate: f => f.Id == request.Id && f.DeletedDate==null, cancellationToken: cancellationToken, include: x => x.Include(x => x.User));
+            Feedback? feedback = await _feedbackRepository.GetAsync(predicate: f => f.Id == request.Id && f.DeletedDate == null, cancellationToken: cancellationToken, include: x => x.Include(x => x.User));
             await _feedbackBusinessRules.FeedbackShouldExistWhenSelected(feedback);
 
             GetByIdFeedbackResponse response = _mapper.Map<GetByIdFeedbackResponse>(feedback);

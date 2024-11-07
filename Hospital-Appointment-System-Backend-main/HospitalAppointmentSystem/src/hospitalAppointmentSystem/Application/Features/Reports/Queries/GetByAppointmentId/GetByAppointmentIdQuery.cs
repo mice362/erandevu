@@ -1,19 +1,13 @@
 ﻿using Application.Features.Doctors.Constants;
-using Application.Features.Reports.Queries.GetById;
+using Application.Features.Patients.Constants;
 using Application.Features.Reports.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using NArchitecture.Core.Application.Pipelines.Authorization;
 using static Application.Features.Reports.Constants.ReportsOperationClaims;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Application.Features.Patients.Constants;
 
 namespace Application.Features.Reports.Queries.GetByAppointmentId;
 public class GetByAppointmentIdQuery : IRequest<GetByAppointmentIdResponse>, ISecuredRequest
@@ -37,9 +31,9 @@ public class GetByAppointmentIdQuery : IRequest<GetByAppointmentIdResponse>, ISe
 
         public async Task<GetByAppointmentIdResponse> Handle(GetByAppointmentIdQuery request, CancellationToken cancellationToken)
         {
-            Report? report = await _reportRepository.GetAsync(predicate: r => r.AppointmentID == request.Id && r.DeletedDate==null , include: x => x.Include(x => x.Appointment).Include(x => x.Appointment.Patient).Include(x => x.Appointment.Doctor),
+            Report? report = await _reportRepository.GetAsync(predicate: r => r.AppointmentID == request.Id && r.DeletedDate == null, include: x => x.Include(x => x.Appointment).Include(x => x.Appointment.Patient).Include(x => x.Appointment.Doctor),
                 cancellationToken: cancellationToken);
-         
+
 
 
 

@@ -14,8 +14,8 @@ public class GetListPatientListItemDto : IDto
     public DateOnly DateOfBirth { get; set; }
     public string NationalIdentity { get; set; }
     public string Phone { get; set; }
-    public string Email  { get; set; } // sinem
+    public string Email { get; set; } // sinem
     public string Address { get; set; }
-    
+
 
 }

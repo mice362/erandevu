@@ -3,11 +3,10 @@ using Application.Features.Feedbacks.Commands.Delete;
 using Application.Features.Feedbacks.Commands.Update;
 using Application.Features.Feedbacks.Queries.GetById;
 using Application.Features.Feedbacks.Queries.GetList;
+using Application.Features.Feedbacks.Queries.GetListByUser;
+using Microsoft.AspNetCore.Mvc;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
-using Microsoft.AspNetCore.Mvc;
-using Application.Features.Appointments.Queries.GetByPatientId;
-using Application.Features.Feedbacks.Queries.GetListByUser;
 
 namespace WebAPI.Controllers;
 

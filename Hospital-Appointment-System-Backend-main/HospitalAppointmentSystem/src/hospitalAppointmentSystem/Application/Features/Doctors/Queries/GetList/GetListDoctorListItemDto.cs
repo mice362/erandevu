@@ -6,7 +6,7 @@ public class GetListDoctorListItemDto : IDto
 {
     public Guid Id { get; set; }
     public string Title { get; set; }
-    public string SchoolName { get; set; }   
+    public string SchoolName { get; set; }
     public int BranchID { get; set; }
     public string BranchName { get; set; }
     public string FirstName { get; set; }

@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NArchitecture.Core.Security.Hashing;
-using System.Reflection.Emit;
 
 namespace Persistence.EntityConfigurations;
 
@@ -15,7 +14,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(u => u.Id).HasColumnName("Id").IsRequired();
 
         builder.HasIndex(u => u.Email).IsUnique();
-        builder.HasIndex(u=>u.NationalIdentity).IsUnique();
+        builder.HasIndex(u => u.NationalIdentity).IsUnique();
 
         builder.Property(u => u.FirstName).HasColumnName("FirstName").IsRequired();
         builder.Property(u => u.LastName).HasColumnName("LastName").IsRequired();
@@ -31,7 +30,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(u => u.UpdatedDate).HasColumnName("UpdatedDate");
         builder.Property(u => u.DeletedDate).HasColumnName("DeletedDate");
 
-        builder .HasIndex(u => u.Email).IsUnique();
+        builder.HasIndex(u => u.Email).IsUnique();
         builder.HasQueryFilter(u => !u.DeletedDate.HasValue);
 
         builder.HasMany(u => u.UserOperationClaims);
@@ -42,7 +41,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.HasData(_seeds);
 
         builder.HasBaseType((string)null!);
-   
+
     }
 
     public static Guid AdminId { get; } = Guid.NewGuid();

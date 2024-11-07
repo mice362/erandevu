@@ -1,19 +1,17 @@
-﻿using Application.Features.Patients.Constants;
+﻿using Application.Services.Encryptions;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using MediatR;
 using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
-using MediatR;
 using static Application.Features.Patients.Constants.PatientsOperationClaims;
-using Application.Services.Encryptions;
 
 namespace Application.Features.Patients.Queries.GetList;
 
-public class GetListPatientQuery : IRequest<GetListResponse<GetListPatientListItemDto>>,  ISecuredRequest
+public class GetListPatientQuery : IRequest<GetListResponse<GetListPatientListItemDto>>, ISecuredRequest
 {
     public PageRequest PageRequest { get; set; }
 
@@ -39,7 +37,7 @@ public class GetListPatientQuery : IRequest<GetListResponse<GetListPatientListIt
         {
             IPaginate<Patient> patients = await _patientRepository.GetListAsync(
                 index: request.PageRequest.PageIndex,
-                size: request.PageRequest.PageSize, 
+                size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken
             );
 

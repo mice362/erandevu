@@ -3,11 +3,11 @@ using Application.Features.DoctorSchedules.Commands.Delete;
 using Application.Features.DoctorSchedules.Commands.Update;
 using Application.Features.DoctorSchedules.Queries.GetById;
 using Application.Features.DoctorSchedules.Queries.GetList;
-using AutoMapper;
-using NArchitecture.Core.Application.Responses;
-using Domain.Entities;
-using NArchitecture.Core.Persistence.Paging;
 using Application.Features.DoctorSchedules.Queries.GetListByDoctorId;
+using AutoMapper;
+using Domain.Entities;
+using NArchitecture.Core.Application.Responses;
+using NArchitecture.Core.Persistence.Paging;
 
 namespace Application.Features.DoctorSchedules.Profiles;
 
@@ -29,7 +29,7 @@ public class MappingProfiles : Profile
         CreateMap<DoctorSchedule, GetListDoctorScheduleListItemDto>();
         CreateMap<IPaginate<DoctorSchedule>, GetListResponse<GetListDoctorScheduleListItemDto>>();
 
-        CreateMap<DoctorSchedule, GetListByDoctorIdDto>().ForMember(x=>x.DoctorID , opt => opt.MapFrom(dto => dto.Doctor.Id))
+        CreateMap<DoctorSchedule, GetListByDoctorIdDto>().ForMember(x => x.DoctorID, opt => opt.MapFrom(dto => dto.Doctor.Id))
             .ForMember(x => x.DoctorFirstName, opt => opt.MapFrom(dto => dto.Doctor.FirstName))
             .ForMember(x => x.DoctorLastName, opt => opt.MapFrom(dto => dto.Doctor.LastName))
             .ForMember(x => x.Date, opt => opt.MapFrom(dto => dto.Date))
@@ -38,6 +38,6 @@ public class MappingProfiles : Profile
 
 
         CreateMap<IPaginate<DoctorSchedule>, GetListResponse<GetListByDoctorIdDto>>();
-  
+
     }
 }

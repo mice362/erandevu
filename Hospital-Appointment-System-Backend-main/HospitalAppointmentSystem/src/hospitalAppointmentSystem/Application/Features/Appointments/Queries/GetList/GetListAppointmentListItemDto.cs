@@ -21,6 +21,6 @@ public class GetListAppointmentListItemDto : IDto
     public string PatientLastName { get; set; }
     public string PatientNationalIdentity { get; set; }
 
-    
+
 
 }

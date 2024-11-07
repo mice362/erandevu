@@ -1,5 +1,4 @@
-﻿using System.Web;
-using Application.Features.Auth.Rules;
+﻿using Application.Features.Auth.Rules;
 using Application.Services.AuthenticatorService;
 using Application.Services.Encryptions;
 using Application.Services.Repositories;
@@ -12,6 +11,7 @@ using MimeKit;
 using NArchitecture.Core.Application.Pipelines.Authorization;
 using NArchitecture.Core.Mailing;
 using NArchitecture.Core.Security.Enums;
+using System.Web;
 
 namespace Application.Features.Auth.Commands.EnableEmailAuthenticator;
 
@@ -73,9 +73,9 @@ public class EnableEmailAuthenticatorCommand : IRequest, ISecuredRequest
 
             // Mail içeriğini hazırla
             var mailMessage = new MimeMessage();
-            mailMessage.From.Add(new MailboxAddress("Pair 5 Hastanesi", "fatmabireltr@gmail.com")); 
+            mailMessage.From.Add(new MailboxAddress("Pair 5 Hastanesi", "fatmabireltr@gmail.com"));
             user.Email = CryptoHelper.Decrypt(user.Email);
-            mailMessage.To.Add(new MailboxAddress("Pair 5 Hastanesi", user.Email)); 
+            mailMessage.To.Add(new MailboxAddress("Pair 5 Hastanesi", user.Email));
             mailMessage.Subject = "Mail  Doğrulama"; // Mail konusu
 
             // HTML ve CSS içeriği oluştur

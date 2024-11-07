@@ -1,9 +1,4 @@
 ﻿using NArchitecture.Core.Persistence.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Entities;
 public class Notification : Entity<int>
@@ -12,7 +7,7 @@ public class Notification : Entity<int>
     {
     }
 
-    public Notification(int id,int appointmentID ,string message, bool emailStatus, bool smsStatus)
+    public Notification(int id, int appointmentID, string message, bool emailStatus, bool smsStatus)
     {
         Id = id;
         AppointmentID = appointmentID;

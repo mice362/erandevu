@@ -1,21 +1,13 @@
-﻿using Application.Features.Doctors.Constants;
+﻿using Application.Features.Patients.Constants;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using NArchitecture.Core.Application.Pipelines.Authorization;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
 using static Application.Features.Appointments.Constants.AppointmentsOperationClaims;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Application.Features.Patients.Constants;
-using Application.Services.Encryptions;
 
 namespace Application.Features.Appointments.Queries.GetListByDoctorDate;
 public class GetListByDoctorDateQuery : IRequest<GetListResponse<GetListByDoctorDateDto>>, ISecuredRequest
@@ -55,8 +47,8 @@ public class GetListByDoctorDateQuery : IRequest<GetListResponse<GetListByDoctor
                size: request.PageRequest.PageSize,
                cancellationToken: cancellationToken,
                   orderBy: x => x.OrderByDescending(y => y.Date),
-       
-                  predicate: x => x.DoctorID == request.DoctorId && x.Date ==request.Date &&x.DeletedDate==null
+
+                  predicate: x => x.DoctorID == request.DoctorId && x.Date == request.Date && x.DeletedDate == null
            );
 
 
@@ -67,6 +59,6 @@ public class GetListByDoctorDateQuery : IRequest<GetListResponse<GetListByDoctor
         }
 
     }
-    }
+}
 
 

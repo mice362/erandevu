@@ -1,9 +1,4 @@
 ﻿using NArchitecture.Core.Persistence.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Entities;
 public class DoctorSchedule : Entity<int>
@@ -12,7 +7,7 @@ public class DoctorSchedule : Entity<int>
     {
     }
 
-    public DoctorSchedule(int id,Guid doctorID, DateOnly date, TimeOnly startTime, TimeOnly endTime)
+    public DoctorSchedule(int id, Guid doctorID, DateOnly date, TimeOnly startTime, TimeOnly endTime)
     {
         Id = id;
         DoctorID = doctorID;

@@ -43,6 +43,10 @@ export class AddClinicComponent {
   ) {
     this.clinicForm = this.formBuilder.group({
       Name: ['', Validators.required],
+      Phone: ['', Validators.required],
+      Address: ['', Validators.required],
+      Email: ['', Validators.required],
+      About: ['', Validators.required],
     });
   }
 
@@ -63,10 +67,11 @@ export class AddClinicComponent {
 
   addClinics(): void {
     if (this.clinicForm.valid) {
+      console.log(this.clinicForm.value);
       this.clinicService.addClinic(this.clinicForm.value).subscribe(
         (response) => {
           this.toastrService.success('Klinik başarıyla eklendi');
-          this.router.navigate(['/admin-clinics']);
+          this.router.navigate(['/admin-list-clinic']);
         }
       );
     } else {

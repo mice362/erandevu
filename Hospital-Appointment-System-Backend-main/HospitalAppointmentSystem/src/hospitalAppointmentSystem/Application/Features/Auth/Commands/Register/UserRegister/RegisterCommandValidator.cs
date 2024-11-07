@@ -1,5 +1,5 @@
-﻿using System.Text.RegularExpressions;
-using FluentValidation;
+﻿using FluentValidation;
+using System.Text.RegularExpressions;
 
 namespace Application.Features.Auth.Commands.Register.UserRegister;
 
@@ -21,7 +21,7 @@ public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
 
         RuleFor(c => c.UserForRegisterDto.LastName).NotEmpty().WithMessage("Soyisim alanı boş geçilemez");
 
-        RuleFor(c=>c.UserForRegisterDto.Phone).NotEmpty().WithMessage("Telefon alanı boş geçilemez");
+        RuleFor(c => c.UserForRegisterDto.Phone).NotEmpty().WithMessage("Telefon alanı boş geçilemez");
 
     }
 

@@ -1,11 +1,5 @@
-﻿using Application.Features.Auth.Commands.Register.UserRegister;
-using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using FluentValidation;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Application.Features.Auth.Commands.Register.PatientRegister;
 public class PatientRegisterCommandValidator : AbstractValidator<PatientRegisterCommand>
@@ -22,7 +16,7 @@ public class PatientRegisterCommandValidator : AbstractValidator<PatientRegister
             );
 
         RuleFor(c => c.PatientForRegisterDto.Email).EmailAddress().WithMessage("Geçerli bir email adresi giriniz.");
-         
+
         RuleFor(c => c.PatientForRegisterDto.FirstName).NotEmpty().WithMessage("İsim alanı boş geçilemez");
 
         RuleFor(c => c.PatientForRegisterDto.LastName).NotEmpty().WithMessage("Soyisim alanı boş geçilemez");

@@ -1,11 +1,5 @@
-﻿using Application.Features.Auth.Commands.Register.PatientRegister;
-using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using FluentValidation;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Application.Features.Auth.Commands.Register.DoctorRegister;
 public class DoctorRegisterCommandValidator : AbstractValidator<DoctorRegisterCommand>
@@ -14,7 +8,7 @@ public class DoctorRegisterCommandValidator : AbstractValidator<DoctorRegisterCo
     {
         RuleFor(c => c.DoctorForRegisterDto.Email).NotEmpty().WithMessage("E-posta alanı boş olamaz.");
 
-     
+
 
         RuleFor(c => c.DoctorForRegisterDto.BranchID).NotEmpty().WithMessage("Branş alanı boş olamaz");
 

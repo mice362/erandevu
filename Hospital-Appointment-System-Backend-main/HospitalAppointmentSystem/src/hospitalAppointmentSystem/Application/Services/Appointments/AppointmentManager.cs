@@ -1,8 +1,8 @@
 using Application.Features.Appointments.Rules;
 using Application.Services.Repositories;
-using NArchitecture.Core.Persistence.Paging;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore.Query;
+using NArchitecture.Core.Persistence.Paging;
 using System.Linq.Expressions;
 
 namespace Application.Services.Appointments;
@@ -82,8 +82,8 @@ public class AppointmentManager : IAppointmentService
 
     public async Task<Appointment> CheckIfAppointmentsExistOnDate(Guid doctorId, DateOnly currentDate)
     {
-        return await _appointmentRepository.GetAsync(predicate:ds=>ds.DoctorID==doctorId && ds.Date == currentDate &&ds.DeletedDate==null);
-       
+        return await _appointmentRepository.GetAsync(predicate: ds => ds.DoctorID == doctorId && ds.Date == currentDate && ds.DeletedDate == null);
+
     }
 
 

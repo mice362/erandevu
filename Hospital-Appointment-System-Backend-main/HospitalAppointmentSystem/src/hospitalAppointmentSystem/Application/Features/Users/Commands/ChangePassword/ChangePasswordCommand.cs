@@ -1,21 +1,12 @@
 ﻿using Application.Features.Patients.Constants;
-using Application.Features.Users.Commands.Update;
 using Application.Features.Users.Constants;
 using Application.Features.Users.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
-using MediatR;
-using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Security.Hashing;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Domain.Entities;
+using MediatR;
+using NArchitecture.Core.Security.Hashing;
 using static Application.Features.Users.Constants.UsersOperationClaims;
-using System.Security.Cryptography;
 
 namespace Application.Features.Users.Commands.ChangePassword;
 public class ChangePasswordCommand : IRequest<ChangePasswordResponse>
@@ -57,7 +48,7 @@ public class ChangePasswordCommand : IRequest<ChangePasswordResponse>
             _mapper = mapper;
             _userBusinessRules = userBusinessRules;
         }
-       
+
         public async Task<ChangePasswordResponse> Handle(ChangePasswordCommand request, CancellationToken cancellationToken)
         {
             User? user = await _userRepository.GetAsync(

@@ -1,15 +1,14 @@
-﻿using Application.Features.Appointments.Constants;
+﻿using Application.Features.Appointments.Commands.Create;
+using Application.Features.Appointments.Constants;
+using Application.Services.Encryptions;
 using Application.Services.Repositories;
+using Domain.Entities;
+using MailKit.Net.Smtp;
+using MailKit.Security;
+using MimeKit;
 using NArchitecture.Core.Application.Rules;
 using NArchitecture.Core.CrossCuttingConcerns.Exception.Types;
 using NArchitecture.Core.Localization.Abstraction;
-using Domain.Entities;
-using Application.Services.Encryptions;
-using MailKit.Security;
-using MimeKit;
-using MailKit.Net.Smtp;
-using Org.BouncyCastle.Asn1.Ocsp;
-using Application.Features.Appointments.Commands.Create;
 
 namespace Application.Features.Appointments.Rules;
 
@@ -46,7 +45,7 @@ public class AppointmentBusinessRules : BaseBusinessRules
         await AppointmentShouldExistWhenSelected(appointment);
     }
 
-    public async Task<Appointment> CheckForExistingDeletedAppointment(CreateAppointmentCommand request,Appointment appointment)
+    public async Task<Appointment> CheckForExistingDeletedAppointment(CreateAppointmentCommand request, Appointment appointment)
     {
         var existingDeletedAppointment = await _appointmentRepository.GetAsync(a =>
             a.PatientID == request.PatientID &&
@@ -74,7 +73,7 @@ public class AppointmentBusinessRules : BaseBusinessRules
 
     public async Task PatientCannotHaveMultipleAppointmentsOnSameDayWithSameDoctor(Guid patientId, Guid doctorId, DateOnly date)
     {
-        bool exists = await _appointmentRepository.AnyAsync(a => a.PatientID == patientId && a.DoctorID == doctorId && a.Date == date && a.DeletedDate==null);
+        bool exists = await _appointmentRepository.AnyAsync(a => a.PatientID == patientId && a.DoctorID == doctorId && a.Date == date && a.DeletedDate == null);
         if (exists)
         {
             await throwBusinessException(AppointmentsBusinessMessages.PatientCannotHaveMultipleAppointmentsOnSameDayWithSameDoctor);

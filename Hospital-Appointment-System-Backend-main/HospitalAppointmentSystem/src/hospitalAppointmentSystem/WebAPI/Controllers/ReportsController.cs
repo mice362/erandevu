@@ -1,14 +1,14 @@
 using Application.Features.Reports.Commands.Create;
 using Application.Features.Reports.Commands.Delete;
 using Application.Features.Reports.Commands.Update;
+using Application.Features.Reports.Queries.GetByAppointmentId;
 using Application.Features.Reports.Queries.GetById;
 using Application.Features.Reports.Queries.GetList;
+using Application.Features.Reports.Queries.GetListByDoctor;
+using Application.Features.Reports.Queries.GetListByPatient;
+using Microsoft.AspNetCore.Mvc;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
-using Microsoft.AspNetCore.Mvc;
-using Application.Features.Reports.Queries.GetListByDoctor;
-using Application.Features.Reports.Queries.GetByAppointmentId;
-using Application.Features.Reports.Queries.GetListByPatient;
 
 namespace WebAPI.Controllers;
 
@@ -72,7 +72,7 @@ public class ReportsController : BaseController
     }
 
 
-    [HttpGet("getByPatientId")] 
+    [HttpGet("getByPatientId")]
     public async Task<IActionResult> GetListByPatientId([FromQuery] PageRequest pageRequest, [FromQuery] Guid patientId)
     {
         GetListByPatientQuery query = new() { PageRequest = pageRequest, PatientId = patientId };

@@ -1,22 +1,17 @@
 using Application.Features.Doctors.Constants;
 using Application.Features.Doctors.Rules;
+using Application.Services.Encryptions;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
+using MediatR;
 using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
-using MediatR;
 using static Application.Features.Doctors.Constants.DoctorsOperationClaims;
-using Application.Services.Encryptions;
-using Application.Features.Patients.Rules;
-using static Nest.JoinField;
-using NArchitecture.Core.CrossCuttingConcerns.Exception.Types;
 
 namespace Application.Features.Doctors.Commands.Update;
 
-public class UpdateDoctorCommand : IRequest<UpdatedDoctorResponse>,  ILoggableRequest, ITransactionalRequest
+public class UpdateDoctorCommand : IRequest<UpdatedDoctorResponse>, ILoggableRequest, ITransactionalRequest
 {
     public Guid Id { get; set; }
     public required string Title { get; set; }
@@ -67,7 +62,7 @@ public class UpdateDoctorCommand : IRequest<UpdatedDoctorResponse>,  ILoggableRe
             doctor.Email = CryptoHelper.Encrypt(doctor.Email);
 
             await _doctorBusinessRules.UserNationalIdentityShouldBeNotExists(request.Id, doctor.NationalIdentity);
-            
+
             await _doctorRepository.UpdateAsync(doctor!);
 
             UpdatedDoctorResponse response = _mapper.Map<UpdatedDoctorResponse>(doctor);

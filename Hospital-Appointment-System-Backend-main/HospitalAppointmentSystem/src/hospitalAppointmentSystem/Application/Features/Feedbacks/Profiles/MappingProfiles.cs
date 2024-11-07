@@ -3,11 +3,11 @@ using Application.Features.Feedbacks.Commands.Delete;
 using Application.Features.Feedbacks.Commands.Update;
 using Application.Features.Feedbacks.Queries.GetById;
 using Application.Features.Feedbacks.Queries.GetList;
-using AutoMapper;
-using NArchitecture.Core.Application.Responses;
-using Domain.Entities;
-using NArchitecture.Core.Persistence.Paging;
 using Application.Features.Feedbacks.Queries.GetListByUser;
+using AutoMapper;
+using Domain.Entities;
+using NArchitecture.Core.Application.Responses;
+using NArchitecture.Core.Persistence.Paging;
 
 namespace Application.Features.Feedbacks.Profiles;
 

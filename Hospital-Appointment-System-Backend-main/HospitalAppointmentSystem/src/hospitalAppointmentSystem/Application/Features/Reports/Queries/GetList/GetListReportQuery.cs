@@ -1,16 +1,14 @@
-using Application.Features.Reports.Constants;
+using Application.Services.Encryptions;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
-using MediatR;
 using static Application.Features.Reports.Constants.ReportsOperationClaims;
-using Microsoft.EntityFrameworkCore;
-using Application.Services.Encryptions;
 
 namespace Application.Features.Reports.Queries.GetList;
 
@@ -43,7 +41,7 @@ public class GetListReportQuery : IRequest<GetListResponse<GetListReportListItem
                 size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken,
                 include: x => x.Include(x => x.Appointment).Include(x => x.Appointment.Patient).Include(x => x.Appointment.Doctor).Include(x => x.Appointment.Doctor.Branch),
-                predicate:x=>x.DeletedDate==null
+                predicate: x => x.DeletedDate == null
             );
 
             for (int i = 0; i < reports.Items.Count; i++)

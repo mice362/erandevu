@@ -11,7 +11,7 @@ using static Application.Features.Branches.Constants.BranchesOperationClaims;
 
 namespace Application.Features.Branches.Commands.Delete;
 
-public class DeleteBranchCommand : IRequest<DeletedBranchResponse>, ILoggableRequest, ITransactionalRequest,ISecuredRequest
+public class DeleteBranchCommand : IRequest<DeletedBranchResponse>, ILoggableRequest, ITransactionalRequest, ISecuredRequest
 {
     public int Id { get; set; }
 
@@ -37,7 +37,7 @@ public class DeleteBranchCommand : IRequest<DeletedBranchResponse>, ILoggableReq
 
         public async Task<DeletedBranchResponse> Handle(DeleteBranchCommand request, CancellationToken cancellationToken)
         {
-            Branch? branch = await _branchRepository.GetAsync(predicate: b => b.Id == request.Id && b.DeletedDate==null, cancellationToken: cancellationToken);
+            Branch? branch = await _branchRepository.GetAsync(predicate: b => b.Id == request.Id && b.DeletedDate == null, cancellationToken: cancellationToken);
             await _branchBusinessRules.BranchShouldExistWhenSelected(branch);
 
             await _branchBusinessRules.CheckIfDoctorsExistInBranch(request.Id); // dont delete if branch has doctor

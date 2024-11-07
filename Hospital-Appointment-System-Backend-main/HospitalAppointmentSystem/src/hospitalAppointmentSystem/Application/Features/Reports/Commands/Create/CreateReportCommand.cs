@@ -1,24 +1,23 @@
-﻿using Application.Features.Reports.Constants;
+﻿using Application.Features.Doctors.Constants;
+using Application.Features.Reports.Constants;
 using Application.Features.Reports.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using MediatR;
 using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
-using MediatR;
 using static Application.Features.Reports.Constants.ReportsOperationClaims;
-using Application.Features.Doctors.Constants;
 
 namespace Application.Features.Reports.Commands.Create;
 
-public class CreateReportCommand : IRequest<CreatedReportResponse>, ISecuredRequest,  ILoggableRequest, ITransactionalRequest
+public class CreateReportCommand : IRequest<CreatedReportResponse>, ISecuredRequest, ILoggableRequest, ITransactionalRequest
 {
     public required int AppointmentID { get; set; }
     public required string Text { get; set; }
 
-    public string[] Roles => [Admin, Write, ReportsOperationClaims.Create,DoctorsOperationClaims.Update];
+    public string[] Roles => [Admin, Write, ReportsOperationClaims.Create, DoctorsOperationClaims.Update];
 
     public bool BypassCache { get; }
     public string? CacheKey { get; }

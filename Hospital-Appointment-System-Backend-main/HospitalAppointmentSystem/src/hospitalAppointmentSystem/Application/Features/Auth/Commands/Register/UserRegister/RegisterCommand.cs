@@ -1,10 +1,8 @@
 ﻿using Application.Features.Auth.Rules;
 using Application.Services.AuthService;
-using Application.Services.Repositories;
 using Application.Services.UsersService;
 using Domain.Entities;
 using MediatR;
-using NArchitecture.Core.Application.Dtos;
 using NArchitecture.Core.Security.Hashing;
 using NArchitecture.Core.Security.JWT;
 
@@ -51,9 +49,9 @@ public class RegisterCommand : IRequest<RegisteredResponse>
             );
             User newUser =
                 new()
-                {                   
+                {
                     FirstName = request.UserForRegisterDto.FirstName,
-                    LastName = request.UserForRegisterDto.LastName,                  
+                    LastName = request.UserForRegisterDto.LastName,
                     Phone = request.UserForRegisterDto.Phone,
                     Email = request.UserForRegisterDto.Email,
                     PasswordHash = passwordHash,

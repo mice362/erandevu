@@ -3,12 +3,12 @@ using Application.Features.Doctors.Commands.Delete;
 using Application.Features.Doctors.Commands.Update;
 using Application.Features.Doctors.Queries.GetById;
 using Application.Features.Doctors.Queries.GetList;
-using AutoMapper;
-using NArchitecture.Core.Application.Responses;
-using Domain.Entities;
-using NArchitecture.Core.Persistence.Paging;
-using Application.Features.DoctorSchedules.Queries.GetListByDoctorId;
 using Application.Features.Doctors.Queries.GetListByBranchId;
+using Application.Features.DoctorSchedules.Queries.GetListByDoctorId;
+using AutoMapper;
+using Domain.Entities;
+using NArchitecture.Core.Application.Responses;
+using NArchitecture.Core.Persistence.Paging;
 
 namespace Application.Features.Doctors.Profiles;
 

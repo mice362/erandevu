@@ -1,21 +1,15 @@
-﻿using Application.Features.Doctors.Constants;
+﻿using Application.Features.Patients.Constants;
+using Application.Services.Encryptions;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using NArchitecture.Core.Application.Pipelines.Authorization;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
 using static Application.Features.Appointments.Constants.AppointmentsOperationClaims;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Application.Features.Patients.Constants;
-using Application.Services.Encryptions;
 
 namespace Application.Features.Reports.Queries.GetListByPatient;
 public class GetListByPatientQuery : IRequest<GetListResponse<GetListByPatientDto>>, ISecuredRequest
@@ -59,7 +53,7 @@ public class GetListByPatientQuery : IRequest<GetListResponse<GetListByPatientDt
 
             for (int i = 0; i < reports.Items.Count; i++)
             {
-               
+
                 reports.Items[i].Appointment.Patient.FirstName = CryptoHelper.Decrypt(reports.Items[i].Appointment.Patient.FirstName);
                 reports.Items[i].Appointment.Patient.LastName = CryptoHelper.Decrypt(reports.Items[i].Appointment.Patient.LastName);
                 reports.Items[i].Appointment.Patient.NationalIdentity = CryptoHelper.Decrypt(reports.Items[i].Appointment.Patient.NationalIdentity);

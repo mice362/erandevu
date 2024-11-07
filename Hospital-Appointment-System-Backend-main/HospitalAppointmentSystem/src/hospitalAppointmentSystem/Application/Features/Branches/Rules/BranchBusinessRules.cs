@@ -1,21 +1,19 @@
-using AutoMapper;
-using NArchitecture.Core.CrossCuttingConcerns.Exception.Types;
-using NArchitecture.Core.Localization.Abstraction;
-using Application.Services.Repositories;
-using Application.Services;
-using Domain.Entities;
-using System.Threading.Tasks;
 using Application.Features.Branches.Commands.Create;
 using Application.Features.Branches.Constants;
 using Application.Services.Doctors;
+using Application.Services.Repositories;
+using AutoMapper;
+using Domain.Entities;
 using NArchitecture.Core.Application.Rules;
+using NArchitecture.Core.CrossCuttingConcerns.Exception.Types;
+using NArchitecture.Core.Localization.Abstraction;
 
 namespace Application.Features.Branches.Rules
 {
     public class BranchBusinessRules : BaseBusinessRules
     {
         private readonly IBranchRepository _branchRepository;
-        private readonly IDoctorService _doctorService; 
+        private readonly IDoctorService _doctorService;
         private readonly ILocalizationService _localizationService;
         private readonly IMapper _mapper;
 

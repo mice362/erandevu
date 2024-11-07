@@ -1,14 +1,13 @@
 ﻿using Application.Features.Doctors.Constants;
 using Application.Features.Doctors.Rules;
+using Application.Services.Encryptions;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using NArchitecture.Core.Application.Pipelines.Authorization;
 using MediatR;
-using static Application.Features.Doctors.Constants.DoctorsOperationClaims;
 using Microsoft.EntityFrameworkCore;
-using Application.Services.Encryptions;
-using static Nest.JoinField;
+using NArchitecture.Core.Application.Pipelines.Authorization;
+using static Application.Features.Doctors.Constants.DoctorsOperationClaims;
 
 namespace Application.Features.Doctors.Queries.GetById;
 
@@ -16,7 +15,7 @@ public class GetByIdDoctorQuery : IRequest<GetByIdDoctorResponse>, ISecuredReque
 {
     public Guid Id { get; set; }
 
-    public string[] Roles => [Admin,Read , DoctorsOperationClaims.Update];
+    public string[] Roles => [Admin, Read, DoctorsOperationClaims.Update];
 
     public class GetByIdDoctorQueryHandler : IRequestHandler<GetByIdDoctorQuery, GetByIdDoctorResponse>
     {

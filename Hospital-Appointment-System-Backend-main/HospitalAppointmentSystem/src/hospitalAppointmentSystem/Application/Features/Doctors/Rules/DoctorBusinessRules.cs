@@ -1,12 +1,12 @@
-using TurkishCitizenIdValidator;
 using Application.Features.Doctors.Constants;
+using Application.Services.Appointments;
 using Application.Services.Repositories;
+using Application.Services.UsersService;
+using Domain.Entities;
 using NArchitecture.Core.Application.Rules;
 using NArchitecture.Core.CrossCuttingConcerns.Exception.Types;
 using NArchitecture.Core.Localization.Abstraction;
-using Domain.Entities;
-using Application.Services.Appointments;
-using Application.Services.UsersService;
+using TurkishCitizenIdValidator;
 
 namespace Application.Features.Doctors.Rules
 {
@@ -50,10 +50,10 @@ namespace Application.Features.Doctors.Rules
         public async Task UserNationalIdentityShouldBeNotExists(Guid doctorId, string identity)
         {
             var doesExists = await _userService.UserNationalIdentityShouldBeNotExists(doctorId, identity);
-            if (doesExists is not null) 
+            if (doesExists is not null)
             {
                 await throwBusinessException(DoctorsBusinessMessages.UserIdentityAlreadyExists);
-            }            
+            }
         }
 
         public async Task HasFutureAppointments(Guid doctorId, DateOnly currentDate)
@@ -62,7 +62,7 @@ namespace Application.Features.Doctors.Rules
 
             if (hasFutureAppointments)
             {
-               await throwBusinessException(DoctorsBusinessMessages.HasFutureAppointments);
+                await throwBusinessException(DoctorsBusinessMessages.HasFutureAppointments);
             }
         }
 

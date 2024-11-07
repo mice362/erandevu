@@ -3,16 +3,15 @@ using Application.Features.Notifications.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using MediatR;
 using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
-using MediatR;
 using static Application.Features.Notifications.Constants.NotificationsOperationClaims;
 
 namespace Application.Features.Notifications.Commands.Create;
 
-public class CreateNotificationCommand : IRequest<CreatedNotificationResponse>, ISecuredRequest,  ILoggableRequest, ITransactionalRequest
+public class CreateNotificationCommand : IRequest<CreatedNotificationResponse>, ISecuredRequest, ILoggableRequest, ITransactionalRequest
 {
     public required int AppointmentID { get; set; }
     public required string Message { get; set; }

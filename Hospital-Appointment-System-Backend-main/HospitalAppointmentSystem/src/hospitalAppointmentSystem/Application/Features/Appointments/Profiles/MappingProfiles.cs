@@ -2,14 +2,14 @@ using Application.Features.Appointments.Commands.Create;
 using Application.Features.Appointments.Commands.Delete;
 using Application.Features.Appointments.Commands.Update;
 using Application.Features.Appointments.Queries.GetById;
-using Application.Features.Appointments.Queries.GetList;
-using AutoMapper;
-using NArchitecture.Core.Application.Responses;
-using Domain.Entities;
-using NArchitecture.Core.Persistence.Paging;
 using Application.Features.Appointments.Queries.GetByPatientId;
+using Application.Features.Appointments.Queries.GetList;
 using Application.Features.Appointments.Queries.GetListByDoctor;
 using Application.Features.Appointments.Queries.GetListByDoctorDate;
+using AutoMapper;
+using Domain.Entities;
+using NArchitecture.Core.Application.Responses;
+using NArchitecture.Core.Persistence.Paging;
 
 namespace Application.Features.Appointments.Profiles;
 
@@ -24,7 +24,7 @@ public class MappingProfiles : Profile
             .ForMember(x => x.DoctorFirstName, opt => opt.MapFrom(src => src.Doctor.FirstName))
             .ForMember(x => x.DoctorLastName, opt => opt.MapFrom(src => src.Doctor.LastName))
             .ForMember(x => x.DoctorBranch, opt => opt.MapFrom(src => src.Doctor.Branch))
-            ; 
+            ;
 
         CreateMap<UpdateAppointmentCommand, Appointment>();
         CreateMap<Appointment, UpdatedAppointmentResponse>();
@@ -43,7 +43,7 @@ public class MappingProfiles : Profile
         CreateMap<Appointment, GetListAppointmentListItemDto>();
         CreateMap<IPaginate<Appointment>, GetListResponse<GetListAppointmentListItemDto>>();
 
-        CreateMap<Appointment, GetListByPatientDto>().ForMember(x=>x.BranchName,opt=>opt.MapFrom(src=>src.Doctor.Branch.Name));
+        CreateMap<Appointment, GetListByPatientDto>().ForMember(x => x.BranchName, opt => opt.MapFrom(src => src.Doctor.Branch.Name));
         CreateMap<IPaginate<Appointment>, GetListResponse<GetListByPatientDto>>();
 
         CreateMap<Appointment, GetListByDoctorDto>();

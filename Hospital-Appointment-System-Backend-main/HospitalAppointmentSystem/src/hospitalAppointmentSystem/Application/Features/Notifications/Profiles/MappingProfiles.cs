@@ -4,8 +4,8 @@ using Application.Features.Notifications.Commands.Update;
 using Application.Features.Notifications.Queries.GetById;
 using Application.Features.Notifications.Queries.GetList;
 using AutoMapper;
-using NArchitecture.Core.Application.Responses;
 using Domain.Entities;
+using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
 
 namespace Application.Features.Notifications.Profiles;

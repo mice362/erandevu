@@ -1,27 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
-using System.Threading.Tasks;
-using Application.Features.Appointments.Constants;
-using Application.Features.Appointments.Rules;
-using Application.Services.Encryptions;
+﻿using Application.Features.Appointments.Rules;
+using Application.Features.Doctors.Constants;
+using Application.Features.Patients.Constants;
+using Application.Services.Branches;
+using Application.Services.Doctors;
+using Application.Services.Patients;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using MailKit.Net.Smtp;
-using MailKit.Security;
 using MediatR;
-using MimeKit;
 using NArchitecture.Core.Application.Pipelines.Authorization;
 using static Application.Features.Appointments.Constants.AppointmentsOperationClaims;
-
-using NArchitecture.Core.Security.Entities;
-using Application.Features.Patients.Constants;
-using Application.Features.Doctors.Constants;
-using Application.Services.Doctors;
-using Application.Services.Patients;
-using Application.Services.Branches;
 
 namespace Application.Features.Appointments.Commands.Create
 {
@@ -34,7 +22,7 @@ namespace Application.Features.Appointments.Commands.Create
         public Guid PatientID { get; set; }
 
 
-        public string[] Roles => [Admin, Write, PatientsOperationClaims.Update,DoctorsOperationClaims.Update];
+        public string[] Roles => [Admin, Write, PatientsOperationClaims.Update, DoctorsOperationClaims.Update];
 
         public bool BypassCache { get; }
         public string? CacheKey { get; }
@@ -87,17 +75,17 @@ namespace Application.Features.Appointments.Commands.Create
 
 
 
-                  // Aynı doktor ve tarihte silinmiş randevu var mı kontrol et
-                    Appointment result = await _appointmentBusinessRules.CheckForExistingDeletedAppointment(request,appointment);
+                // Aynı doktor ve tarihte silinmiş randevu var mı kontrol et
+                Appointment result = await _appointmentBusinessRules.CheckForExistingDeletedAppointment(request, appointment);
 
 
-                    await _appointmentBusinessRules.SendAppointmentConfirmationMail(result);
-                    CreatedAppointmentResponse response = _mapper.Map<CreatedAppointmentResponse>(result);
-                    return response;
-               
-                }
+                await _appointmentBusinessRules.SendAppointmentConfirmationMail(result);
+                CreatedAppointmentResponse response = _mapper.Map<CreatedAppointmentResponse>(result);
+                return response;
+
             }
-
-        
         }
+
+
     }
+}

@@ -1,20 +1,14 @@
-﻿using Application.Features.Feedbacks.Queries.GetList;
+﻿using Application.Features.Doctors.Constants;
+using Application.Features.Patients.Constants;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
 using static Application.Features.Feedbacks.Constants.FeedbacksOperationClaims;
-using System;
-using System.Linq.Expressions;
-using System.Threading;
-using System.Threading.Tasks;
-using Application.Features.Doctors.Constants;
-using Application.Features.Patients.Constants;
 
 namespace Application.Features.Feedbacks.Queries.GetListByUser
 {
@@ -24,7 +18,7 @@ namespace Application.Features.Feedbacks.Queries.GetListByUser
         public PageRequest PageRequest { get; set; }
         public Guid UserId { get; set; }
 
-        public string[] Roles => [Admin, Read,DoctorsOperationClaims.Update,PatientsOperationClaims.Update];
+        public string[] Roles => [Admin, Read, DoctorsOperationClaims.Update, PatientsOperationClaims.Update];
 
         public bool BypassCache { get; set; }
         public string? CacheKey => $"GetListFeedbacks({PageRequest.PageIndex},{PageRequest.PageSize})";
@@ -50,7 +44,7 @@ namespace Application.Features.Feedbacks.Queries.GetListByUser
                     size: request.PageRequest.PageSize,
                     cancellationToken: cancellationToken,
                     include: x => x.Include(x => x.User),
-                    predicate: x => x.UserID == request.UserId && x.DeletedDate == null 
+                    predicate: x => x.UserID == request.UserId && x.DeletedDate == null
                 );
 
                 // DTO'ya dönüştür

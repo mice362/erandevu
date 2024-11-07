@@ -1,16 +1,15 @@
 using Application.Features.Reports.Commands.Create;
 using Application.Features.Reports.Commands.Delete;
 using Application.Features.Reports.Commands.Update;
+using Application.Features.Reports.Queries.GetByAppointmentId;
 using Application.Features.Reports.Queries.GetById;
 using Application.Features.Reports.Queries.GetList;
-using AutoMapper;
-using NArchitecture.Core.Application.Responses;
-using Domain.Entities;
-using NArchitecture.Core.Persistence.Paging;
 using Application.Features.Reports.Queries.GetListByDoctor;
-using Application.Features.Reports.Queries.GetByAppointmentId;
-using Application.Features.Feedbacks.Queries.GetListByUser;
 using Application.Features.Reports.Queries.GetListByPatient;
+using AutoMapper;
+using Domain.Entities;
+using NArchitecture.Core.Application.Responses;
+using NArchitecture.Core.Persistence.Paging;
 
 namespace Application.Features.Reports.Profiles;
 

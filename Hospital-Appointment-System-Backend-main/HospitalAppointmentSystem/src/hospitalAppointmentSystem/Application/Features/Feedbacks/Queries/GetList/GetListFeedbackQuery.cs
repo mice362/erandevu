@@ -1,20 +1,19 @@
+using Application.Services.Encryptions;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
-using MediatR;
-using static Application.Features.Feedbacks.Constants.FeedbacksOperationClaims;
-using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using Application.Services.Encryptions;
+using static Application.Features.Feedbacks.Constants.FeedbacksOperationClaims;
 
 namespace Application.Features.Feedbacks.Queries.GetList;
 
-public class GetListFeedbackQuery : IRequest<GetListResponse<GetListFeedbackListItemDto>>,  ISecuredRequest
+public class GetListFeedbackQuery : IRequest<GetListResponse<GetListFeedbackListItemDto>>, ISecuredRequest
 {
     public PageRequest PageRequest { get; set; }
 
@@ -38,11 +37,11 @@ public class GetListFeedbackQuery : IRequest<GetListResponse<GetListFeedbackList
 
         public async Task<GetListResponse<GetListFeedbackListItemDto>> Handle(GetListFeedbackQuery request, CancellationToken cancellationToken)
         {
-       
+
             Expression<Func<Feedback, bool>> filter = feedback => feedback.DeletedDate == null;
             IPaginate<Feedback> feedbacks = await _feedbackRepository.GetListAsync(
                 index: request.PageRequest.PageIndex,
-                size: request.PageRequest.PageSize, 
+                size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken,
                  include: x => x.Include(x => x.User),
                  predicate: filter

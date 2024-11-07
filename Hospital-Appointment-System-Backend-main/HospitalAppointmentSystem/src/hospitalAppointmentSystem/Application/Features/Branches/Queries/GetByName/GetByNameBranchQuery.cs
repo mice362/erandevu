@@ -1,10 +1,9 @@
-using Application.Features.Branches.Constants;
 using Application.Features.Branches.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using NArchitecture.Core.Application.Pipelines.Authorization;
 using MediatR;
+using NArchitecture.Core.Application.Pipelines.Authorization;
 using static Application.Features.Branches.Constants.BranchesOperationClaims;
 
 namespace Application.Features.Branches.Queries.GetByName;

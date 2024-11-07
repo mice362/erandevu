@@ -1,9 +1,4 @@
 ﻿using NArchitecture.Core.Persistence.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Entities;
 public class Feedback : Entity<int>
@@ -12,7 +7,7 @@ public class Feedback : Entity<int>
     {
     }
 
-    public Feedback(int id,Guid userID, string text,bool isApproved)
+    public Feedback(int id, Guid userID, string text, bool isApproved)
     {
         Id = id;
         UserID = userID;
@@ -22,7 +17,7 @@ public class Feedback : Entity<int>
 
     public Guid UserID { get; set; }
     public string Text { get; set; }
-    public bool IsApproved { get; set; } = false; 
+    public bool IsApproved { get; set; } = false;
     public virtual User? User { get; set; }
 }
 

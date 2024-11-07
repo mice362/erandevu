@@ -1,23 +1,16 @@
 using Application.Features.Appointments.Constants;
 using Application.Features.Appointments.Rules;
+using Application.Features.Doctors.Constants;
+using Application.Features.Patients.Constants;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
-using MediatR;
 using static Application.Features.Appointments.Constants.AppointmentsOperationClaims;
-using Application.Features.Patients.Constants;
-using Application.Features.Doctors.Constants;
-using MailKit.Security;
-using MimeKit;
-using MailKit.Net.Smtp;
-using Org.BouncyCastle.Asn1.Ocsp;
-using Microsoft.EntityFrameworkCore;
-using Application.Services.Encryptions;
-using Application.Services.Doctors;
 
 namespace Application.Features.Appointments.Commands.Delete;
 
@@ -52,8 +45,8 @@ public class DeleteAppointmentCommand : IRequest<DeletedAppointmentResponse>, IS
 
         public async Task<DeletedAppointmentResponse> Handle(DeleteAppointmentCommand request, CancellationToken cancellationToken)
         {
-            Appointment? appointment = await _appointmentRepository.GetAsync(predicate: a => a.Id == request.Id &&a.DeletedDate==null,
-             include: a => a .Include(a => a.Doctor) .ThenInclude(d => d.Branch)
+            Appointment? appointment = await _appointmentRepository.GetAsync(predicate: a => a.Id == request.Id && a.DeletedDate == null,
+             include: a => a.Include(a => a.Doctor).ThenInclude(d => d.Branch)
             .Include(a => a.Patient), cancellationToken: cancellationToken);
             await _appointmentBusinessRules.AppointmentShouldExistWhenSelected(appointment);
             await _appointmentRepository.DeleteAsync(appointment!);
@@ -64,7 +57,7 @@ public class DeleteAppointmentCommand : IRequest<DeletedAppointmentResponse>, IS
             DeletedAppointmentResponse response = _mapper.Map<DeletedAppointmentResponse>(appointment);
             return response;
         }
-  
+
 
     }
 }

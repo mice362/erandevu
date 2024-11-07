@@ -3,9 +3,9 @@ using Application.Features.Notifications.Commands.Delete;
 using Application.Features.Notifications.Commands.Update;
 using Application.Features.Notifications.Queries.GetById;
 using Application.Features.Notifications.Queries.GetList;
+using Microsoft.AspNetCore.Mvc;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
-using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
 

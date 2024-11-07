@@ -1,17 +1,13 @@
-﻿using Application.Features.Doctors.Constants;
+﻿using Application.Services.Encryptions;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
-using MediatR;
 using static Application.Features.Doctors.Constants.DoctorsOperationClaims;
-using Microsoft.EntityFrameworkCore;
-using Application.Services.Encryptions;
-using System.Numerics;
 
 namespace Application.Features.Doctors.Queries.GetList;
 
@@ -41,7 +37,7 @@ public class GetListDoctorQuery : IRequest<GetListResponse<GetListDoctorListItem
         {
             IPaginate<Doctor> doctors = await _doctorRepository.GetListAsync(
                 index: request.PageRequest.PageIndex,
-                size: request.PageRequest.PageSize, 
+                size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken,
             include: x => x.Include(x => x.Branch)
             );
@@ -58,8 +54,8 @@ public class GetListDoctorQuery : IRequest<GetListResponse<GetListDoctorListItem
                 doctors.Items[i].Email = CryptoHelper.Decrypt(doctors.Items[i].Email);
             }
 
-                
-                GetListResponse<GetListDoctorListItemDto> response = _mapper.Map<GetListResponse<GetListDoctorListItemDto>>(doctors); 
+
+            GetListResponse<GetListDoctorListItemDto> response = _mapper.Map<GetListResponse<GetListDoctorListItemDto>>(doctors);
             return response;
         }
     }

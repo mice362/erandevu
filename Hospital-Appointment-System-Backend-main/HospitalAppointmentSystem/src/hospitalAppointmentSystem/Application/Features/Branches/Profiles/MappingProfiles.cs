@@ -2,12 +2,12 @@ using Application.Features.Branches.Commands.Create;
 using Application.Features.Branches.Commands.Delete;
 using Application.Features.Branches.Commands.Update;
 using Application.Features.Branches.Queries.GetById;
+using Application.Features.Branches.Queries.GetByName;
 using Application.Features.Branches.Queries.GetList;
 using AutoMapper;
-using NArchitecture.Core.Application.Responses;
 using Domain.Entities;
+using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
-using Application.Features.Branches.Queries.GetByName;
 
 namespace Application.Features.Branches.Profiles;
 

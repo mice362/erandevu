@@ -3,11 +3,10 @@ using Application.Features.DoctorSchedules.Commands.Delete;
 using Application.Features.DoctorSchedules.Commands.Update;
 using Application.Features.DoctorSchedules.Queries.GetById;
 using Application.Features.DoctorSchedules.Queries.GetList;
+using Application.Features.DoctorSchedules.Queries.GetListByDoctorId;
+using Microsoft.AspNetCore.Mvc;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
-using Microsoft.AspNetCore.Mvc;
-using Application.Features.DoctorSchedules.Queries.GetListByDoctorId;
-using Application.Features.Appointments.Queries.GetListByDoctorDate;
 
 namespace WebAPI.Controllers;
 

@@ -1,19 +1,17 @@
 using Application.Features.Patients.Constants;
-using Application.Features.Patients.Constants;
 using Application.Features.Patients.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using MediatR;
 using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
-using MediatR;
 using static Application.Features.Patients.Constants.PatientsOperationClaims;
 
 namespace Application.Features.Patients.Commands.Delete;
 
-public class DeletePatientCommand : IRequest<DeletedPatientResponse>,  ILoggableRequest, ITransactionalRequest, ISecuredRequest
+public class DeletePatientCommand : IRequest<DeletedPatientResponse>, ILoggableRequest, ITransactionalRequest, ISecuredRequest
 {
     public Guid Id { get; set; }
 
@@ -39,7 +37,7 @@ public class DeletePatientCommand : IRequest<DeletedPatientResponse>,  ILoggable
 
         public async Task<DeletedPatientResponse> Handle(DeletePatientCommand request, CancellationToken cancellationToken)
         {
-            Patient? patient = await _patientRepository.GetAsync(predicate: p => p.Id == request.Id && p.DeletedDate==null, cancellationToken: cancellationToken);
+            Patient? patient = await _patientRepository.GetAsync(predicate: p => p.Id == request.Id && p.DeletedDate == null, cancellationToken: cancellationToken);
             await _patientBusinessRules.PatientShouldExistWhenSelected(patient);
 
             patient.DeletedDate = DateTime.Now;

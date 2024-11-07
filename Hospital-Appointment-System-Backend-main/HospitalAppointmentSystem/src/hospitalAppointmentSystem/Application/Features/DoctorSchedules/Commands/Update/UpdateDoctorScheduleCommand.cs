@@ -1,18 +1,14 @@
-﻿using Application.Features.DoctorSchedules.Constants;
+﻿using Application.Features.Doctors.Constants;
+using Application.Features.DoctorSchedules.Constants;
 using Application.Features.DoctorSchedules.Rules;
+using Application.Services.Appointments;
 using Application.Services.Repositories;
 using AutoMapper;
-using Domain.Entities;
+using MediatR;
 using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
-using MediatR;
 using static Application.Features.DoctorSchedules.Constants.DoctorSchedulesOperationClaims;
-using Application.Features.Doctors.Constants;
-using NArchitecture.Core.CrossCuttingConcerns.Exception.Types;
-using Application.Services.Appointments;
-using Application.Services.DoctorSchedules;
 
 namespace Application.Features.DoctorSchedules.Commands.Update
 {
@@ -38,7 +34,7 @@ namespace Application.Features.DoctorSchedules.Commands.Update
             private readonly IAppointmentService _appointmentService;
 
             public UpdateDoctorScheduleCommandHandler(IMapper mapper, IDoctorScheduleRepository doctorScheduleRepository,
-                                             DoctorScheduleBusinessRules doctorScheduleBusinessRules,IAppointmentService appointmentService)
+                                             DoctorScheduleBusinessRules doctorScheduleBusinessRules, IAppointmentService appointmentService)
             {
                 _mapper = mapper;
                 _doctorScheduleRepository = doctorScheduleRepository;
@@ -53,7 +49,7 @@ namespace Application.Features.DoctorSchedules.Commands.Update
 
 
 
-                var appointment = await _doctorScheduleBusinessRules.CheckIfAppointmentsExistOnDateDoctor(request.DoctorID, existingSchedule.Date );
+                var appointment = await _doctorScheduleBusinessRules.CheckIfAppointmentsExistOnDateDoctor(request.DoctorID, existingSchedule.Date);
 
                 // Güncellenmek istenen tarih ve doktor ID'si ile silinmiş bir kayıt var mı diye kontrol edelim
                 var conflictingSchedule = await _doctorScheduleRepository.GetAsync(ds => ds.DoctorID == request.DoctorID && ds.Date == request.Date);
@@ -73,7 +69,7 @@ namespace Application.Features.DoctorSchedules.Commands.Update
 
 
             }
-          
+
         }
     }
 }

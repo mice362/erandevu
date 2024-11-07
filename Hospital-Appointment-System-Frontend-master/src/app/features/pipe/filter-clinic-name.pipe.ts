@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Clinic } from '../panels/clinic/models/clinic';
+import { Clinic } from '../clinics/models/clinic';
 
 @Pipe({
   name: 'filterClinicName',

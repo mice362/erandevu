@@ -1,9 +1,9 @@
-﻿using System.Linq.Expressions;
-using Application.Features.Users.Rules;
+﻿using Application.Features.Users.Rules;
 using Application.Services.Repositories;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore.Query;
 using NArchitecture.Core.Persistence.Paging;
+using System.Linq.Expressions;
 
 namespace Application.Services.UsersService;
 
@@ -26,9 +26,9 @@ public class UserManager : IUserService
         CancellationToken cancellationToken = default
     )
     {
-        
+
         User? user = await _userRepository.GetAsync(predicate, include, withDeleted, enableTracking, cancellationToken);
-       
+
         return user;
     }
 
@@ -59,7 +59,7 @@ public class UserManager : IUserService
     public async Task<User> AddAsync(User user)
     {
         await _userBusinessRules.UserEmailShouldNotExistsWhenInsert(user.Email);
-        User addedUser = await _userRepository.AddAsync(user); 
+        User addedUser = await _userRepository.AddAsync(user);
 
         return addedUser;
     }

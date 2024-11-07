@@ -1,7 +1,4 @@
-﻿using Application.Features.Branches.Commands.Update;
-using Application.Features.Branches.Constants;
-using Application.Features.Branches.Rules;
-using Application.Features.Clinics.Constants;
+﻿using Application.Features.Clinics.Constants;
 using Application.Features.Clinics.Rules;
 using Application.Services.Repositories;
 using AutoMapper;

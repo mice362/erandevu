@@ -1,10 +1,4 @@
 ﻿using NArchitecture.Core.Persistence.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Entities;
 public class Appointment : Entity<int>
@@ -13,7 +7,7 @@ public class Appointment : Entity<int>
     {
     }
 
-    public Appointment(int id,DateOnly date, TimeOnly time, bool status, Guid doctorID, Guid patientID)
+    public Appointment(int id, DateOnly date, TimeOnly time, bool status, Guid doctorID, Guid patientID)
     {
         Id = id;
         Date = date;

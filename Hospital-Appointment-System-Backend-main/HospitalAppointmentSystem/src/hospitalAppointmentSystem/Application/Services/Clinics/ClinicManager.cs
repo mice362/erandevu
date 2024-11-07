@@ -1,16 +1,9 @@
-﻿using Application.Features.Branches.Rules;
-using Application.Features.Clinics.Rules;
-using Application.Services.Branches;
+﻿using Application.Features.Clinics.Rules;
 using Application.Services.Repositories;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore.Query;
 using NArchitecture.Core.Persistence.Paging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Services.Clinics;
 

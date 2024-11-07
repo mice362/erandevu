@@ -1,14 +1,11 @@
-﻿using Application.Features.DoctorSchedules.Constants;
+﻿using Application.Features.DoctorSchedules.Commands.Update;
+using Application.Features.DoctorSchedules.Constants;
+using Application.Services.Appointments;
 using Application.Services.Repositories;
+using Domain.Entities;
 using NArchitecture.Core.Application.Rules;
 using NArchitecture.Core.CrossCuttingConcerns.Exception.Types;
 using NArchitecture.Core.Localization.Abstraction;
-using Domain.Entities;
-using Application.Services.DoctorSchedules;
-using Org.BouncyCastle.Asn1.Ocsp;
-using Application.Services.Appointments;
-using Application.Features.Doctors.Constants;
-using Application.Features.DoctorSchedules.Commands.Update;
 
 namespace Application.Features.DoctorSchedules.Rules;
 
@@ -19,7 +16,7 @@ public class DoctorScheduleBusinessRules : BaseBusinessRules
     private readonly ILocalizationService _localizationService;
 
     public DoctorScheduleBusinessRules(IDoctorScheduleRepository doctorScheduleRepository, ILocalizationService localizationService,
-       IAppointmentService appointmentService )
+       IAppointmentService appointmentService)
     {
         _doctorScheduleRepository = doctorScheduleRepository;
         _localizationService = localizationService;
@@ -52,7 +49,7 @@ public class DoctorScheduleBusinessRules : BaseBusinessRules
     public async Task DoctorScheduleShouldNotBeDeletedIfAppointmentsExist(int doctorScheduleId, CancellationToken cancellationToken)
     {
         DoctorSchedule? doctorSchedule = await _doctorScheduleRepository.GetAsync(
-            predicate: ds => ds.Id == doctorScheduleId && ds.DeletedDate==null,
+            predicate: ds => ds.Id == doctorScheduleId && ds.DeletedDate == null,
             enableTracking: false,
             cancellationToken: cancellationToken
         );
@@ -65,7 +62,7 @@ public class DoctorScheduleBusinessRules : BaseBusinessRules
             cancellationToken: cancellationToken
         );
 
-        if (hasAppointments!=null)
+        if (hasAppointments != null)
             await throwBusinessException(DoctorSchedulesBusinessMessages.DoctorScheduleCannotBeDeletedDueToExistingAppointments);
     }
 
@@ -91,7 +88,7 @@ public class DoctorScheduleBusinessRules : BaseBusinessRules
     public async Task<DoctorSchedule> CheckIfDoctorScheduleExists(int doctorScheduleId, CancellationToken cancellationToken)
     {
         var existingSchedule = await _doctorScheduleRepository.GetAsync(
-            predicate: ds => ds.Id == doctorScheduleId &&ds.DeletedDate == null,
+            predicate: ds => ds.Id == doctorScheduleId && ds.DeletedDate == null,
             enableTracking: false,
             cancellationToken: cancellationToken
         );
@@ -106,20 +103,20 @@ public class DoctorScheduleBusinessRules : BaseBusinessRules
 
     public async Task CheckIfDoctorScheduleDateIsAvailable(Guid doctorId, DateOnly date, int existingId)
     {
-        var conflictingSchedule =await  _doctorScheduleRepository.GetAsync(ds => ds.DoctorID == doctorId && ds.Date == date);
-        
-        if (conflictingSchedule != null && conflictingSchedule.Id != existingId )
+        var conflictingSchedule = await _doctorScheduleRepository.GetAsync(ds => ds.DoctorID == doctorId && ds.Date == date);
+
+        if (conflictingSchedule != null && conflictingSchedule.Id != existingId)
         {
-            if(conflictingSchedule.DeletedDate==null)
-            throw new BusinessException("Bu doktorun belirtilen tarihteki programı zaten mevcut.");
+            if (conflictingSchedule.DeletedDate == null)
+                throw new BusinessException("Bu doktorun belirtilen tarihteki programı zaten mevcut.");
 
         }
     }
 
-    public async Task<Appointment> CheckIfAppointmentsExistOnDateDoctor(Guid doctorId,DateOnly currentDate )
+    public async Task<Appointment> CheckIfAppointmentsExistOnDateDoctor(Guid doctorId, DateOnly currentDate)
     {
         var appointment = await _appointmentService.CheckIfAppointmentsExistOnDate(doctorId, currentDate);
-        if(appointment != null )
+        if (appointment != null)
         {
             throw new BusinessException(DoctorSchedulesBusinessMessages.CheckIfAppointmentsExistOnDate);
         }

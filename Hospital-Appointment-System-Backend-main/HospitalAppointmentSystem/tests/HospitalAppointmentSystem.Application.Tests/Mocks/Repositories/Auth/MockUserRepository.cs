@@ -1,9 +1,9 @@
-﻿using System.Linq.Expressions;
-using Application.Services.Repositories;
+﻿using Application.Services.Repositories;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore.Query;
 using Moq;
 using StarterProject.Application.Tests.Mocks.FakeDatas;
+using System.Linq.Expressions;
 
 namespace StarterProject.Application.Tests.Mocks.Repositories.Auth;
 

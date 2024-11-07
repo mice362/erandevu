@@ -1,24 +1,22 @@
-using Application.Features.Reports.Constants;
+using Application.Features.Doctors.Constants;
 using Application.Features.Reports.Constants;
 using Application.Features.Reports.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using MediatR;
 using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
-using MediatR;
 using static Application.Features.Reports.Constants.ReportsOperationClaims;
-using Application.Features.Doctors.Constants;
 
 namespace Application.Features.Reports.Commands.Delete;
 
-public class DeleteReportCommand : IRequest<DeletedReportResponse>, ISecuredRequest,  ILoggableRequest, ITransactionalRequest
+public class DeleteReportCommand : IRequest<DeletedReportResponse>, ISecuredRequest, ILoggableRequest, ITransactionalRequest
 {
     public int Id { get; set; }
 
-    public string[] Roles => [Admin, Write, ReportsOperationClaims.Delete,DoctorsOperationClaims.Update];
+    public string[] Roles => [Admin, Write, ReportsOperationClaims.Delete, DoctorsOperationClaims.Update];
 
     public bool BypassCache { get; }
     public string? CacheKey { get; }
@@ -43,10 +41,10 @@ public class DeleteReportCommand : IRequest<DeletedReportResponse>, ISecuredRequ
             Report? report = await _reportRepository.GetAsync(predicate: r => r.Id == request.Id, cancellationToken: cancellationToken);
             await _reportBusinessRules.ReportShouldExistWhenSelected(report);
 
-            report.DeletedDate= DateTime.UtcNow;
-         
+            report.DeletedDate = DateTime.UtcNow;
+
             await _reportRepository.UpdateAsync(report!);
-            
+
 
             DeletedReportResponse response = _mapper.Map<DeletedReportResponse>(report);
             return response;

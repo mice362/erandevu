@@ -1,5 +1,4 @@
-﻿using Domain.Entities.Base;
-using NArchitecture.Core.Persistence.Repositories;
+﻿using NArchitecture.Core.Persistence.Repositories;
 
 namespace Domain.Entities;
 public class Clinic : Entity<int>
@@ -23,4 +22,6 @@ public class Clinic : Entity<int>
     public string Address { get; set; }
     public string Email { get; set; }
     public string About { get; set; }
+    public byte[] Logo { get; set; }
+    public string LogoName { get; set; }
 }

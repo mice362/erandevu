@@ -28,12 +28,12 @@ public class GetByNameBranchWithoutControlQuery : IRequest<GetByNameBranchRespon
 
         public async Task<GetByNameBranchResponse> Handle(GetByNameBranchWithoutControlQuery request, CancellationToken cancellationToken)
         {
-           
-                Branch? branch = await _branchRepository.GetAsync(predicate: b => b.Name == request.Name && b.DeletedDate==null, cancellationToken: cancellationToken);
 
-                GetByNameBranchResponse? response = _mapper.Map<GetByNameBranchResponse>(branch);
-                return response;
-            
+            Branch? branch = await _branchRepository.GetAsync(predicate: b => b.Name == request.Name && b.DeletedDate == null, cancellationToken: cancellationToken);
+
+            GetByNameBranchResponse? response = _mapper.Map<GetByNameBranchResponse>(branch);
+            return response;
+
         }
     }
 }

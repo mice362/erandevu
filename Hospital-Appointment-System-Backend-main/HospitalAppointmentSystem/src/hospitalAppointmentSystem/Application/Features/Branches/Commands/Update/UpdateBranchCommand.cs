@@ -3,16 +3,15 @@ using Application.Features.Branches.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using MediatR;
 using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
-using MediatR;
 using static Application.Features.Branches.Constants.BranchesOperationClaims;
 
 namespace Application.Features.Branches.Commands.Update;
 
-public class UpdateBranchCommand : IRequest<UpdatedBranchResponse>,  ISecuredRequest, ILoggableRequest, ITransactionalRequest
+public class UpdateBranchCommand : IRequest<UpdatedBranchResponse>, ISecuredRequest, ILoggableRequest, ITransactionalRequest
 {
     public int Id { get; set; }
     public required string Name { get; set; }

@@ -1,22 +1,18 @@
-﻿using Application.Features.Patients.Constants;
-using Application.Features.Patients.Rules;
+﻿using Application.Features.Patients.Rules;
+using Application.Services.Encryptions;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using MediatR;
 using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
-using MediatR;
-using static Application.Features.Patients.Constants.PatientsOperationClaims;
 using NArchitecture.Core.Security.Hashing;
-using System.Numerics;
-using Application.Services.Encryptions;
-using System.Numerics;
+using static Application.Features.Patients.Constants.PatientsOperationClaims;
 
 namespace Application.Features.Patients.Commands.Create;
 
-public class CreatePatientCommand : IRequest<CreatedPatientResponse>,  ILoggableRequest, ITransactionalRequest, ISecuredRequest
+public class CreatePatientCommand : IRequest<CreatedPatientResponse>, ILoggableRequest, ITransactionalRequest, ISecuredRequest
 {
     public int Age { get; set; }
     public double Height { get; set; }
@@ -72,7 +68,7 @@ public class CreatePatientCommand : IRequest<CreatedPatientResponse>,  ILoggable
             patient.Address = CryptoHelper.Encrypt(patient.Address);
             patient.Email = CryptoHelper.Encrypt(patient.Email);
 
-      
+
             await _patientRepository.AddAsync(patient);
 
             CreatedPatientResponse response = _mapper.Map<CreatedPatientResponse>(patient);

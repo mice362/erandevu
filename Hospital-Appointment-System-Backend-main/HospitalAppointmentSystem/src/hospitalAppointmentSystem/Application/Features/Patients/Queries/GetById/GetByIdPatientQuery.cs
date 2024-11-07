@@ -1,13 +1,11 @@
 ﻿using Application.Features.Patients.Constants;
 using Application.Features.Patients.Rules;
+using Application.Services.Encryptions;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using NArchitecture.Core.Application.Pipelines.Authorization;
 using MediatR;
 using static Application.Features.Patients.Constants.PatientsOperationClaims;
-using Application.Services.Encryptions;
-using System.Numerics;
 
 namespace Application.Features.Patients.Queries.GetById;
 

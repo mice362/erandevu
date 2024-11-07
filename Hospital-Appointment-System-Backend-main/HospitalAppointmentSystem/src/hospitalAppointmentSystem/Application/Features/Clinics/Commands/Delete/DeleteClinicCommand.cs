@@ -1,6 +1,4 @@
-﻿using Application.Features.Branches.Commands.Delete;
-using Application.Features.Branches.Rules;
-using Application.Features.Clinics.Constants;
+﻿using Application.Features.Clinics.Constants;
 using Application.Features.Clinics.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
@@ -40,7 +38,7 @@ public class DeleteClinicCommand : IRequest<DeletedClinicResponse>, ILoggableReq
         public async Task<DeletedClinicResponse> Handle(DeleteClinicCommand request, CancellationToken cancellationToken)
         {
             Clinic? clinic = await _clinicRepository.GetAsync(predicate: b => b.Id == request.Id && b.DeletedDate == null, cancellationToken: cancellationToken);
-            
+
             //TODO: bu klinik altında aktif bir kullanıcı bulunacak mı onu kontrol etmek gerekecek
             //await _clinicBusinessRules.CheckIfDoctorsExistInBranch(request.Id); // dont delete if branch has doctor
 

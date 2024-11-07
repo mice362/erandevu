@@ -1,12 +1,11 @@
-using Application.Features.DoctorSchedules.Constants;
+using Application.Features.Doctors.Constants;
 using Application.Features.DoctorSchedules.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using NArchitecture.Core.Application.Pipelines.Authorization;
 using MediatR;
+using NArchitecture.Core.Application.Pipelines.Authorization;
 using static Application.Features.DoctorSchedules.Constants.DoctorSchedulesOperationClaims;
-using Application.Features.Doctors.Constants;
 
 namespace Application.Features.DoctorSchedules.Queries.GetById;
 
@@ -31,7 +30,7 @@ public class GetByIdDoctorScheduleQuery : IRequest<GetByIdDoctorScheduleResponse
 
         public async Task<GetByIdDoctorScheduleResponse> Handle(GetByIdDoctorScheduleQuery request, CancellationToken cancellationToken)
         {
-            DoctorSchedule? doctorSchedule = await _doctorScheduleRepository.GetAsync(predicate: ds => ds.Id == request.Id && ds.DeletedDate==null, cancellationToken: cancellationToken);
+            DoctorSchedule? doctorSchedule = await _doctorScheduleRepository.GetAsync(predicate: ds => ds.Id == request.Id && ds.DeletedDate == null, cancellationToken: cancellationToken);
             await _doctorScheduleBusinessRules.DoctorScheduleShouldExistWhenSelected(doctorSchedule);
 
             GetByIdDoctorScheduleResponse response = _mapper.Map<GetByIdDoctorScheduleResponse>(doctorSchedule);

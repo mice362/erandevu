@@ -1,18 +1,14 @@
-using Application.Features.Appointments.Constants;
+using Application.Services.Encryptions;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
-using MediatR;
 using static Application.Features.Appointments.Constants.AppointmentsOperationClaims;
-using Microsoft.EntityFrameworkCore;
-using Application.Features.Patients.Constants;
-using Application.Services.Encryptions;
-using System.Numerics;
 
 namespace Application.Features.Appointments.Queries.GetList;
 
@@ -44,7 +40,7 @@ public class GetListAppointmentQuery : IRequest<GetListResponse<GetListAppointme
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken,
-                orderBy: x => x.OrderByDescending(y => y.Date), 
+                orderBy: x => x.OrderByDescending(y => y.Date),
                 include: x => x.Include(x => x.Doctor).Include(x => x.Patient).Include(x => x.Doctor.Branch)
             );
 
@@ -64,7 +60,7 @@ public class GetListAppointmentQuery : IRequest<GetListResponse<GetListAppointme
                 appointments.Items[i].Doctor.Address = CryptoHelper.Decrypt(appointments.Items[i].Doctor.Address);
             }
 
-         
+
 
 
             GetListResponse<GetListAppointmentListItemDto> response = _mapper.Map<GetListResponse<GetListAppointmentListItemDto>>(appointments);

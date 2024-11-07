@@ -1,13 +1,10 @@
-using Application.Features.Managers.Constants;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
+using MediatR;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
-using MediatR;
 using static Application.Features.Managers.Constants.ManagersOperationClaims;
 
 namespace Application.Features.Managers.Queries.GetList;
@@ -38,7 +35,7 @@ public class GetListManagerQuery : IRequest<GetListResponse<GetListManagerListIt
         {
             IPaginate<Manager> managers = await _managerRepository.GetListAsync(
                 index: request.PageRequest.PageIndex,
-                size: request.PageRequest.PageSize, 
+                size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken
             );
 

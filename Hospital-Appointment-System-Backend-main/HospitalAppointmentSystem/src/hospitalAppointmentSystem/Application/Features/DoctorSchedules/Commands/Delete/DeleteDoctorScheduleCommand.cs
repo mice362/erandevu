@@ -1,20 +1,18 @@
-using Application.Features.DoctorSchedules.Constants;
+using Application.Features.Doctors.Constants;
 using Application.Features.DoctorSchedules.Constants;
 using Application.Features.DoctorSchedules.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using MediatR;
 using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
-using MediatR;
 using static Application.Features.DoctorSchedules.Constants.DoctorSchedulesOperationClaims;
-using Application.Features.Doctors.Constants;
 
 namespace Application.Features.DoctorSchedules.Commands.Delete;
 
-public class DeleteDoctorScheduleCommand : IRequest<DeletedDoctorScheduleResponse>, ISecuredRequest,  ILoggableRequest, ITransactionalRequest
+public class DeleteDoctorScheduleCommand : IRequest<DeletedDoctorScheduleResponse>, ISecuredRequest, ILoggableRequest, ITransactionalRequest
 {
     public int Id { get; set; }
 
@@ -40,7 +38,7 @@ public class DeleteDoctorScheduleCommand : IRequest<DeletedDoctorScheduleRespons
 
         public async Task<DeletedDoctorScheduleResponse> Handle(DeleteDoctorScheduleCommand request, CancellationToken cancellationToken)
         {
-            DoctorSchedule? doctorSchedule = await _doctorScheduleRepository.GetAsync(predicate: ds => ds.Id == request.Id && ds.DeletedDate==null, cancellationToken: cancellationToken);
+            DoctorSchedule? doctorSchedule = await _doctorScheduleRepository.GetAsync(predicate: ds => ds.Id == request.Id && ds.DeletedDate == null, cancellationToken: cancellationToken);
             await _doctorScheduleBusinessRules.DoctorScheduleShouldExistWhenSelected(doctorSchedule);
             await _doctorScheduleBusinessRules.DoctorScheduleShouldNotBeDeletedIfAppointmentsExist(request.Id, cancellationToken);
 

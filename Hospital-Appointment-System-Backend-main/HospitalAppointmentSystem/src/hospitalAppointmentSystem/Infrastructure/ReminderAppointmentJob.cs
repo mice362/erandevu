@@ -1,19 +1,15 @@
-﻿using Quartz;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Application.Features.Appointments.Queries.GetList;
+using Application.Services.Encryptions;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using MailKit.Security;
-using MimeKit;
 using MailKit.Net.Smtp;
-using NArchitecture.Core.Persistence.Paging;
+using MailKit.Security;
 using Microsoft.EntityFrameworkCore;
-using NArchitecture.Core.Application.Responses;
-using Application.Features.Appointments.Queries.GetList;
+using MimeKit;
 using NArchitecture.Core.Application.Requests;
-using Application.Services.Encryptions;
+using NArchitecture.Core.Persistence.Paging;
+using Quartz;
 
 public class ReminderAppointmentJob : IJob
 {

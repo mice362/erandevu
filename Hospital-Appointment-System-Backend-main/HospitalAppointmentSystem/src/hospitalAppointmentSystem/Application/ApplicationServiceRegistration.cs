@@ -1,6 +1,15 @@
-using System.Reflection;
+using Application.Services.Appointments;
 using Application.Services.AuthenticatorService;
 using Application.Services.AuthService;
+using Application.Services.Branches;
+using Application.Services.Clinics;
+using Application.Services.Doctors;
+using Application.Services.DoctorSchedules;
+using Application.Services.Feedbacks;
+using Application.Services.Managers;
+using Application.Services.Notifications;
+using Application.Services.Patients;
+using Application.Services.Reports;
 using Application.Services.UsersService;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,16 +29,7 @@ using NArchitecture.Core.Mailing;
 using NArchitecture.Core.Mailing.MailKit;
 using NArchitecture.Core.Security.DependencyInjection;
 using NArchitecture.Core.Security.JWT;
-using Application.Services.Appointments;
-using Application.Services.Branches;
-using Application.Services.Doctors;
-using Application.Services.DoctorSchedules;
-using Application.Services.Feedbacks;
-using Application.Services.Managers;
-using Application.Services.Notifications;
-using Application.Services.Patients;
-using Application.Services.Reports;
-using Application.Services.Clinics;
+using System.Reflection;
 
 
 namespace Application;

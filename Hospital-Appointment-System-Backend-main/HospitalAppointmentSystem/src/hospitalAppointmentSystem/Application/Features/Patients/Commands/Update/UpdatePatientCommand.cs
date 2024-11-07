@@ -1,20 +1,17 @@
 using Application.Features.Patients.Constants;
 using Application.Features.Patients.Rules;
+using Application.Services.Encryptions;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
+using MediatR;
 using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
-using MediatR;
 using static Application.Features.Patients.Constants.PatientsOperationClaims;
-using Application.Services.Encryptions;
-using Application.Features.Auth.Rules;
 
 namespace Application.Features.Patients.Commands.Update;
 
-public class UpdatePatientCommand : IRequest<UpdatedPatientResponse>,  ILoggableRequest, ITransactionalRequest
+public class UpdatePatientCommand : IRequest<UpdatedPatientResponse>, ILoggableRequest, ITransactionalRequest
 {
     public Guid Id { get; set; }
     public required int Age { get; set; }
@@ -66,7 +63,7 @@ public class UpdatePatientCommand : IRequest<UpdatedPatientResponse>,  ILoggable
             patient.Address = CryptoHelper.Encrypt(patient.Address);
             patient.Email = CryptoHelper.Encrypt(patient.Email);
 
-            await _patientBusinessRules.UserNationalIdentityShouldBeNotExists(patient.Id,patient.NationalIdentity);
+            await _patientBusinessRules.UserNationalIdentityShouldBeNotExists(patient.Id, patient.NationalIdentity);
             await _patientRepository.UpdateAsync(patient!);
 
             UpdatedPatientResponse response = _mapper.Map<UpdatedPatientResponse>(patient);

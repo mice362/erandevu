@@ -17,6 +17,8 @@ public class CreateClinicCommand : IRequest<CreatedClinicResponse>, ILoggableReq
     public string Address { get; set; }
     public string Email { get; set; }
     public string About { get; set; }
+    public byte[] Logo { get; set; }
+    public string LogoName { get; set; }
 
     public string[] Roles => new[] { Admin, Write, ClinicsOperationClaims.Create };
 

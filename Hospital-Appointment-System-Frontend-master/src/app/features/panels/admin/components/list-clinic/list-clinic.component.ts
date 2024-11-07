@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminSidebarComponent } from '../sidebar/adminSidebar.component';
 import { CommonModule } from '@angular/common';
 
-import { Clinic } from '../../../clinic/models/clinic';
+import { Clinic } from '../../../../clinics/models/clinic';
 import { Router, RouterModule } from '@angular/router';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { PaginationComponent } from '../../../../../core/paging/components/pagination/pagination.component';
 import { TokenComponent } from '../../../../../shared/components/token/token.component';
 import { ToastrService } from 'ngx-toastr';
-import { ClinicService } from '../../../clinic/services/clinic.service';
+import { ClinicService } from '../../../../clinics/services/clinic.service';
 import { FilterClinicNamePipe } from '../../../../pipe/filter-clinic-name.pipe';
 
 @Component({
@@ -70,7 +70,7 @@ export class ListClinicComponent implements OnInit {
       });
   }
 
-  confirmDelete(clinicId: string) {
+  confirmDelete(clinicId: number) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '400px',
       data: {
@@ -86,8 +86,8 @@ export class ListClinicComponent implements OnInit {
     });
   }
 
-  deleteClinic(clinicId: string) {
-    this.clinicService.deleteClinic(clinicId).subscribe(
+  deleteClinic(clinicId: number) {
+    this.clinicService.deleteClinic(clinicId, this.pageIndex, 100).subscribe(
       (response) => {
         this.toastrService.success('Klinik başarıyla silindi.');
         this.getClinics();

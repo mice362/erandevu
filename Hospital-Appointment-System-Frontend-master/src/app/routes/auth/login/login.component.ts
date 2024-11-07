@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit {
           this.toastrService.success('Giriş başarılı!', 'Başarılı');
 
           const userRoles=this.tokenService.getUserRole();
-
+          // console.log(userRoles);
           if(userRoles=="Admin")
           this.router.navigate(['admin-charts']);
            else if(userRoles.includes("Doctors.Update"))

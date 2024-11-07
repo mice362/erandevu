@@ -3,16 +3,15 @@ using Application.Features.Notifications.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using MediatR;
 using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
-using MediatR;
 using static Application.Features.Notifications.Constants.NotificationsOperationClaims;
 
 namespace Application.Features.Notifications.Commands.Update;
 
-public class UpdateNotificationCommand : IRequest<UpdatedNotificationResponse>, ISecuredRequest,  ILoggableRequest, ITransactionalRequest
+public class UpdateNotificationCommand : IRequest<UpdatedNotificationResponse>, ISecuredRequest, ILoggableRequest, ITransactionalRequest
 {
     public int Id { get; set; }
     public required int AppointmentID { get; set; }

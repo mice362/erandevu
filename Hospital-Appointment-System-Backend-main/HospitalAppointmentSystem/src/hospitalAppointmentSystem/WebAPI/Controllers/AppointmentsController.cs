@@ -2,18 +2,14 @@ using Application.Features.Appointments.Commands.Create;
 using Application.Features.Appointments.Commands.Delete;
 using Application.Features.Appointments.Commands.Update;
 using Application.Features.Appointments.Queries.GetById;
+using Application.Features.Appointments.Queries.GetByPatientId;
 using Application.Features.Appointments.Queries.GetList;
+using Application.Features.Appointments.Queries.GetListByDoctor;
+using Application.Features.Appointments.Queries.GetListByDoctorDate;
+using Application.Features.Appointments.Queries.GetListByDoctorId;
+using Microsoft.AspNetCore.Mvc;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
-using Microsoft.AspNetCore.Mvc;
-using Application.Features.Appointments.Queries.GetByPatientId;
-using Application.Features.Appointments.Queries.GetListByDoctor;
-using Application.Features.Appointments.Queries.GetListByDoctorId;
-using Domain.Entities;
-using Application.Features.Patients.Queries.GetById;
-using Nest;
-using Application.Features.Reports.Queries.GetById;
-using Application.Features.Appointments.Queries.GetListByDoctorDate;
 
 namespace WebAPI.Controllers;
 

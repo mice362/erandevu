@@ -1,22 +1,15 @@
 ﻿using Application.Features.Doctors.Constants;
+using Application.Services.Encryptions;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
-using NArchitecture.Core.Application.Pipelines.Caching;
+using Microsoft.EntityFrameworkCore;
+using NArchitecture.Core.Application.Pipelines.Authorization;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
 using static Application.Features.Appointments.Constants.AppointmentsOperationClaims;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using NArchitecture.Core.Application.Pipelines.Authorization;
-using Application.Services.Encryptions;
-using System.Numerics;
 
 namespace Application.Features.Reports.Queries.GetListByDoctor;
 public class GetListByDoctorQuery : IRequest<GetListResponse<GetListByDoctorDto>>, ISecuredRequest
@@ -54,7 +47,7 @@ public class GetListByDoctorQuery : IRequest<GetListResponse<GetListByDoctorDto>
                cancellationToken: cancellationToken,
                   orderBy: x => x.OrderByDescending(y => y.CreatedDate),
                include: x => x.Include(x => x.Appointment).Include(x => x.Appointment.Doctor).Include(x => x.Appointment.Patient),
-                  predicate: x => x.Appointment.DoctorID == request.DoctorId  &&  x.DeletedDate==null
+                  predicate: x => x.Appointment.DoctorID == request.DoctorId && x.DeletedDate == null
 
            );
 

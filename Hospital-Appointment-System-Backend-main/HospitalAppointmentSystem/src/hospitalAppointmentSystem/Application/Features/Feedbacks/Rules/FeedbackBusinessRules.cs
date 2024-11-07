@@ -1,9 +1,9 @@
+using Application.Features.Feedbacks.Constants;
 using Application.Services.Repositories;
+using Domain.Entities;
 using NArchitecture.Core.Application.Rules;
 using NArchitecture.Core.CrossCuttingConcerns.Exception.Types;
 using NArchitecture.Core.Localization.Abstraction;
-using Domain.Entities;
-using Application.Features.Feedbacks.Constants;
 
 namespace Application.Features.Feedbacks.Rules;
 

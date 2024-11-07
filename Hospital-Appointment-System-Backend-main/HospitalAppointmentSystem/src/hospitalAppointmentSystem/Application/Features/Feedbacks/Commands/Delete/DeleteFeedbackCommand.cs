@@ -1,20 +1,18 @@
+using Application.Features.Doctors.Constants;
+using Application.Features.Feedbacks.Constants;
 using Application.Features.Feedbacks.Rules;
+using Application.Features.Patients.Constants;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using NArchitecture.Core.Application.Pipelines.Authorization;
-using NArchitecture.Core.Application.Pipelines.Caching;
+using MediatR;
 using NArchitecture.Core.Application.Pipelines.Logging;
 using NArchitecture.Core.Application.Pipelines.Transaction;
-using MediatR;
 using static Application.Features.Feedbacks.Constants.FeedbacksOperationClaims;
-using Application.Features.Doctors.Constants;
-using Application.Features.Patients.Constants;
-using Application.Features.Feedbacks.Constants;
 
 namespace Application.Features.Feedbacks.Commands.Delete;
 
-public class DeleteFeedbackCommand : IRequest<DeletedFeedbackResponse>,  ILoggableRequest, ITransactionalRequest
+public class DeleteFeedbackCommand : IRequest<DeletedFeedbackResponse>, ILoggableRequest, ITransactionalRequest
 {
     public int Id { get; set; }
 

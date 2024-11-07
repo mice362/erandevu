@@ -1,14 +1,13 @@
+using Application.Features.Doctors.Constants;
 using Application.Features.Patients.Constants;
 using Application.Services.Repositories;
+using Application.Services.UsersService;
+using Domain.Entities;
 using NArchitecture.Core.Application.Rules;
 using NArchitecture.Core.CrossCuttingConcerns.Exception.Types;
 using NArchitecture.Core.Localization.Abstraction;
-using Domain.Entities;
 using NArchitecture.Core.Persistence.Paging;
-using Application.Features.Auth.Constants;
 using TurkishCitizenIdValidator;
-using Application.Features.Doctors.Constants;
-using Application.Services.UsersService;
 
 namespace Application.Features.Patients.Rules;
 
