@@ -1,7 +1,7 @@
 ﻿using NArchitecture.Core.Application.Dtos;
 
-namespace Application.Features.Clinics.Queries.GetList;
-public class GetListClinicListItemDto : IDto
+namespace Application.Features.BusinessPartners.Queries.GetList;
+public class GetListBusinessPartnerListItemDto : IDto
 {
     public int Id { get; set; }
     public string Name { get; set; }

@@ -28,9 +28,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Features\BusinessPartners\Commands\Delete\" />
-    <Folder Include="Features\BusinessPartners\Commands\Update\" />
-    <Folder Include="Features\BusinessPartners\Queries\GetList\" />
     <Folder Include="Features\BusinessPartners\Profiles\" />
   </ItemGroup>
 </Project>

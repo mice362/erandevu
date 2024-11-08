@@ -14,36 +14,42 @@ namespace Application.Features.Clinics.Commands.Update;
 public class UpdateClinicCommand : IRequest<UpdatedClinicResponse>, ISecuredRequest, ILoggableRequest, ITransactionalRequest
 {
     public int Id { get; set; }
-    public required string Name { get; set; }
+    public string Name { get; set; }
+    public string Phone { get; set; }
+    public string Address { get; set; }
+    public string Email { get; set; }
+    public string About { get; set; }
+    public byte[] Logo { get; set; }
+    public string LogoName { get; set; }
 
     public string[] Roles => [Admin, Write, ClinicsOperationClaims.Update];
 
     public bool BypassCache { get; }
     public string? CacheKey { get; }
-    public string[]? CacheGroupKey => ["GetBranches"];
+    public string[]? CacheGroupKey => ["GetClinics"];
 
     public class UpdatedClinicCommandHandler : IRequestHandler<UpdateClinicCommand, UpdatedClinicResponse>
     {
         private readonly IMapper _mapper;
-        private readonly IBranchRepository _branchRepository;
+        private readonly IClinicRepository _clinicRepository;
         private readonly ClinicBusinessRules _clinicBusinessRules;
 
-        public UpdatedClinicCommandHandler(IMapper mapper, IBranchRepository branchRepository,
+        public UpdatedClinicCommandHandler(IMapper mapper, IClinicRepository clinicRepository,
                                          ClinicBusinessRules clinicBusinessRules)
         {
             _mapper = mapper;
-            _branchRepository = branchRepository;
+            _clinicRepository = clinicRepository;
             _clinicBusinessRules = clinicBusinessRules;
         }
 
         public async Task<UpdatedClinicResponse> Handle(UpdateClinicCommand request, CancellationToken cancellationToken)
         {
-            Branch? branch = await _branchRepository.GetAsync(predicate: b => b.Id == request.Id, cancellationToken: cancellationToken);
+            Clinic? clinic = await _clinicRepository.GetAsync(predicate: b => b.Id == request.Id, cancellationToken: cancellationToken);
 
-            branch = _mapper.Map(request, branch);
-            await _branchRepository.UpdateAsync(branch!);
+            clinic = _mapper.Map(request, clinic);
+            await _clinicRepository.UpdateAsync(clinic!);
 
-            UpdatedClinicResponse response = _mapper.Map<UpdatedClinicResponse>(branch);
+            UpdatedClinicResponse response = _mapper.Map<UpdatedClinicResponse>(clinic);
 
             return response;
         }

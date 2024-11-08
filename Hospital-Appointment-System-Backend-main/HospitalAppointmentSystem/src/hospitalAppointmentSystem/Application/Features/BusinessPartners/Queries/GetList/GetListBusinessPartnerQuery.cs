@@ -5,34 +5,34 @@ using MediatR;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
 using NArchitecture.Core.Persistence.Paging;
-using static Application.Features.Clinics.Constants.ClinicsOperationClaims;
+using static Application.Features.BusinessPartners.Constants.BusinessPartnerOperationClaims;
 
-namespace Application.Features.Clinics.Queries.GetList;
-public class GetListClinicQuery : IRequest<GetListResponse<GetListClinicListItemDto>>
+namespace Application.Features.BusinessPartners.Queries.GetList;
+public class GetListBusinessPartnerQuery : IRequest<GetListResponse<GetListBusinessPartnerListItemDto>>
 {
     public PageRequest PageRequest { get; set; }
 
     public string[] Roles => [Admin, Read];
 
     public bool BypassCache { get; }
-    public string? CacheKey => $"GetListClinics({PageRequest.PageIndex},{PageRequest.PageSize})";
-    public string? CacheGroupKey => "GetClinics";
+    public string? CacheKey => $"GetListBusinessPartners({PageRequest.PageIndex},{PageRequest.PageSize})";
+    public string? CacheGroupKey => "GetBusinessPartners";
     public TimeSpan? SlidingExpiration { get; }
 
-    public class GetListClinicQueryHandler : IRequestHandler<GetListClinicQuery, GetListResponse<GetListClinicListItemDto>>
+    public class GetListBusinessPartnerQueryHandler : IRequestHandler<GetListBusinessPartnerQuery, GetListResponse<GetListBusinessPartnerListItemDto>>
     {
-        private readonly IClinicRepository _clinicRepository;
+        private readonly IBusinessPartnerRepository _businessPartnerRepository;
         private readonly IMapper _mapper;
 
-        public GetListClinicQueryHandler(IClinicRepository clinicRepository, IMapper mapper)
+        public GetListBusinessPartnerQueryHandler(IBusinessPartnerRepository businessPartnerRepository, IMapper mapper)
         {
-            _clinicRepository = clinicRepository;
+            _businessPartnerRepository = businessPartnerRepository;
             _mapper = mapper;
         }
 
-        public async Task<GetListResponse<GetListClinicListItemDto>> Handle(GetListClinicQuery request, CancellationToken cancellationToken)
+        public async Task<GetListResponse<GetListBusinessPartnerListItemDto>> Handle(GetListBusinessPartnerQuery request, CancellationToken cancellationToken)
         {
-            IPaginate<Clinic> clinics = await _clinicRepository.GetListAsync(
+            IPaginate<BusinessPartner> clinics = await _businessPartnerRepository.GetListAsync(
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken
@@ -51,8 +51,7 @@ public class GetListClinicQuery : IRequest<GetListResponse<GetListClinicListItem
                 clinics.Items[i].LogoName = clinics.Items[i].LogoName;
             }
 
-
-            GetListResponse<GetListClinicListItemDto> response = _mapper.Map<GetListResponse<GetListClinicListItemDto>>(clinics);
+            GetListResponse<GetListBusinessPartnerListItemDto> response = _mapper.Map<GetListResponse<GetListBusinessPartnerListItemDto>>(clinics);
             return response;
         }
     }

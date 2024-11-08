@@ -1,7 +1,7 @@
-﻿using NArchitecture.Core.Application.Dtos;
+﻿using NArchitecture.Core.Application.Responses;
 
-namespace Application.Features.Clinics.Queries.GetList;
-public class GetListClinicListItemDto : IDto
+namespace Application.Features.BusinessPartners.Commands.Update;
+public class UpdatedBusinessPartnerResponse : IResponse
 {
     public int Id { get; set; }
     public string Name { get; set; }

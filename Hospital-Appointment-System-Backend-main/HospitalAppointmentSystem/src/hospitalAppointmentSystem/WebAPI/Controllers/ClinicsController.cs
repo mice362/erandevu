@@ -2,7 +2,6 @@
 using Application.Features.Clinics.Commands.Delete;
 using Application.Features.Clinics.Commands.Update;
 using Application.Features.Clinics.Queries.GetList;
-using Application.Features.Doctors.Queries.GetList;
 using Microsoft.AspNetCore.Mvc;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
@@ -40,7 +39,7 @@ public class ClinicsController : BaseController
     }
 
     [HttpGet]
-    public async Task<ActionResult<GetListDoctorQuery>> GetList([FromQuery] PageRequest pageRequest)
+    public async Task<ActionResult<GetListClinicQuery>> GetList([FromQuery] PageRequest pageRequest)
     {
         GetListClinicQuery query = new() { PageRequest = pageRequest };
 
