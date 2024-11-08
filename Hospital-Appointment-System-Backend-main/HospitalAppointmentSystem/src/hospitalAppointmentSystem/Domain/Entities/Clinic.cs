@@ -7,7 +7,7 @@ public class Clinic : Entity<int>
     {
     }
 
-    public Clinic(int id, string name, string phone, string address, string email, string about)
+    public Clinic(int id, string name, string phone, string address, string email, string about,string logoName, byte[] logo)
     {
         Id = id;
         Name = name;
@@ -15,6 +15,8 @@ public class Clinic : Entity<int>
         Address = address;
         Email = email;
         About = about;
+        LogoName = logoName;
+        Logo = logo;
     }
 
     public string Name { get; set; }
